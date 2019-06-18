@@ -1,0 +1,118 @@
+{
+    "name": "skeeks/app-shop-smarty",
+    "description": "Shop on SkeekS CMS",
+    "keywords": ["framework", "cms", "skeeks", "sx", "app", "yii2", "shop"],
+    "homepage": "https://cms.skeeks.com",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://cms.skeeks.com",
+        "wiki": "https://cms.skeeks.com/docs",
+        "source": "https://github.com/skeeks-cms/app-shop-smarty"
+    },
+    "authors": [
+        {
+            "name": "Semenov Alexander",
+            "email": "semenov@skeeks.com"
+        }
+    ],
+    "require": {
+        "skeeks/cms-basic-shop": "^1.1.3",
+
+        "skeeks/cms-vk-comments": "^1.0",
+        "skeeks/cms-ya-share": "^2.0",
+        "skeeks/cms-vk-community": "^1.0",
+        "skeeks/cms-authclient": "^2.0",
+        "skeeks/cms-external-links": "^1.0",
+        "skeeks/cms-instagram-widget": "^1.0",
+        "skeeks/yii2-template-smarty-asset": "1.1.5",
+
+        "skeeks/cms-theme-unify-v2": "dev-master",
+        "skeeks/theme-unify-shop": "dev-master",
+        "skeeks/yii2-query-filter": "dev-master@dev"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "*"
+    },
+    "minimum-stability" : "dev",
+    "prefer-stable" : true,
+    "scripts": {
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject",
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "post-install-cmd": [
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "post-update-cmd": [
+            "skeeks\\cms\\composer\\Installer::clearDirs",
+            "php yii cms/migrate --interactive=0",
+            "skeeks\\cms\\composer\\Installer::clearDirs",
+            "php yii rbac/init",
+            "php yii cmsAgent/init"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "console/runtime": "0777",
+                    "common/runtime": "0777",
+                    "frontend/runtime": "0777",
+                    "frontend/web/assets": "0777",
+                    "yii": "0755"
+                }
+            ]
+        },
+        "yii\\composer\\Installer::postInstall": {
+            "generateCookieValidationKey": [
+                "frontend/config/main.php"
+            ]
+        },
+        "skeeks\\cms\\composer\\Installer::clearDirs": {
+            "dirs": [
+                "console/runtime/cache",
+                "frontend/runtime/cache",
+                "frontend/web/assets"
+            ]
+        },
+        "config-plugin": {
+            "web": [
+                "common/config/main.php",
+                "common/config/db.php",
+                "frontend/config/main.php"
+            ],
+            "web-dev": [
+                "$web",
+                "?frontend/config/main-dev.php"
+            ],
+            "web-prod": [
+                "$web",
+                "?frontend/config/main-prod.php"
+            ],
+            "console": [
+                "common/config/main.php",
+                "common/config/db.php",
+                "console/config/main.php"
+            ],
+            "console-dev": [
+                "$console",
+                "?console/config/main-dev.php"
+            ],
+            "console-prod": [
+                "$console",
+                "?console/config/main-prod.php"
+            ]
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "config": {
+        "process-timeout": 1800,
+        "discard-changes": true
+    }
+}
