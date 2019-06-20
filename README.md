@@ -3,8 +3,8 @@ Shop on SkeekS CMS (Yii2)
 
 [![skeeks!](https://en.cms.skeeks.com/uploads/all/35/fd/33/35fd33aa306823dbaf53a0142d43b3fa.png)](https://en.cms.skeeks.com)  
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/skeeks/app-shop-smarty.svg)](https://packagist.org/skeeks/app-shop-smarty/app-v3-shop)
-[![Total Downloads](https://img.shields.io/packagist/dt/skeeks/app-shop-smarty.svg)](https://packagist.org/packages/skeeks/app-shop-smarty)
+[![Latest Stable Version](https://img.shields.io/packagist/v/skeeks/app-shop-unify2.svg)](https://packagist.org/skeeks/app-shop-unify2/app-v3-shop)
+[![Total Downloads](https://img.shields.io/packagist/dt/skeeks/app-shop-unify2.svg)](https://packagist.org/packages/skeeks/app-shop-unify2)
 
 
 Links
@@ -22,7 +22,7 @@ Install
 # Download latest version of composer
 curl -sS https://getcomposer.org/installer | COMPOSER_HOME=.composer php
 # Installing the base project SkeekS CMS
-COMPOSER_HOME=.composer php composer.phar create-project --prefer-dist --stability=dev skeeks/app-shop-smarty demo.ru
+COMPOSER_HOME=.composer php composer.phar create-project --prefer-dist --stability=dev skeeks/app-shop-unify2 demo.ru
 # Going into the project folder
 cd demo.ru
 
