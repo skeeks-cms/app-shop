@@ -27,8 +27,7 @@
         "skeeks/cms-instagram-widget": "^1.0",
         "skeeks/yii2-template-smarty-asset": "1.1.5",
 
-        "skeeks/cms-theme-unify-v2": "dev-master",
-        "skeeks/theme-unify-shop": "dev-master",
+        "skeeks/theme-unify-shop": "^0.0.2",
         "skeeks/yii2-query-filter": "dev-master@dev"
     },
     "require-dev": {
