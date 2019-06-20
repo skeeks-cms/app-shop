@@ -1,5 +1,5 @@
 {
-    "name": "skeeks/app-shop-smarty",
+    "name": "skeeks/app-shop-unify2",
     "description": "Shop on SkeekS CMS",
     "keywords": ["framework", "cms", "skeeks", "sx", "app", "yii2", "shop"],
     "homepage": "https://cms.skeeks.com",
@@ -8,7 +8,7 @@
     "support": {
         "issues": "https://cms.skeeks.com",
         "wiki": "https://cms.skeeks.com/docs",
-        "source": "https://github.com/skeeks-cms/app-shop-smarty"
+        "source": "https://github.com/skeeks-cms/app-shop-unify2y"
     },
     "authors": [
         {
