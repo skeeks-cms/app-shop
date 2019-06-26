@@ -142,16 +142,16 @@
         },
         {
             "name": "bower-asset/blueimp-file-upload",
-            "version": "v9.31.0",
+            "version": "v9.32.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/blueimp/jQuery-File-Upload.git",
-                "reference": "b096b1a5544299b59f2e05cf764a123ce3e32dd3"
+                "reference": "23f5c92cad0d9cc8dd37b969db27e3c92a1d0231"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/blueimp/jQuery-File-Upload/zipball/b096b1a5544299b59f2e05cf764a123ce3e32dd3",
-                "reference": "b096b1a5544299b59f2e05cf764a123ce3e32dd3"
+                "url": "https://api.github.com/repos/blueimp/jQuery-File-Upload/zipball/23f5c92cad0d9cc8dd37b969db27e3c92a1d0231",
+                "reference": "23f5c92cad0d9cc8dd37b969db27e3c92a1d0231"
             },
             "require": {
                 "bower-asset/blueimp-canvas-to-blob": ">=2.1.1",
@@ -289,7 +289,7 @@
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "git@github.com:RobinHerbots/Inputmask.git",
+                "url": "https://github.com/RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -656,16 +656,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.8",
+            "version": "2.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "c26463ff9241f27907112fbcd0c86fa670cfef98"
+                "reference": "128cc721d771ec2c46ce59698f4ca42b73f71b25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/c26463ff9241f27907112fbcd0c86fa670cfef98",
-                "reference": "c26463ff9241f27907112fbcd0c86fa670cfef98",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/128cc721d771ec2c46ce59698f4ca42b73f71b25",
+                "reference": "128cc721d771ec2c46ce59698f4ca42b73f71b25",
                 "shasum": ""
             },
             "require": {
@@ -709,7 +709,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2019-05-16T22:02:54+00:00"
+            "time": "2019-06-23T10:14:27+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -2282,16 +2282,16 @@
         },
         {
             "name": "skeeks/cms",
-            "version": "5.5.7.1",
+            "version": "5.5.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms.git",
-                "reference": "af118520870c35ba778c86a6c9a87edd9dcfad4b"
+                "reference": "deee1b0423fe04890b3da6b9c14d45f9622d17bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms/zipball/af118520870c35ba778c86a6c9a87edd9dcfad4b",
-                "reference": "af118520870c35ba778c86a6c9a87edd9dcfad4b",
+                "url": "https://api.github.com/repos/skeeks-cms/cms/zipball/deee1b0423fe04890b3da6b9c14d45f9622d17bd",
+                "reference": "deee1b0423fe04890b3da6b9c14d45f9622d17bd",
                 "shasum": ""
             },
             "require": {
@@ -2388,7 +2388,7 @@
                 "skeeks cms",
                 "yii2"
             ],
-            "time": "2019-06-13T20:57:14+00:00"
+            "time": "2019-06-24T10:13:01+00:00"
         },
         {
             "name": "skeeks/cms-admin",
@@ -4238,16 +4238,16 @@
         },
         {
             "name": "skeeks/cms-seo",
-            "version": "2.1.8.2",
+            "version": "2.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-seo.git",
-                "reference": "09273b65cd99075929c38dfce149271e0fed4b0e"
+                "reference": "e598d869e6d9c05ff6dc267f0d1270e2e62af39d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-seo/zipball/09273b65cd99075929c38dfce149271e0fed4b0e",
-                "reference": "09273b65cd99075929c38dfce149271e0fed4b0e",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-seo/zipball/e598d869e6d9c05ff6dc267f0d1270e2e62af39d",
+                "reference": "e598d869e6d9c05ff6dc267f0d1270e2e62af39d",
                 "shasum": ""
             },
             "require": {
@@ -4284,7 +4284,7 @@
                 "skeeks",
                 "yii"
             ],
-            "time": "2019-04-18T07:43:44+00:00"
+            "time": "2019-06-24T10:01:52+00:00"
         },
         {
             "name": "skeeks/cms-shop",
@@ -4528,16 +4528,16 @@
         },
         {
             "name": "skeeks/cms-theme-unify-v2",
-            "version": "0.0.2.5",
+            "version": "0.0.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-theme-unify-v2.git",
-                "reference": "498593dbea2d784433a6e1cd0dd83004ca058c3d"
+                "reference": "073066fcd62adbc5e250447c022deb4d1863a6d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-theme-unify-v2/zipball/498593dbea2d784433a6e1cd0dd83004ca058c3d",
-                "reference": "498593dbea2d784433a6e1cd0dd83004ca058c3d",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-theme-unify-v2/zipball/073066fcd62adbc5e250447c022deb4d1863a6d6",
+                "reference": "073066fcd62adbc5e250447c022deb4d1863a6d6",
                 "shasum": ""
             },
             "require": {
@@ -4584,7 +4584,7 @@
                 "skeeks",
                 "yii"
             ],
-            "time": "2019-06-20T10:53:24+00:00"
+            "time": "2019-06-24T12:09:06+00:00"
         },
         {
             "name": "skeeks/cms-toolbar",
