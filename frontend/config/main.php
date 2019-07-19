@@ -47,13 +47,8 @@ $config = [
 
         'view' => [
             'on beforeRender' => function () {
-                if (!\skeeks\cms\backend\BackendComponent::getCurrent()) {
-                    if (\Yii::$app->view->theme instanceof \common\themes\app\AppTheme) {
-                        \common\themes\app\AppTheme::initBeforeRender();
-                        \Yii::$app->assetsAutoCompress->enabled = false;
-
-                        //\Yii::$app->view->theme->logo = \common\themes\sweet\assets\SweetThemeAsset::getAssetUrl('img/logo.png');
-                    }
+                if (\common\themes\app\AppTheme::isInitBeforeRender()) {
+                    \common\themes\app\AppTheme::initBeforeRender();
                 }
             },
 
