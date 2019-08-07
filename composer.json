@@ -22,7 +22,7 @@
         "skeeks/cms-authclient": "^2.0",
         "skeeks/cms-external-links": "^1.0",
 
-        "skeeks/theme-unify-shop": "^0.0.2"
+        "skeeks/theme-unify-shop": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*"
