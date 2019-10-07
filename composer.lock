@@ -2475,16 +2475,16 @@
         },
         {
             "name": "skeeks/cms",
-            "version": "5.5.13",
+            "version": "5.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms.git",
-                "reference": "15de4cee4c8066714d4bb8f75871c1cae0f8fd53"
+                "reference": "889a889f75a9cc5a82c6fd776d50827234f0321b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms/zipball/15de4cee4c8066714d4bb8f75871c1cae0f8fd53",
-                "reference": "15de4cee4c8066714d4bb8f75871c1cae0f8fd53",
+                "url": "https://api.github.com/repos/skeeks-cms/cms/zipball/889a889f75a9cc5a82c6fd776d50827234f0321b",
+                "reference": "889a889f75a9cc5a82c6fd776d50827234f0321b",
                 "shasum": ""
             },
             "require": {
@@ -2581,20 +2581,20 @@
                 "skeeks cms",
                 "yii2"
             ],
-            "time": "2019-10-04T08:13:49+00:00"
+            "time": "2019-10-07T07:46:08+00:00"
         },
         {
             "name": "skeeks/cms-admin",
-            "version": "2.1.2.9",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-admin.git",
-                "reference": "daa1b09c6a973e27c76f2116361bd70d41452bfd"
+                "reference": "c748ca96c88c8f0c1b848fbc8deb75fed1afdff7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-admin/zipball/daa1b09c6a973e27c76f2116361bd70d41452bfd",
-                "reference": "daa1b09c6a973e27c76f2116361bd70d41452bfd",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-admin/zipball/c748ca96c88c8f0c1b848fbc8deb75fed1afdff7",
+                "reference": "c748ca96c88c8f0c1b848fbc8deb75fed1afdff7",
                 "shasum": ""
             },
             "require": {
@@ -2633,7 +2633,7 @@
                 "yii",
                 "yii2"
             ],
-            "time": "2019-08-23T07:58:24+00:00"
+            "time": "2019-10-05T13:27:33+00:00"
         },
         {
             "name": "skeeks/cms-agent",
@@ -2796,16 +2796,16 @@
         },
         {
             "name": "skeeks/cms-backend",
-            "version": "1.2.17.8",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-backend.git",
-                "reference": "9b4cd25587b293f8ec2efb544befaee48a993829"
+                "reference": "dfe9dd2b192125b908277bea9f8dc8e70015a4ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-backend/zipball/9b4cd25587b293f8ec2efb544befaee48a993829",
-                "reference": "9b4cd25587b293f8ec2efb544befaee48a993829",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-backend/zipball/dfe9dd2b192125b908277bea9f8dc8e70015a4ad",
+                "reference": "dfe9dd2b192125b908277bea9f8dc8e70015a4ad",
                 "shasum": ""
             },
             "require": {
@@ -2841,20 +2841,20 @@
                 "skeeks",
                 "yii"
             ],
-            "time": "2019-08-22T08:41:28+00:00"
+            "time": "2019-10-06T20:20:32+00:00"
         },
         {
             "name": "skeeks/cms-backend-admin",
-            "version": "1.1.4.15",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-backend-admin.git",
-                "reference": "bc195f08020fccddfaa7afc2417c2ed849c390ad"
+                "reference": "1e33cce3666560795491aa4cffd1df9bfd462dc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-backend-admin/zipball/bc195f08020fccddfaa7afc2417c2ed849c390ad",
-                "reference": "bc195f08020fccddfaa7afc2417c2ed849c390ad",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-backend-admin/zipball/1e33cce3666560795491aa4cffd1df9bfd462dc6",
+                "reference": "1e33cce3666560795491aa4cffd1df9bfd462dc6",
                 "shasum": ""
             },
             "require": {
@@ -2898,7 +2898,7 @@
                 "skeeks",
                 "yii"
             ],
-            "time": "2019-08-21T21:26:15+00:00"
+            "time": "2019-10-07T07:46:07+00:00"
         },
         {
             "name": "skeeks/cms-basic",
@@ -3585,16 +3585,16 @@
         },
         {
             "name": "skeeks/cms-import-csv-content",
-            "version": "1.2.4.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-import-csv-content.git",
-                "reference": "c06e02b52ccd8c11b1a678d7ea2ce2608f5c58f1"
+                "reference": "6e35c7e590017b7d81a9c952d263a5aa02e7ad7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-import-csv-content/zipball/c06e02b52ccd8c11b1a678d7ea2ce2608f5c58f1",
-                "reference": "c06e02b52ccd8c11b1a678d7ea2ce2608f5c58f1",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-import-csv-content/zipball/6e35c7e590017b7d81a9c952d263a5aa02e7ad7c",
+                "reference": "6e35c7e590017b7d81a9c952d263a5aa02e7ad7c",
                 "shasum": ""
             },
             "require": {
@@ -3636,7 +3636,7 @@
                 "skeeks",
                 "yii"
             ],
-            "time": "2019-09-12T06:58:12+00:00"
+            "time": "2019-10-04T21:23:04+00:00"
         },
         {
             "name": "skeeks/cms-import-csv-shop-content",
@@ -4142,16 +4142,16 @@
         },
         {
             "name": "skeeks/cms-rbac",
-            "version": "2.2.2.2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-rbac.git",
-                "reference": "9ec0bc8794b58f41ccc83e5b8e3214dff50286f1"
+                "reference": "47f862db31ff546f05dc29a7c8de0a43c1dad203"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-rbac/zipball/9ec0bc8794b58f41ccc83e5b8e3214dff50286f1",
-                "reference": "9ec0bc8794b58f41ccc83e5b8e3214dff50286f1",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-rbac/zipball/47f862db31ff546f05dc29a7c8de0a43c1dad203",
+                "reference": "47f862db31ff546f05dc29a7c8de0a43c1dad203",
                 "shasum": ""
             },
             "require": {
@@ -4194,7 +4194,7 @@
                 "skeeks",
                 "yii"
             ],
-            "time": "2019-07-30T16:41:43+00:00"
+            "time": "2019-10-05T15:34:25+00:00"
         },
         {
             "name": "skeeks/cms-related-handler-extra",
@@ -4398,16 +4398,16 @@
         },
         {
             "name": "skeeks/cms-shop",
-            "version": "2.2.7.20",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-shop.git",
-                "reference": "ea3d23e0947d4968bc3bd65328c497faf98e8957"
+                "reference": "347b67f1b6828e318bf3b24694667a72242cb42f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-shop/zipball/ea3d23e0947d4968bc3bd65328c497faf98e8957",
-                "reference": "ea3d23e0947d4968bc3bd65328c497faf98e8957",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-shop/zipball/347b67f1b6828e318bf3b24694667a72242cb42f",
+                "reference": "347b67f1b6828e318bf3b24694667a72242cb42f",
                 "shasum": ""
             },
             "require": {
@@ -4454,7 +4454,7 @@
                 "skeeks",
                 "yii2"
             ],
-            "time": "2019-10-03T23:04:19+00:00"
+            "time": "2019-10-05T15:34:25+00:00"
         },
         {
             "name": "skeeks/cms-shop-cart-items-widget",
@@ -4638,16 +4638,16 @@
         },
         {
             "name": "skeeks/cms-theme-unify-v2",
-            "version": "1.0.0.24",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-theme-unify-v2.git",
-                "reference": "057c6f986076456bb680dc2e93f758b213165fee"
+                "reference": "7e047e1f7c67968888046c3a14044d4dc0f705e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-theme-unify-v2/zipball/057c6f986076456bb680dc2e93f758b213165fee",
-                "reference": "057c6f986076456bb680dc2e93f758b213165fee",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-theme-unify-v2/zipball/7e047e1f7c67968888046c3a14044d4dc0f705e1",
+                "reference": "7e047e1f7c67968888046c3a14044d4dc0f705e1",
                 "shasum": ""
             },
             "require": {
@@ -4698,7 +4698,7 @@
                 "skeeks",
                 "yii"
             ],
-            "time": "2019-10-04T08:14:52+00:00"
+            "time": "2019-10-07T07:46:07+00:00"
         },
         {
             "name": "skeeks/cms-toolbar",
