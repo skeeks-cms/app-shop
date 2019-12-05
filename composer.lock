@@ -2797,16 +2797,16 @@
         },
         {
             "name": "skeeks/cms-backend",
-            "version": "1.3.1",
+            "version": "1.3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-backend.git",
-                "reference": "9d2e76e12fe0f72c0b93a2cc828f08bfe1845314"
+                "reference": "2dbf3dba4e11b8cad2ea8b4b35c18eaf898b51b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-backend/zipball/9d2e76e12fe0f72c0b93a2cc828f08bfe1845314",
-                "reference": "9d2e76e12fe0f72c0b93a2cc828f08bfe1845314",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-backend/zipball/2dbf3dba4e11b8cad2ea8b4b35c18eaf898b51b1",
+                "reference": "2dbf3dba4e11b8cad2ea8b4b35c18eaf898b51b1",
                 "shasum": ""
             },
             "require": {
@@ -2842,7 +2842,7 @@
                 "skeeks",
                 "yii"
             ],
-            "time": "2019-11-23T23:55:24+00:00"
+            "time": "2019-12-05T07:57:14+00:00"
         },
         {
             "name": "skeeks/cms-backend-admin",
@@ -3875,20 +3875,21 @@
         },
         {
             "name": "skeeks/cms-measure",
-            "version": "2.2.0.3",
+            "version": "2.2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-measure.git",
-                "reference": "d426258efcad227755008bbf3cef614cded0c3cc"
+                "reference": "afdcab25d61c8e645b63f62fbbc286887fad840b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-measure/zipball/d426258efcad227755008bbf3cef614cded0c3cc",
-                "reference": "d426258efcad227755008bbf3cef614cded0c3cc",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-measure/zipball/afdcab25d61c8e645b63f62fbbc286887fad840b",
+                "reference": "afdcab25d61c8e645b63f62fbbc286887fad840b",
                 "shasum": ""
             },
             "require": {
-                "skeeks/cms": "~5.0 || dev-master"
+                "skeeks/cms": "~5.0 || dev-master",
+                "skeeks/yii2-measure-classifier": "^1.0.0 || dev-master"
             },
             "type": "yii2-extension",
             "extra": {
@@ -3929,7 +3930,7 @@
                 "skeeks",
                 "yii2"
             ],
-            "time": "2019-11-17T19:58:38+00:00"
+            "time": "2019-12-04T19:02:22+00:00"
         },
         {
             "name": "skeeks/cms-module-form2",
@@ -4407,16 +4408,16 @@
         },
         {
             "name": "skeeks/cms-shop",
-            "version": "2.3.0.5",
+            "version": "2.3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-shop.git",
-                "reference": "3ee5082fa5e4bf99cae5cec608a43c40da224ea9"
+                "reference": "cc2529e434110a0a7de8e04fbf7014e831ec3822"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-shop/zipball/3ee5082fa5e4bf99cae5cec608a43c40da224ea9",
-                "reference": "3ee5082fa5e4bf99cae5cec608a43c40da224ea9",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-shop/zipball/cc2529e434110a0a7de8e04fbf7014e831ec3822",
+                "reference": "cc2529e434110a0a7de8e04fbf7014e831ec3822",
                 "shasum": ""
             },
             "require": {
@@ -4463,7 +4464,7 @@
                 "skeeks",
                 "yii2"
             ],
-            "time": "2019-11-18T11:23:58+00:00"
+            "time": "2019-12-04T20:48:01+00:00"
         },
         {
             "name": "skeeks/cms-shop-cart-items-widget",
@@ -4647,16 +4648,16 @@
         },
         {
             "name": "skeeks/cms-theme-unify-v2",
-            "version": "1.1.0.8",
+            "version": "1.1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-theme-unify-v2.git",
-                "reference": "749a1c4e0732626f391a4cf6c120fed71fffafbd"
+                "reference": "0bf279db268611f399021ce90f6ee17ee25cd3b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-theme-unify-v2/zipball/749a1c4e0732626f391a4cf6c120fed71fffafbd",
-                "reference": "749a1c4e0732626f391a4cf6c120fed71fffafbd",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-theme-unify-v2/zipball/0bf279db268611f399021ce90f6ee17ee25cd3b7",
+                "reference": "0bf279db268611f399021ce90f6ee17ee25cd3b7",
                 "shasum": ""
             },
             "require": {
@@ -4707,7 +4708,7 @@
                 "skeeks",
                 "yii"
             ],
-            "time": "2019-11-26T07:53:47+00:00"
+            "time": "2019-12-02T08:39:20+00:00"
         },
         {
             "name": "skeeks/cms-toolbar",
@@ -4906,16 +4907,16 @@
         },
         {
             "name": "skeeks/theme-unify-shop",
-            "version": "1.0.0.14",
+            "version": "1.0.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/theme-unify-shop.git",
-                "reference": "279d625f50d7e2e98e18e6d62573c357a08bcb02"
+                "reference": "b86fadeda8de6c8404f9baabbffc3f6c374f9883"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/theme-unify-shop/zipball/279d625f50d7e2e98e18e6d62573c357a08bcb02",
-                "reference": "279d625f50d7e2e98e18e6d62573c357a08bcb02",
+                "url": "https://api.github.com/repos/skeeks-cms/theme-unify-shop/zipball/b86fadeda8de6c8404f9baabbffc3f6c374f9883",
+                "reference": "b86fadeda8de6c8404f9baabbffc3f6c374f9883",
                 "shasum": ""
             },
             "require": {
@@ -4948,7 +4949,7 @@
                 "theme",
                 "yii"
             ],
-            "time": "2019-10-18T10:16:02+00:00"
+            "time": "2019-11-29T11:12:57+00:00"
         },
         {
             "name": "skeeks/yii2-ajax-file-upload",
@@ -5322,16 +5323,16 @@
         },
         {
             "name": "skeeks/yii2-form",
-            "version": "0.1.2.1",
+            "version": "0.1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-semenov/yii2-form.git",
-                "reference": "a6ea2b86ac27a308b1830db199d6f5a8655bbe9e"
+                "reference": "b7013e7cfa7ad0e56d684833665570fd4b733c73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-semenov/yii2-form/zipball/a6ea2b86ac27a308b1830db199d6f5a8655bbe9e",
-                "reference": "a6ea2b86ac27a308b1830db199d6f5a8655bbe9e",
+                "url": "https://api.github.com/repos/skeeks-semenov/yii2-form/zipball/b7013e7cfa7ad0e56d684833665570fd4b733c73",
+                "reference": "b7013e7cfa7ad0e56d684833665570fd4b733c73",
                 "shasum": ""
             },
             "require": {
@@ -5362,7 +5363,7 @@
                 "skeeks",
                 "yii"
             ],
-            "time": "2019-11-28T22:57:58+00:00"
+            "time": "2019-12-04T20:02:37+00:00"
         },
         {
             "name": "skeeks/yii2-imagine",
@@ -5457,6 +5458,62 @@
                 "yii2"
             ],
             "time": "2019-10-08T22:25:52+00:00"
+        },
+        {
+            "name": "skeeks/yii2-measure-classifier",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/skeeks-semenov/yii2-measure-classifier.git",
+                "reference": "a74b91aa351cc10b89f9e44ab28c13c7430f67d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/skeeks-semenov/yii2-measure-classifier/zipball/a74b91aa351cc10b89f9e44ab28c13c7430f67d0",
+                "reference": "a74b91aa351cc10b89f9e44ab28c13c7430f67d0",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "^2.0.10"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "config-plugin": {
+                    "web": [
+                        "src/config/common.php",
+                        "src/config/web.php"
+                    ],
+                    "console": [
+                        "src/config/common.php",
+                        "src/config/console.php"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "skeeks\\yii2\\measureClassifier\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Semenov Alexander",
+                    "email": "semenov@skeeks.com"
+                }
+            ],
+            "description": "Form package for SkeekS CMS",
+            "homepage": "https://cms.skeeks.com/",
+            "keywords": [
+                "Agent",
+                "component",
+                "framework",
+                "skeeks",
+                "yii"
+            ],
+            "time": "2019-12-04T18:15:39+00:00"
         },
         {
             "name": "skeeks/yii2-mmenu-widget",
@@ -6090,7 +6147,7 @@
         },
         {
             "name": "symfony/polyfill-iconv",
-            "version": "v1.13.0",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-iconv.git",
@@ -6149,7 +6206,7 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.13.0",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
@@ -6211,7 +6268,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.13.0",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -6270,7 +6327,7 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.13.0",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
@@ -7009,16 +7066,16 @@
     "packages-dev": [
         {
             "name": "opis/closure",
-            "version": "3.4.1",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "e79f851749c3caa836d7ccc01ede5828feb762c7"
+                "reference": "93ebc5712cdad8d5f489b500c59d122df2e53969"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/e79f851749c3caa836d7ccc01ede5828feb762c7",
-                "reference": "e79f851749c3caa836d7ccc01ede5828feb762c7",
+                "url": "https://api.github.com/repos/opis/closure/zipball/93ebc5712cdad8d5f489b500c59d122df2e53969",
+                "reference": "93ebc5712cdad8d5f489b500c59d122df2e53969",
                 "shasum": ""
             },
             "require": {
@@ -7031,7 +7088,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3.x-dev"
+                    "dev-master": "3.5.x-dev"
                 }
             },
             "autoload": {
@@ -7066,7 +7123,7 @@
                 "serialization",
                 "serialize"
             ],
-            "time": "2019-10-19T18:38:51+00:00"
+            "time": "2019-11-29T22:36:02+00:00"
         },
         {
             "name": "yiisoft/yii2-debug",
