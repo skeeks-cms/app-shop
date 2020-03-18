@@ -1,8 +1,9 @@
 <?php
 /**
- * @link http://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * @link https://cms.skeeks.com/
+ * @copyright Copyright (c) 2010 SkeekS
+ * @license https://cms.skeeks.com/license/
+ * @author Semenov Alexander <semenov@skeeks.com>
  */
 
 use yii\base\InvalidConfigException;
@@ -10,10 +11,7 @@ use yii\db\Schema;
 use yii\rbac\DbManager;
 
 /**
- * Initializes RBAC tables
- *
- * @author Alexander Kochetov <creocoder@gmail.com>
- * @since 2.0
+ * @author Semenov Alexander <semenov@skeeks.com>
  */
 class m171121_102106_db_init extends \yii\db\Migration
 {
@@ -21,7 +19,7 @@ class m171121_102106_db_init extends \yii\db\Migration
     {
         if ($this->db->driverName === 'mysql') {
 
-            $version = 'db__2020-02-17_09-30-43.sql';
+            $version = 'db__2020-03-18_07-16-40.sql';
 
             $filePath = dirname(__DIR__) . "/db/{$version}";
 
