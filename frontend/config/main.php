@@ -46,20 +46,20 @@ $config = [
         ],*/
 
         'view' => [
+
+            'themes' => [
+                'app' => [
+                    'class' => \common\themes\app\AppTheme::class,
+                ],
+            ],
+
+            'defaultThemeId' => 'app',
+
             'on beforeRender' => function () {
                 if (\common\themes\app\AppTheme::isInitBeforeRender()) {
                     \common\themes\app\AppTheme::initBeforeRender();
                 }
             },
-
-            'theme' => [
-                'class'   => \common\themes\app\AppTheme::class,
-/*
-                'address' => 'Московская область, пос. Андреевка, мкр. Высокое, д. 50',
-                'title' => 'Интернет-магазин домашних заготовок.',
-                'phone' => '+7 (925) 712-00-60',
-                'email' => 'info@sweet-jam.ru',*/
-            ],
         ],
     ],
 ];
