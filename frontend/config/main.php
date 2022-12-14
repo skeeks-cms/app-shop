@@ -34,7 +34,7 @@ $config = [
             ],
             'numberFormatterSymbols' => [
                 /*NumberFormatter::CURRENCY_SYMBOL => '<span>₽</span>',*/
-                NumberFormatter::CURRENCY_SYMBOL => '<span>р.</span>',
+                NumberFormatter::CURRENCY_SYMBOL => 'р.',
             ]
         ],
 

@@ -16,9 +16,6 @@ return
             /*'dsn' => 'pgsql:host=localhost;dbname=test',
             'username' => 'test',
             'password' => 'gk-wIJI4OMIYqOJ4EfW1jD1Yj',*/
-            'charset' => 'utf8',
-            'enableSchemaCache' => true,
-            'schemaCacheDuration' => 3600,
         ]
     ]
 ];

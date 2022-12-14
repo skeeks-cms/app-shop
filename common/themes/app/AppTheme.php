@@ -16,6 +16,16 @@ use skeeks\cms\themes\unifyshop\UnifyShopTheme;
 class AppTheme extends UnifyShopTheme
 {
     /**
+     * @return array
+     */
+    static public function descriptorConfig()
+    {
+        return array_merge(parent::descriptorConfig(), [
+            'name' => "Шаблон проекта",
+        ]);
+    }
+
+    /**
      * @var array
      */
     public $pathMap = [
