@@ -3362,16 +3362,16 @@
         },
         {
             "name": "skeeks/cms",
-            "version": "6.0.0.2",
+            "version": "6.0.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms.git",
-                "reference": "56b0a05e0b581dc73112c7a8b1c5ac8234a55dcd"
+                "reference": "99e422bd56b89552b1f358f6f84812a2d1451eea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms/zipball/56b0a05e0b581dc73112c7a8b1c5ac8234a55dcd",
-                "reference": "56b0a05e0b581dc73112c7a8b1c5ac8234a55dcd",
+                "url": "https://api.github.com/repos/skeeks-cms/cms/zipball/99e422bd56b89552b1f358f6f84812a2d1451eea",
+                "reference": "99e422bd56b89552b1f358f6f84812a2d1451eea",
                 "shasum": ""
             },
             "require": {
@@ -3471,7 +3471,7 @@
                 "source": "https://github.com/skeeks-cms/cms",
                 "wiki": "https://cms.skeeks.com/docs"
             },
-            "time": "2023-06-05T14:54:57+00:00"
+            "time": "2023-06-05T20:01:19+00:00"
         },
         {
             "name": "skeeks/cms-admin",
