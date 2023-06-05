@@ -22,7 +22,7 @@ Install
 # Download latest version of composer
 curl -sS https://getcomposer.org/installer | COMPOSER_HOME=.composer php
 # Installing the base project SkeekS CMS
-COMPOSER_HOME=.composer php composer.phar create-project --prefer-dist --repository-url=https://skeeks.com/composer/ --stability=dev skeeks/app-shop demo.ru
+COMPOSER_HOME=.composer php composer.phar create-project --prefer-dist skeeks/app-shop demo.ru
 # Going into the project folder
 cd demo.ru
 
