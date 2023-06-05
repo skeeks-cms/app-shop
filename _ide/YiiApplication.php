@@ -10,13 +10,9 @@
  */
 
 namespace yii\web;
-use common\components\SettingsComponent;
-use common\components\unify\TemplateUnify;
 
 
 /**
- * @property SettingsComponent                    $settings
- *
  * Class Application
  * @package yii\web
  */

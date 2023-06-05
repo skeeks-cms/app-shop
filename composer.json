@@ -2,13 +2,12 @@
     "name": "skeeks/app-shop-unify2",
     "description": "Shop on SkeekS CMS",
     "keywords": ["framework", "cms", "skeeks", "sx", "app", "yii2", "shop"],
-    "homepage": "https://cms.skeeks.com",
+    "homepage": "https://skeeks.com",
     "type": "project",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://cms.skeeks.com",
-        "wiki": "https://cms.skeeks.com/docs",
-        "source": "https://github.com/skeeks-cms/app-shop-unify2y"
+        "issues": "https://skeeks.com",
+        "wiki": "https://cms.skeeks.com/docs"
     },
     "authors": [
         {
@@ -17,12 +16,20 @@
         }
     ],
     "require": {
-        "skeeks/cms-basic-shop": "^1.1.3",
+        "skeeks/cms-basic-shop": "dev-master",
 
-        "skeeks/cms-authclient": "^2.0",
         "skeeks/cms-external-links": "^1.0",
 
-        "skeeks/theme-unify-shop": "^1.0"
+        "skeeks/theme-unify-shop": "^1.0",
+
+        "skeeks/cms-db-dumper": "dev-master",
+        "skeeks/cms-rp-view-widget": "dev-master",
+        "skeeks/cms-backend-admin": "dev-master",
+        "skeeks/cms-import-csv": "dev-master",
+        "skeeks/cms-export": "dev-master",
+        "skeeks/cms-search": "dev-master",
+        "skeeks/cms-basic": "dev-master",
+        "skeeks/cms": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*"
@@ -59,7 +66,7 @@
         },
         "yii\\composer\\Installer::postInstall": {
             "generateCookieValidationKey": [
-                "frontend/config/main.php"
+                "config/common/params.php"
             ]
         },
         "skeeks\\cms\\composer\\Installer::clearDirs": {
@@ -69,34 +76,7 @@
                 "frontend/web/assets"
             ]
         },
-        "config-plugin": {
-            "web": [
-                "common/config/main.php",
-                "common/config/db.php",
-                "frontend/config/main.php"
-            ],
-            "web-dev": [
-                "$web",
-                "?frontend/config/main-dev.php"
-            ],
-            "web-prod": [
-                "$web",
-                "?frontend/config/main-prod.php"
-            ],
-            "console": [
-                "common/config/main.php",
-                "common/config/db.php",
-                "console/config/main.php"
-            ],
-            "console-dev": [
-                "$console",
-                "?console/config/main-dev.php"
-            ],
-            "console-prod": [
-                "$console",
-                "?console/config/main-prod.php"
-            ]
-        }
+        "config-plugin-file": "configuration.php"
     },
     "repositories": [
         {
@@ -105,6 +85,12 @@
         }
     ],
     "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "yiisoft/config": true,
+            "yiisoft/yii2-composer": true,
+            "skeeks/cms-composer-update-plugin": true
+        },
         "process-timeout": 1800,
         "discard-changes": true
     }

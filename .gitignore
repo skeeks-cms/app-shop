@@ -3,6 +3,12 @@
 *.sublime-project
 *.sublime-workspace
 
+# IDE & OS files
+.*.swp
+.DS_Store
+Thumbs.db
+.env
+
 # netbeans project files
 nbproject
 
@@ -10,11 +16,6 @@ nbproject
 .buildpath
 .project
 .settings
-
-global.php
-
-# windows thumbnail cache
-Thumbs.db
 
 # composer vendor dir
 /vendor
@@ -27,15 +28,12 @@ composer.phar
 /.quarantine
 .quarantine
 
-# Mac DS_Store Files
-.DS_Store
-
 # phpunit itself is not needed
 phpunit.phar
 # local phpunit config
 /phpunit.xml
 
+/config/.merge-plan.php
 
 /console/runtime
-/common/runtime
 /frontend/runtime
