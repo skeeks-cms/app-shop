@@ -22,14 +22,14 @@ Install
 # Download latest version of composer
 curl -sS https://getcomposer.org/installer | COMPOSER_HOME=.composer php
 # Installing the base project SkeekS CMS
-COMPOSER_HOME=.composer php composer.phar create-project --prefer-dist --repository-url=https://skeeks.com/composer/ --stability=dev skeeks/app-shop-unify2:dev-master demo.ru
+COMPOSER_HOME=.composer php composer.phar create-project --prefer-dist --repository-url=https://skeeks.com/composer/ --stability=dev skeeks/app-shop:dev-master demo.ru
 # Going into the project folder
 cd demo.ru
 
 # Download latest version of composer
 curl -sS https://getcomposer.org/installer | COMPOSER_HOME=.composer php
 
-#Edit the file to access the database, it is located at common/config/db.php
+#Edit the file to access the database, it is located at config/common/params.php
 
 #Update configs
 COMPOSER_HOME=.composer php composer.phar self-update && COMPOSER_HOME=.composer php composer.phar du
@@ -46,7 +46,7 @@ php yii migrate -t=migration_install -p=backup/migrations
 
 
 
-Other
+Other (deprecated, not working)
 ----
 
 sudo -i -u postgres
