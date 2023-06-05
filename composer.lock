@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "abcb7ade0f5020ed60096af86f8d9898",
+    "content-hash": "8c8332f22c6c46d621eea8f75d9d58cd",
     "packages": [
         {
             "name": "2amigos/yii2-file-upload-widget",
@@ -3362,16 +3362,16 @@
         },
         {
             "name": "skeeks/cms",
-            "version": "6.0.0.1",
+            "version": "6.0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms.git",
-                "reference": "ada357727d772afd7f9ce49a4050f78c8ff6b195"
+                "reference": "56b0a05e0b581dc73112c7a8b1c5ac8234a55dcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms/zipball/ada357727d772afd7f9ce49a4050f78c8ff6b195",
-                "reference": "ada357727d772afd7f9ce49a4050f78c8ff6b195",
+                "url": "https://api.github.com/repos/skeeks-cms/cms/zipball/56b0a05e0b581dc73112c7a8b1c5ac8234a55dcd",
+                "reference": "56b0a05e0b581dc73112c7a8b1c5ac8234a55dcd",
                 "shasum": ""
             },
             "require": {
@@ -3471,7 +3471,7 @@
                 "source": "https://github.com/skeeks-cms/cms",
                 "wiki": "https://cms.skeeks.com/docs"
             },
-            "time": "2023-06-05T12:57:58+00:00"
+            "time": "2023-06-05T14:54:57+00:00"
         },
         {
             "name": "skeeks/cms-admin",
