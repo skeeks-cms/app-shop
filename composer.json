@@ -16,24 +16,11 @@
         }
     ],
     "require": {
-        "skeeks/cms-basic-shop": "dev-master",
-
-        "skeeks/cms-external-links": "^1.0",
-        "skeeks/theme-unify-shop": "^1.0",
-
-        "skeeks/cms-db-dumper": "dev-master",
-        "skeeks/cms-rp-view-widget": "dev-master",
-        "skeeks/cms-backend-admin": "dev-master",
-        "skeeks/cms-import-csv": "dev-master",
-        "skeeks/cms-export": "dev-master",
-        "skeeks/cms-search": "dev-master",
-        "skeeks/cms-basic": "dev-master",
-        "skeeks/cms": "dev-master"
+        "skeeks/cms-basic-shop": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*"
     },
-    "minimum-stability" : "dev",
     "prefer-stable" : true,
     "scripts": {
         "post-create-project-cmd": [

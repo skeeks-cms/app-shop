@@ -19,7 +19,7 @@ class m171121_102106_db_init extends \yii\db\Migration
     {
         if ($this->db->driverName === 'mysql') {
 
-            $version = 'db__2022-12-14_14-17-05.sql';
+            $version = 'db__2023-06-05_12-59-39.sql';
 
             $filePath = dirname(__DIR__) . "/db/{$version}";
 
