@@ -1226,16 +1226,16 @@
         },
         {
             "name": "imagine/imagine",
-            "version": "1.3.4",
+            "version": "1.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-imagine/Imagine.git",
-                "reference": "c9ba67d2f1dc0785187261a656cb55ff01f594be"
+                "reference": "7151d553edec4dc2bbac60419f7a74ff34700e7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-imagine/Imagine/zipball/c9ba67d2f1dc0785187261a656cb55ff01f594be",
-                "reference": "c9ba67d2f1dc0785187261a656cb55ff01f594be",
+                "url": "https://api.github.com/repos/php-imagine/Imagine/zipball/7151d553edec4dc2bbac60419f7a74ff34700e7f",
+                "reference": "7151d553edec4dc2bbac60419f7a74ff34700e7f",
                 "shasum": ""
             },
             "require": {
@@ -1282,9 +1282,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-imagine/Imagine/issues",
-                "source": "https://github.com/php-imagine/Imagine/tree/1.3.4"
+                "source": "https://github.com/php-imagine/Imagine/tree/1.3.5"
             },
-            "time": "2023-04-17T15:21:07+00:00"
+            "time": "2023-06-07T14:49:52+00:00"
         },
         {
             "name": "intervention/httpauth",
@@ -2553,57 +2553,6 @@
             "time": "2023-03-08T13:26:56+00:00"
         },
         {
-            "name": "natxet/cssmin",
-            "version": "v3.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/natxet/CssMin.git",
-                "reference": "d5d9f4c3e5cedb1ae96a95a21731f8790e38f1dd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/natxet/CssMin/zipball/d5d9f4c3e5cedb1ae96a95a21731f8790e38f1dd",
-                "reference": "d5d9f4c3e5cedb1ae96a95a21731f8790e38f1dd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Joe Scylla",
-                    "email": "joe.scylla@gmail.com",
-                    "homepage": "https://profiles.google.com/joe.scylla"
-                }
-            ],
-            "description": "Minifying CSS",
-            "homepage": "http://code.google.com/p/cssmin/",
-            "keywords": [
-                "css",
-                "minify"
-            ],
-            "support": {
-                "issues": "https://github.com/natxet/CssMin/issues",
-                "source": "https://github.com/natxet/CssMin/tree/master"
-            },
-            "time": "2018-01-09T11:15:01+00:00"
-        },
-        {
             "name": "npm-asset/bootstrap",
             "version": "4.6.2",
             "dist": {
@@ -3144,6 +3093,56 @@
             "time": "2021-11-05T16:47:00+00:00"
         },
         {
+            "name": "psr/event-dispatcher",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/event-dispatcher.git",
+                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/event-dispatcher/zipball/dbefd12671e8a14ec7f180cab83036ed26714bb0",
+                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\EventDispatcher\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Standard interfaces for event handling.",
+            "keywords": [
+                "events",
+                "psr",
+                "psr-14"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/event-dispatcher/issues",
+                "source": "https://github.com/php-fig/event-dispatcher/tree/1.0.0"
+            },
+            "time": "2019-01-08T18:20:26+00:00"
+        },
+        {
             "name": "psr/http-message",
             "version": "1.1",
             "source": {
@@ -3362,16 +3361,16 @@
         },
         {
             "name": "skeeks/cms",
-            "version": "6.0.0.3",
+            "version": "6.0.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms.git",
-                "reference": "99e422bd56b89552b1f358f6f84812a2d1451eea"
+                "reference": "8eac1c6b5b9ebe571377a01171711e20324c6ff8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms/zipball/99e422bd56b89552b1f358f6f84812a2d1451eea",
-                "reference": "99e422bd56b89552b1f358f6f84812a2d1451eea",
+                "url": "https://api.github.com/repos/skeeks-cms/cms/zipball/8eac1c6b5b9ebe571377a01171711e20324c6ff8",
+                "reference": "8eac1c6b5b9ebe571377a01171711e20324c6ff8",
                 "shasum": ""
             },
             "require": {
@@ -3393,7 +3392,7 @@
                 "skeeks/cms-agent": "^3.0 || dev-master@dev",
                 "skeeks/cms-backend": "^2.0 || dev-master@dev",
                 "skeeks/cms-backend-admin": "^2.0 || dev-master@dev",
-                "skeeks/cms-composer": "^2.0 || dev-master@dev",
+                "skeeks/cms-composer": "^3.0 || dev-master@dev",
                 "skeeks/cms-composer-update-plugin": "^2.0 || dev-master",
                 "skeeks/cms-marketplace": "^3.0 || dev-master@dev",
                 "skeeks/cms-measure": "^3.0 || dev-master",
@@ -3471,20 +3470,20 @@
                 "source": "https://github.com/skeeks-cms/cms",
                 "wiki": "https://cms.skeeks.com/docs"
             },
-            "time": "2023-06-05T20:01:19+00:00"
+            "time": "2023-06-12T08:15:05+00:00"
         },
         {
             "name": "skeeks/cms-admin",
-            "version": "3.0.0",
+            "version": "3.0.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-admin.git",
-                "reference": "568e05f93de1e7eaa2924c7e6cb24f11e10c7aa1"
+                "reference": "d377170bd22e9c6114bd5870be8013486b736c4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-admin/zipball/568e05f93de1e7eaa2924c7e6cb24f11e10c7aa1",
-                "reference": "568e05f93de1e7eaa2924c7e6cb24f11e10c7aa1",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-admin/zipball/d377170bd22e9c6114bd5870be8013486b736c4b",
+                "reference": "d377170bd22e9c6114bd5870be8013486b736c4b",
                 "shasum": ""
             },
             "type": "yii2-extension",
@@ -3518,7 +3517,7 @@
                 "source": "https://github.com/skeeks-cms/cms-admin",
                 "wiki": "https://cms.skeeks.com/docs/"
             },
-            "time": "2023-06-05T10:27:03+00:00"
+            "time": "2023-06-08T12:50:47+00:00"
         },
         {
             "name": "skeeks/cms-agent",
@@ -3897,7 +3896,7 @@
         },
         {
             "name": "skeeks/cms-composer",
-            "version": "2.0.1",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-composer.git",
@@ -4758,20 +4757,20 @@
         },
         {
             "name": "skeeks/cms-mailer",
-            "version": "3.0.0",
+            "version": "3.0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-mailer.git",
-                "reference": "a3570cd2d43d60c5044937672ce63bbbc8565f18"
+                "reference": "cadc4d9f20cbfc95152d84902c58e8602347730b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-mailer/zipball/a3570cd2d43d60c5044937672ce63bbbc8565f18",
-                "reference": "a3570cd2d43d60c5044937672ce63bbbc8565f18",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-mailer/zipball/cadc4d9f20cbfc95152d84902c58e8602347730b",
+                "reference": "cadc4d9f20cbfc95152d84902c58e8602347730b",
                 "shasum": ""
             },
             "require": {
-                "yiisoft/yii2-swiftmailer": "^2.1.1"
+                "yiisoft/yii2-symfonymailer": "^3.0"
             },
             "type": "yii2-extension",
             "extra": {
@@ -4815,7 +4814,7 @@
                 "source": "https://git.skeeks.com/skeeks/cms",
                 "wiki": "https://git.skeeks.com/skeeks/cms/wikis/home"
             },
-            "time": "2023-06-05T10:34:43+00:00"
+            "time": "2023-06-12T08:15:04+00:00"
         },
         {
             "name": "skeeks/cms-marketplace",
@@ -5446,16 +5445,16 @@
         },
         {
             "name": "skeeks/cms-seo",
-            "version": "3.0.0",
+            "version": "3.0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-seo.git",
-                "reference": "b021e91564b245d1b321c158e19fc589c0c84e19"
+                "reference": "d69fb5d6bbea9cf0e718e1757f97b995ec8221a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-seo/zipball/b021e91564b245d1b321c158e19fc589c0c84e19",
-                "reference": "b021e91564b245d1b321c158e19fc589c0c84e19",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-seo/zipball/d69fb5d6bbea9cf0e718e1757f97b995ec8221a8",
+                "reference": "d69fb5d6bbea9cf0e718e1757f97b995ec8221a8",
                 "shasum": ""
             },
             "type": "yii2-extension",
@@ -5494,20 +5493,20 @@
                 "source": "https://github.com/skeeks-cms/cms-seo",
                 "wiki": "https://cms.skeeks.com/docs/"
             },
-            "time": "2023-06-05T11:11:19+00:00"
+            "time": "2023-06-08T12:50:48+00:00"
         },
         {
             "name": "skeeks/cms-shop",
-            "version": "3.0.0",
+            "version": "3.0.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-shop.git",
-                "reference": "5c705c59862bf5cd75cbc0e54af043924b58f15c"
+                "reference": "5e36bb467951fef7b61c20174a39613d30d27712"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-shop/zipball/5c705c59862bf5cd75cbc0e54af043924b58f15c",
-                "reference": "5c705c59862bf5cd75cbc0e54af043924b58f15c",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-shop/zipball/5e36bb467951fef7b61c20174a39613d30d27712",
+                "reference": "5e36bb467951fef7b61c20174a39613d30d27712",
                 "shasum": ""
             },
             "require": {
@@ -5562,7 +5561,7 @@
                 "source": "https://git.skeeks.com/skeeks/cms",
                 "wiki": "https://git.skeeks.com/skeeks/cms/wikis/home"
             },
-            "time": "2023-06-05T11:23:16+00:00"
+            "time": "2023-06-11T09:26:02+00:00"
         },
         {
             "name": "skeeks/cms-shop-cart-items-widget",
@@ -6080,16 +6079,16 @@
         },
         {
             "name": "skeeks/cms-theme-unify-v2",
-            "version": "2.0.0.1",
+            "version": "2.0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-theme-unify-v2.git",
-                "reference": "281013eb59cb6f95f38e192bf4888e151d0d8204"
+                "reference": "5c9e1e05c970ad950ccbe98c2fa0a5527d04490a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-theme-unify-v2/zipball/281013eb59cb6f95f38e192bf4888e151d0d8204",
-                "reference": "281013eb59cb6f95f38e192bf4888e151d0d8204",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-theme-unify-v2/zipball/5c9e1e05c970ad950ccbe98c2fa0a5527d04490a",
+                "reference": "5c9e1e05c970ad950ccbe98c2fa0a5527d04490a",
                 "shasum": ""
             },
             "require": {
@@ -6145,7 +6144,7 @@
                 "source": "https://github.com/skeeks-cms/cms-admin",
                 "wiki": "https://cms.skeeks.com/docs/"
             },
-            "time": "2023-06-05T12:49:36+00:00"
+            "time": "2023-06-08T12:50:46+00:00"
         },
         {
             "name": "skeeks/cms-toolbar",
@@ -6313,17 +6312,67 @@
             "time": "2023-06-05T12:49:00+00:00"
         },
         {
-            "name": "skeeks/theme-unify-shop",
-            "version": "2.0.0",
+            "name": "skeeks/cssmin",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/skeeks-cms/theme-unify-shop.git",
-                "reference": "69aab537ecaa589c05edff419ba27c5ce00c49fd"
+                "url": "https://github.com/skeeks-semenov/CssMin.git",
+                "reference": "9dbb3716b6344eaf4552dba77105182016a2aa7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/theme-unify-shop/zipball/69aab537ecaa589c05edff419ba27c5ce00c49fd",
-                "reference": "69aab537ecaa589c05edff419ba27c5ce00c49fd",
+                "url": "https://api.github.com/repos/skeeks-semenov/CssMin/zipball/9dbb3716b6344eaf4552dba77105182016a2aa7c",
+                "reference": "9dbb3716b6344eaf4552dba77105182016a2aa7c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joe Scylla",
+                    "email": "joe.scylla@gmail.com",
+                    "homepage": "https://profiles.google.com/joe.scylla"
+                }
+            ],
+            "description": "Minifying CSS",
+            "homepage": "http://code.google.com/p/cssmin/",
+            "keywords": [
+                "css",
+                "minify"
+            ],
+            "support": {
+                "source": "https://github.com/skeeks-semenov/CssMin/tree/1.0.0"
+            },
+            "time": "2023-06-06T14:43:57+00:00"
+        },
+        {
+            "name": "skeeks/theme-unify-shop",
+            "version": "2.0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/skeeks-cms/theme-unify-shop.git",
+                "reference": "7b78646a919a37f31ff4eb2578995e3eabf6fbe0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/skeeks-cms/theme-unify-shop/zipball/7b78646a919a37f31ff4eb2578995e3eabf6fbe0",
+                "reference": "7b78646a919a37f31ff4eb2578995e3eabf6fbe0",
                 "shasum": ""
             },
             "require": {
@@ -6368,10 +6417,10 @@
             ],
             "support": {
                 "issues": "https://skeeks.com/",
-                "source": "https://github.com/skeeks-cms/theme-unify-shop/tree/2.0.0",
+                "source": "https://github.com/skeeks-cms/theme-unify-shop/tree/2.0.0.2",
                 "wiki": "https://cms.skeeks.com/docs/"
             },
-            "time": "2023-06-05T11:42:29+00:00"
+            "time": "2023-06-06T13:21:03+00:00"
         },
         {
             "name": "skeeks/yii2-ajax-file-upload",
@@ -6480,21 +6529,21 @@
         },
         {
             "name": "skeeks/yii2-assets-auto-compress",
-            "version": "1.4.4",
+            "version": "1.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-semenov/yii2-assets-auto-compress.git",
-                "reference": "a1b0c9e5980b53e797ffb4be4755638a43e3542b"
+                "reference": "4e8f32404a06f035e1eda528f7144991834d8802"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-semenov/yii2-assets-auto-compress/zipball/a1b0c9e5980b53e797ffb4be4755638a43e3542b",
-                "reference": "a1b0c9e5980b53e797ffb4be4755638a43e3542b",
+                "url": "https://api.github.com/repos/skeeks-semenov/yii2-assets-auto-compress/zipball/4e8f32404a06f035e1eda528f7144991834d8802",
+                "reference": "4e8f32404a06f035e1eda528f7144991834d8802",
                 "shasum": ""
             },
             "require": {
                 "mrclay/minify": "^3.0.3",
-                "natxet/cssmin": "^3.0.6",
+                "skeeks/cssmin": "^1.0",
                 "tedivm/jshrink": "^1.3.0",
                 "yiisoft/yii2": "^2",
                 "yiisoft/yii2-httpclient": "^2"
@@ -6539,7 +6588,7 @@
                 "source": "https://github.com/skeeks-semenov/yii2-assets-auto-compress",
                 "wiki": "https://cms.skeeks.com/"
             },
-            "time": "2022-09-19T12:33:40+00:00"
+            "time": "2023-06-06T14:48:45+00:00"
         },
         {
             "name": "skeeks/yii2-assets-unify-v2-min",
@@ -7730,42 +7779,51 @@
             "time": "2022-04-19T08:43:11+00:00"
         },
         {
-            "name": "swiftmailer/swiftmailer",
-            "version": "v6.3.0",
+            "name": "symfony/event-dispatcher",
+            "version": "v6.0.19",
             "source": {
                 "type": "git",
-                "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "8a5d5072dca8f48460fce2f4131fcc495eec654c"
+                "url": "https://github.com/symfony/event-dispatcher.git",
+                "reference": "2eaf8e63bc5b8cefabd4a800157f0d0c094f677a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/8a5d5072dca8f48460fce2f4131fcc495eec654c",
-                "reference": "8a5d5072dca8f48460fce2f4131fcc495eec654c",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/2eaf8e63bc5b8cefabd4a800157f0d0c094f677a",
+                "reference": "2eaf8e63bc5b8cefabd4a800157f0d0c094f677a",
                 "shasum": ""
             },
             "require": {
-                "egulias/email-validator": "^2.0|^3.1",
-                "php": ">=7.0.0",
-                "symfony/polyfill-iconv": "^1.0",
-                "symfony/polyfill-intl-idn": "^1.10",
-                "symfony/polyfill-mbstring": "^1.0"
+                "php": ">=8.0.2",
+                "symfony/event-dispatcher-contracts": "^2|^3"
+            },
+            "conflict": {
+                "symfony/dependency-injection": "<5.4"
+            },
+            "provide": {
+                "psr/event-dispatcher-implementation": "1.0",
+                "symfony/event-dispatcher-implementation": "2.0|3.0"
             },
             "require-dev": {
-                "mockery/mockery": "^1.0",
-                "symfony/phpunit-bridge": "^4.4|^5.4"
+                "psr/log": "^1|^2|^3",
+                "symfony/config": "^5.4|^6.0",
+                "symfony/dependency-injection": "^5.4|^6.0",
+                "symfony/error-handler": "^5.4|^6.0",
+                "symfony/expression-language": "^5.4|^6.0",
+                "symfony/http-foundation": "^5.4|^6.0",
+                "symfony/service-contracts": "^1.1|^2|^3",
+                "symfony/stopwatch": "^5.4|^6.0"
             },
             "suggest": {
-                "ext-intl": "Needed to support internationalized email addresses"
+                "symfony/dependency-injection": "",
+                "symfony/http-kernel": ""
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "6.2-dev"
-                }
-            },
             "autoload": {
-                "files": [
-                    "lib/swift_required.php"
+                "psr-4": {
+                    "Symfony\\Component\\EventDispatcher\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -7774,76 +7832,69 @@
             ],
             "authors": [
                 {
-                    "name": "Chris Corbyn"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Swiftmailer, free feature-rich PHP mailer",
-            "homepage": "https://swiftmailer.symfony.com",
-            "keywords": [
-                "email",
-                "mail",
-                "mailer"
-            ],
+            "description": "Provides tools that allow your application components to communicate with each other by dispatching events and listening to them",
+            "homepage": "https://symfony.com",
             "support": {
-                "issues": "https://github.com/swiftmailer/swiftmailer/issues",
-                "source": "https://github.com/swiftmailer/swiftmailer/tree/v6.3.0"
+                "source": "https://github.com/symfony/event-dispatcher/tree/v6.0.19"
             },
             "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
                 {
                     "url": "https://github.com/fabpot",
                     "type": "github"
                 },
                 {
-                    "url": "https://tidelift.com/funding/github/packagist/swiftmailer/swiftmailer",
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                     "type": "tidelift"
                 }
             ],
-            "abandoned": "symfony/mailer",
-            "time": "2021-10-18T15:26:12+00:00"
+            "time": "2023-01-01T08:36:10+00:00"
         },
         {
-            "name": "symfony/polyfill-iconv",
-            "version": "v1.27.0",
+            "name": "symfony/event-dispatcher-contracts",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/polyfill-iconv.git",
-                "reference": "927013f3aac555983a5059aada98e1907d842695"
+                "url": "https://github.com/symfony/event-dispatcher-contracts.git",
+                "reference": "7bc61cc2db649b4637d331240c5346dcc7708051"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/927013f3aac555983a5059aada98e1907d842695",
-                "reference": "927013f3aac555983a5059aada98e1907d842695",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/7bc61cc2db649b4637d331240c5346dcc7708051",
+                "reference": "7bc61cc2db649b4637d331240c5346dcc7708051",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
-            },
-            "provide": {
-                "ext-iconv": "*"
+                "php": ">=8.0.2",
+                "psr/event-dispatcher": "^1"
             },
             "suggest": {
-                "ext-iconv": "For best performance"
+                "symfony/event-dispatcher-implementation": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "3.0-dev"
                 },
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
                 "psr-4": {
-                    "Symfony\\Polyfill\\Iconv\\": ""
+                    "Symfony\\Contracts\\EventDispatcher\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -7860,17 +7911,18 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony polyfill for the Iconv extension",
+            "description": "Generic abstractions related to dispatching event",
             "homepage": "https://symfony.com",
             "keywords": [
-                "compatibility",
-                "iconv",
-                "polyfill",
-                "portable",
-                "shim"
+                "abstractions",
+                "contracts",
+                "decoupling",
+                "interfaces",
+                "interoperability",
+                "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-iconv/tree/v1.27.0"
+                "source": "https://github.com/symfony/event-dispatcher-contracts/tree/v3.0.2"
             },
             "funding": [
                 {
@@ -7886,7 +7938,163 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2022-01-02T09:55:41+00:00"
+        },
+        {
+            "name": "symfony/mailer",
+            "version": "v6.0.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mailer.git",
+                "reference": "cd60799210c488f545ddde2444dc1aa548322872"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/cd60799210c488f545ddde2444dc1aa548322872",
+                "reference": "cd60799210c488f545ddde2444dc1aa548322872",
+                "shasum": ""
+            },
+            "require": {
+                "egulias/email-validator": "^2.1.10|^3|^4",
+                "php": ">=8.0.2",
+                "psr/event-dispatcher": "^1",
+                "psr/log": "^1|^2|^3",
+                "symfony/event-dispatcher": "^5.4|^6.0",
+                "symfony/mime": "^5.4|^6.0",
+                "symfony/service-contracts": "^1.1|^2|^3"
+            },
+            "conflict": {
+                "symfony/http-kernel": "<5.4"
+            },
+            "require-dev": {
+                "symfony/http-client-contracts": "^1.1|^2|^3",
+                "symfony/messenger": "^5.4|^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mailer\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Helps sending emails",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/mailer/tree/v6.0.19"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-01-11T11:50:03+00:00"
+        },
+        {
+            "name": "symfony/mime",
+            "version": "v6.0.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mime.git",
+                "reference": "d7052547a0070cbeadd474e172b527a00d657301"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/d7052547a0070cbeadd474e172b527a00d657301",
+                "reference": "d7052547a0070cbeadd474e172b527a00d657301",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.2",
+                "symfony/polyfill-intl-idn": "^1.10",
+                "symfony/polyfill-mbstring": "^1.0"
+            },
+            "conflict": {
+                "egulias/email-validator": "~3.0.0",
+                "phpdocumentor/reflection-docblock": "<3.2.2",
+                "phpdocumentor/type-resolver": "<1.4.0",
+                "symfony/mailer": "<5.4",
+                "symfony/serializer": "<5.4.14|>=6.0,<6.0.14|>=6.1,<6.1.6"
+            },
+            "require-dev": {
+                "egulias/email-validator": "^2.1.10|^3.1|^4",
+                "phpdocumentor/reflection-docblock": "^3.0|^4.0|^5.0",
+                "symfony/dependency-injection": "^5.4|^6.0",
+                "symfony/property-access": "^5.4|^6.0",
+                "symfony/property-info": "^5.4|^6.0",
+                "symfony/serializer": "^5.4.14|~6.0.14|^6.1.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mime\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Allows manipulating MIME messages",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "mime",
+                "mime-type"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/mime/tree/v6.0.19"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-01-11T11:50:03+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
@@ -8269,6 +8477,88 @@
                 "source": "https://github.com/symfony/process/tree/3.3"
             },
             "time": "2018-01-29T09:02:23+00:00"
+        },
+        {
+            "name": "symfony/service-contracts",
+            "version": "v3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/service-contracts.git",
+                "reference": "d78d39c1599bd1188b8e26bb341da52c3c6d8a66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/d78d39c1599bd1188b8e26bb341da52c3c6d8a66",
+                "reference": "d78d39c1599bd1188b8e26bb341da52c3c6d8a66",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.2",
+                "psr/container": "^2.0"
+            },
+            "conflict": {
+                "ext-psr": "<1.1|>=2"
+            },
+            "suggest": {
+                "symfony/service-implementation": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "3.0-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Contracts\\Service\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Generic abstractions related to writing services",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "abstractions",
+                "contracts",
+                "decoupling",
+                "interfaces",
+                "interoperability",
+                "standards"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/service-contracts/tree/v3.0.2"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-05-30T19:17:58+00:00"
         },
         {
             "name": "tedivm/jshrink",
@@ -9322,46 +9612,40 @@
             "time": "2017-11-25T15:32:29+00:00"
         },
         {
-            "name": "yiisoft/yii2-swiftmailer",
-            "version": "2.1.3",
+            "name": "yiisoft/yii2-symfonymailer",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/yiisoft/yii2-swiftmailer.git",
-                "reference": "7b7ec871b4a63c0abbcd10e1ee3fb5be22f8b340"
+                "url": "https://github.com/yiisoft/yii2-symfonymailer.git",
+                "reference": "291c00979a9bf14e89bb5230ddd700a6dc130e51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/7b7ec871b4a63c0abbcd10e1ee3fb5be22f8b340",
-                "reference": "7b7ec871b4a63c0abbcd10e1ee3fb5be22f8b340",
+                "url": "https://api.github.com/repos/yiisoft/yii2-symfonymailer/zipball/291c00979a9bf14e89bb5230ddd700a6dc130e51",
+                "reference": "291c00979a9bf14e89bb5230ddd700a6dc130e51",
                 "shasum": ""
             },
             "require": {
-                "swiftmailer/swiftmailer": "~6.0",
+                "php": ">=7.4.0",
+                "symfony/mailer": ">=5.4.0",
                 "yiisoft/yii2": ">=2.0.4"
             },
             "require-dev": {
-                "cweagans/composer-patches": "^1.7",
-                "phpunit/phpunit": "4.8.34"
+                "captainhook/captainhook": "^5.10",
+                "captainhook/plugin-composer": "^5.3",
+                "phpunit/phpunit": "9.5.10",
+                "symplify/easy-coding-standard": "^10.1",
+                "vimeo/psalm": "^4.22"
             },
             "type": "yii2-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1.x-dev"
-                },
-                "composer-exit-on-patch-failure": true,
-                "patches": {
-                    "phpunit/phpunit-mock-objects": {
-                        "Fix PHP 7 and 8 compatibility": "https://yiisoft.github.io/phpunit-patches/phpunit_mock_objects.patch"
-                    },
-                    "phpunit/phpunit": {
-                        "Fix PHP 7 compatibility": "https://yiisoft.github.io/phpunit-patches/phpunit_php7.patch",
-                        "Fix PHP 8 compatibility": "https://yiisoft.github.io/phpunit-patches/phpunit_php8.patch"
-                    }
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "yii\\swiftmailer\\": "src"
+                    "yii\\symfonymailer\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -9370,24 +9654,24 @@
             ],
             "authors": [
                 {
-                    "name": "Paul Klimov",
-                    "email": "klimov.paul@gmail.com"
+                    "name": "Kirill Petrov",
+                    "email": "archibeardrinker@gmail.com"
                 }
             ],
-            "description": "The SwiftMailer integration for the Yii framework",
+            "description": "The SymfonyMailer integration for the Yii framework",
             "keywords": [
                 "email",
                 "mail",
                 "mailer",
-                "swift",
-                "swiftmailer",
+                "symfony",
+                "symfonymailer",
                 "yii2"
             ],
             "support": {
                 "forum": "http://www.yiiframework.com/forum/",
                 "irc": "irc://irc.freenode.net/yii",
-                "issues": "https://github.com/yiisoft/yii2-swiftmailer/issues",
-                "source": "https://github.com/yiisoft/yii2-swiftmailer",
+                "issues": "https://github.com/yiisoft/yii2-symfonymailer/issues",
+                "source": "https://github.com/yiisoft/yii2-symfonymailer",
                 "wiki": "http://www.yiiframework.com/wiki/"
             },
             "funding": [
@@ -9400,11 +9684,11 @@
                     "type": "open_collective"
                 },
                 {
-                    "url": "https://tidelift.com/funding/github/packagist/yiisoft/yii2-swiftmailer",
+                    "url": "https://tidelift.com/funding/github/packagist/yiisoft/yii2-symfonymailer",
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-30T08:48:48+00:00"
+            "time": "2022-12-05T08:20:13+00:00"
         }
     ],
     "packages-dev": [
