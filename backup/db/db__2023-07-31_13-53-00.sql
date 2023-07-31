@@ -1,9 +1,9 @@
 -- mysqldump-php https://github.com/ifsnop/mysqldump-php
 --
--- Host: localhost	Database: shop-unify2
+-- Host: localhost	Database: appshop
 -- ------------------------------------------------------
--- Server version 	5.5.62-0ubuntu0.14.04.1-log
--- Date: Tue, 13 Jun 2023 07:54:39 +0000
+-- Server version 	10.5.20-MariaDB-2rusoft3.1~16.04.1
+-- Date: Mon, 31 Jul 2023 13:53:00 +0000
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -33,7 +33,7 @@ CREATE TABLE `auth_assignment` (
   KEY `auth_assignment_user_id` (`cms_user_id`),
   CONSTRAINT `auth_assignment__cms_user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `auth_assignment__item_name` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,16 +60,16 @@ COMMIT;
 CREATE TABLE `auth_item` (
   `name` varchar(64) NOT NULL,
   `type` int(11) NOT NULL,
-  `description` text,
+  `description` text DEFAULT NULL,
   `rule_name` varchar(64) DEFAULT NULL,
-  `data` text,
+  `data` text DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`name`),
   KEY `rule_name` (`rule_name`),
   KEY `idx-auth_item-type` (`type`),
   CONSTRAINT `auth_item__rule_name` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +100,7 @@ CREATE TABLE `auth_item_child` (
   KEY `child` (`child`),
   CONSTRAINT `auth_item_child__child` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `auth_item_child__parent` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +110,7 @@ CREATE TABLE `auth_item_child` (
 LOCK TABLES `auth_item_child` WRITE;
 /*!40000 ALTER TABLE `auth_item_child` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `auth_item_child` VALUES ('root',''),('root','admin'),('admin','admin-import-stock-sale'),('root','admin-import-stock-sale'),('root','admin/admin-permission'),('root','admin/admin-role'),('root','admin/checker'),('root','admin/clear'),('root','admin/db'),('root','admin/email'),('root','admin/gii'),('root','admin/index'),('root','admin/info'),('root','admin/ssh'),('root','approved'),('admin','authclient/admin-user-auth-client'),('root','authclient/admin-user-auth-client'),('root','authclient/admin-user-auth-client/create'),('root','authclient/admin-user-auth-client/delete'),('root','authclient/admin-user-auth-client/delete-multi'),('root','authclient/admin-user-auth-client/index'),('root','authclient/admin-user-auth-client/update'),('root','backend/admin-backend-showing/create'),('backend/admin-backend-showing/delete/own','backend/admin-backend-showing/delete'),('root','backend/admin-backend-showing/delete'),('root','backend/admin-backend-showing/delete/own'),('root','backend/admin-backend-showing/index'),('backend/admin-backend-showing/update/own','backend/admin-backend-showing/update'),('root','backend/admin-backend-showing/update'),('root','backend/admin-backend-showing/update/own'),('root','buy-shop-type-price-1'),('root','cms-measure/admin-measure'),('root','cms-upa-permission'),('user','cms-upa-permission'),('admin','cms.admin-access'),('editor','cms.admin-access'),('manager','cms.admin-access'),('root','cms.admin-access'),('root','cms.admin-dashboards-edit'),('admin','cms.admin-role-access'),('root','cms.admin-role-access'),('admin','cms.controll-panel-access'),('editor','cms.controll-panel-access'),('manager','cms.controll-panel-access'),('root','cms.controll-panel-access'),('root','cms.edit-view-files'),('admin','cms.elfinder-additional-files'),('root','cms.elfinder-additional-files'),('admin','cms.elfinder-common-public-files'),('editor','cms.elfinder-common-public-files'),('manager','cms.elfinder-common-public-files'),('root','cms.elfinder-common-public-files'),('admin','cms.elfinder-user-files'),('editor','cms.elfinder-user-files'),('manager','cms.elfinder-user-files'),('root','cms.elfinder-user-files'),('user','cms.elfinder-user-files'),('admin','cms.model-create'),('editor','cms.model-create'),('manager','cms.model-create'),('root','cms.model-create'),('admin','cms.model-delete'),('cms.model-delete-own','cms.model-delete'),('manager','cms.model-delete'),('root','cms.model-delete'),('editor','cms.model-delete-own'),('root','cms.model-delete-own'),('admin','cms.model-update'),('cms.model-update-own','cms.model-update'),('manager','cms.model-update'),('root','cms.model-update'),('admin','cms.model-update-advanced'),('cms.model-update-advanced-own','cms.model-update-advanced'),('root','cms.model-update-advanced'),('root','cms.model-update-advanced-own'),('editor','cms.model-update-own'),('root','cms.model-update-own'),('root','cms.root'),('root','cms.user-full-edit'),('admin','cms/admin-cache'),('manager','cms/admin-cache'),('root','cms/admin-cache'),('root','cms/admin-clear'),('root','cms/admin-clear/index'),('root','cms/admin-cms-agent'),('admin','cms/admin-cms-content'),('root','cms/admin-cms-content'),('root','cms/admin-cms-content-element'),('root','cms/admin-cms-content-element/activate-multi'),('root','cms/admin-cms-content-element/change-tree-multi'),('root','cms/admin-cms-content-element/change-trees-multi'),('cms/admin-cms-content-element/copy/own','cms/admin-cms-content-element/copy'),('root','cms/admin-cms-content-element/copy'),('root','cms/admin-cms-content-element/copy/own'),('root','cms/admin-cms-content-element/create'),('root','cms/admin-cms-content-element/deactivate-multi'),('cms/admin-cms-content-element/delete/own','cms/admin-cms-content-element/delete'),('root','cms/admin-cms-content-element/delete'),('root','cms/admin-cms-content-element/delete-multi'),('root','cms/admin-cms-content-element/delete/own'),('root','cms/admin-cms-content-element/inActivate-multi'),('root','cms/admin-cms-content-element/index'),('root','cms/admin-cms-content-element/rp'),('cms/admin-cms-content-element/update/own','cms/admin-cms-content-element/update'),('root','cms/admin-cms-content-element/update'),('root','cms/admin-cms-content-element/update/own'),('admin','cms/admin-cms-content-element__1'),('manager','cms/admin-cms-content-element__1'),('root','cms/admin-cms-content-element__1'),('root','cms/admin-cms-content-element__1/activate-multi'),('root','cms/admin-cms-content-element__1/change-tree-multi'),('root','cms/admin-cms-content-element__1/change-trees-multi'),('cms/admin-cms-content-element__1/copy/own','cms/admin-cms-content-element__1/copy'),('root','cms/admin-cms-content-element__1/copy'),('root','cms/admin-cms-content-element__1/copy/own'),('root','cms/admin-cms-content-element__1/create'),('root','cms/admin-cms-content-element__1/deactivate-multi'),('cms/admin-cms-content-element__1/delete/own','cms/admin-cms-content-element__1/delete'),('root','cms/admin-cms-content-element__1/delete'),('root','cms/admin-cms-content-element__1/delete-multi'),('root','cms/admin-cms-content-element__1/delete/own'),('root','cms/admin-cms-content-element__1/index'),('root','cms/admin-cms-content-element__1/rp'),('admin','cms/admin-cms-content-element__1/stat'),('root','cms/admin-cms-content-element__1/stat'),('cms/admin-cms-content-element__1/update/own','cms/admin-cms-content-element__1/update'),('root','cms/admin-cms-content-element__1/update'),('root','cms/admin-cms-content-element__1/update/own'),('root','cms/admin-cms-content-element__10'),('root','cms/admin-cms-content-element__11'),('root','cms/admin-cms-content-element__11/activate-multi'),('root','cms/admin-cms-content-element__11/change-tree-multi'),('root','cms/admin-cms-content-element__11/change-trees-multi'),('cms/admin-cms-content-element__11/copy/own','cms/admin-cms-content-element__11/copy'),('root','cms/admin-cms-content-element__11/copy'),('root','cms/admin-cms-content-element__11/copy/own'),('root','cms/admin-cms-content-element__11/create'),('root','cms/admin-cms-content-element__11/deactivate-multi'),('cms/admin-cms-content-element__11/delete/own','cms/admin-cms-content-element__11/delete'),('root','cms/admin-cms-content-element__11/delete'),('root','cms/admin-cms-content-element__11/delete-multi'),('root','cms/admin-cms-content-element__11/delete/own'),('root','cms/admin-cms-content-element__11/index'),('root','cms/admin-cms-content-element__11/rp'),('cms/admin-cms-content-element__11/update/own','cms/admin-cms-content-element__11/update'),('root','cms/admin-cms-content-element__11/update'),('root','cms/admin-cms-content-element__11/update/own'),('admin','cms/admin-cms-content-element__2'),('manager','cms/admin-cms-content-element__2'),('root','cms/admin-cms-content-element__2'),('root','cms/admin-cms-content-element__2/activate-multi'),('root','cms/admin-cms-content-element__2/change-tree-multi'),('root','cms/admin-cms-content-element__2/change-trees-multi'),('cms/admin-cms-content-element__2/copy/own','cms/admin-cms-content-element__2/copy'),('root','cms/admin-cms-content-element__2/copy'),('root','cms/admin-cms-content-element__2/copy/own'),('root','cms/admin-cms-content-element__2/create'),('root','cms/admin-cms-content-element__2/deactivate-multi'),('cms/admin-cms-content-element__2/delete/own','cms/admin-cms-content-element__2/delete'),('root','cms/admin-cms-content-element__2/delete'),('root','cms/admin-cms-content-element__2/delete-multi'),('root','cms/admin-cms-content-element__2/delete/own'),('root','cms/admin-cms-content-element__2/index'),('root','cms/admin-cms-content-element__2/rp'),('cms/admin-cms-content-element__2/update/own','cms/admin-cms-content-element__2/update'),('root','cms/admin-cms-content-element__2/update'),('root','cms/admin-cms-content-element__2/update/own'),('root','cms/admin-cms-content-element__3'),('admin','cms/admin-cms-content-element__4'),('manager','cms/admin-cms-content-element__4'),('root','cms/admin-cms-content-element__4'),('root','cms/admin-cms-content-element__4/activate-multi'),('root','cms/admin-cms-content-element__4/change-tree-multi'),('root','cms/admin-cms-content-element__4/change-trees-multi'),('cms/admin-cms-content-element__4/copy/own','cms/admin-cms-content-element__4/copy'),('root','cms/admin-cms-content-element__4/copy'),('root','cms/admin-cms-content-element__4/copy/own'),('root','cms/admin-cms-content-element__4/create'),('root','cms/admin-cms-content-element__4/deactivate-multi'),('cms/admin-cms-content-element__4/delete/own','cms/admin-cms-content-element__4/delete'),('root','cms/admin-cms-content-element__4/delete'),('root','cms/admin-cms-content-element__4/delete-multi'),('root','cms/admin-cms-content-element__4/delete/own'),('root','cms/admin-cms-content-element__4/index'),('root','cms/admin-cms-content-element__4/rp'),('admin','cms/admin-cms-content-element__4/stat'),('root','cms/admin-cms-content-element__4/stat'),('cms/admin-cms-content-element__4/update/own','cms/admin-cms-content-element__4/update'),('root','cms/admin-cms-content-element__4/update'),('root','cms/admin-cms-content-element__4/update/own'),('root','cms/admin-cms-content-element__5'),('root','cms/admin-cms-content-element__6'),('root','cms/admin-cms-content-element__7'),('admin','cms/admin-cms-content-element__8'),('manager','cms/admin-cms-content-element__8'),('root','cms/admin-cms-content-element__8'),('root','cms/admin-cms-content-element__9'),('root','cms/admin-cms-content-element__9/activate-multi'),('root','cms/admin-cms-content-element__9/change-tree-multi'),('root','cms/admin-cms-content-element__9/change-trees-multi'),('cms/admin-cms-content-element__9/copy/own','cms/admin-cms-content-element__9/copy'),('root','cms/admin-cms-content-element__9/copy'),('root','cms/admin-cms-content-element__9/copy/own'),('root','cms/admin-cms-content-element__9/create'),('root','cms/admin-cms-content-element__9/deactivate-multi'),('cms/admin-cms-content-element__9/delete/own','cms/admin-cms-content-element__9/delete'),('root','cms/admin-cms-content-element__9/delete'),('root','cms/admin-cms-content-element__9/delete-multi'),('root','cms/admin-cms-content-element__9/delete/own'),('root','cms/admin-cms-content-element__9/index'),('root','cms/admin-cms-content-element__9/rp'),('admin','cms/admin-cms-content-element__9/stat'),('root','cms/admin-cms-content-element__9/stat'),('cms/admin-cms-content-element__9/update/own','cms/admin-cms-content-element__9/update'),('root','cms/admin-cms-content-element__9/update'),('root','cms/admin-cms-content-element__9/update/own'),('admin','cms/admin-cms-content-property'),('root','cms/admin-cms-content-property'),('admin','cms/admin-cms-content-property-enum'),('root','cms/admin-cms-content-property-enum'),('root','cms/admin-cms-content-property-enum/create'),('cms/admin-cms-content-property-enum/delete/own','cms/admin-cms-content-property-enum/delete'),('root','cms/admin-cms-content-property-enum/delete'),('root','cms/admin-cms-content-property-enum/delete-multi'),('root','cms/admin-cms-content-property-enum/delete/own'),('root','cms/admin-cms-content-property-enum/index'),('cms/admin-cms-content-property-enum/update/own','cms/admin-cms-content-property-enum/update'),('root','cms/admin-cms-content-property-enum/update'),('root','cms/admin-cms-content-property-enum/update/own'),('root','cms/admin-cms-content-property/create'),('cms/admin-cms-content-property/delete/own','cms/admin-cms-content-property/delete'),('root','cms/admin-cms-content-property/delete'),('root','cms/admin-cms-content-property/delete-multi'),('root','cms/admin-cms-content-property/delete/own'),('root','cms/admin-cms-content-property/index'),('cms/admin-cms-content-property/update/own','cms/admin-cms-content-property/update'),('root','cms/admin-cms-content-property/update'),('root','cms/admin-cms-content-property/update/own'),('admin','cms/admin-cms-content-type'),('root','cms/admin-cms-content-type'),('root','cms/admin-cms-content-type/create'),('cms/admin-cms-content-type/delete/own','cms/admin-cms-content-type/delete'),('root','cms/admin-cms-content-type/delete'),('root','cms/admin-cms-content-type/delete-multi'),('root','cms/admin-cms-content-type/delete/own'),('root','cms/admin-cms-content-type/index'),('cms/admin-cms-content-type/update/own','cms/admin-cms-content-type/update'),('root','cms/admin-cms-content-type/update'),('root','cms/admin-cms-content-type/update/own'),('root','cms/admin-cms-content/create'),('cms/admin-cms-content/delete/own','cms/admin-cms-content/delete'),('root','cms/admin-cms-content/delete'),('root','cms/admin-cms-content/delete-multi'),('root','cms/admin-cms-content/delete/own'),('root','cms/admin-cms-content/index'),('cms/admin-cms-content/update/own','cms/admin-cms-content/update'),('root','cms/admin-cms-content/update'),('root','cms/admin-cms-content/update/own'),('admin','cms/admin-cms-contractor'),('root','cms/admin-cms-contractor'),('admin','cms/admin-cms-lang'),('root','cms/admin-cms-lang'),('root','cms/admin-cms-lang/activate-multi'),('root','cms/admin-cms-lang/create'),('cms/admin-cms-lang/delete/own','cms/admin-cms-lang/delete'),('root','cms/admin-cms-lang/delete'),('root','cms/admin-cms-lang/delete-multi'),('root','cms/admin-cms-lang/delete/own'),('root','cms/admin-cms-lang/inActivate-multi'),('root','cms/admin-cms-lang/index'),('cms/admin-cms-lang/update/own','cms/admin-cms-lang/update'),('root','cms/admin-cms-lang/update'),('root','cms/admin-cms-lang/update/own'),('admin','cms/admin-cms-saved-filter'),('manager','cms/admin-cms-saved-filter'),('root','cms/admin-cms-saved-filter'),('admin','cms/admin-cms-site'),('root','cms/admin-cms-site'),('admin','cms/admin-cms-site-address'),('root','cms/admin-cms-site-address'),('root','cms/admin-cms-site-domain'),('admin','cms/admin-cms-site-email'),('root','cms/admin-cms-site-email'),('admin','cms/admin-cms-site-info'),('root','cms/admin-cms-site-info'),('admin','cms/admin-cms-site-phone'),('root','cms/admin-cms-site-phone'),('admin','cms/admin-cms-site-social'),('root','cms/admin-cms-site-social'),('root','cms/admin-cms-site/activate-multi'),('root','cms/admin-cms-site/create'),('root','cms/admin-cms-site/def-multi'),('cms/admin-cms-site/delete/own','cms/admin-cms-site/delete'),('root','cms/admin-cms-site/delete'),('root','cms/admin-cms-site/delete-multi'),('root','cms/admin-cms-site/delete/own'),('root','cms/admin-cms-site/inActivate-multi'),('root','cms/admin-cms-site/index'),('cms/admin-cms-site/update/own','cms/admin-cms-site/update'),('root','cms/admin-cms-site/update'),('root','cms/admin-cms-site/update/own'),('admin','cms/admin-cms-sms-message'),('root','cms/admin-cms-sms-message'),('admin','cms/admin-cms-sms-provider'),('root','cms/admin-cms-sms-provider'),('admin','cms/admin-cms-theme'),('root','cms/admin-cms-theme'),('admin','cms/admin-cms-tree-type'),('root','cms/admin-cms-tree-type'),('admin','cms/admin-cms-tree-type-property'),('root','cms/admin-cms-tree-type-property'),('admin','cms/admin-cms-tree-type-property-enum'),('root','cms/admin-cms-tree-type-property-enum'),('root','cms/admin-cms-tree-type-property-enum/create'),('cms/admin-cms-tree-type-property-enum/delete/own','cms/admin-cms-tree-type-property-enum/delete'),('root','cms/admin-cms-tree-type-property-enum/delete'),('root','cms/admin-cms-tree-type-property-enum/delete-multi'),('root','cms/admin-cms-tree-type-property-enum/delete/own'),('root','cms/admin-cms-tree-type-property-enum/index'),('cms/admin-cms-tree-type-property-enum/update/own','cms/admin-cms-tree-type-property-enum/update'),('root','cms/admin-cms-tree-type-property-enum/update'),('root','cms/admin-cms-tree-type-property-enum/update/own'),('root','cms/admin-cms-tree-type-property/create'),('cms/admin-cms-tree-type-property/delete/own','cms/admin-cms-tree-type-property/delete'),('root','cms/admin-cms-tree-type-property/delete'),('root','cms/admin-cms-tree-type-property/delete-multi'),('root','cms/admin-cms-tree-type-property/delete/own'),('root','cms/admin-cms-tree-type-property/index'),('cms/admin-cms-tree-type-property/update/own','cms/admin-cms-tree-type-property/update'),('root','cms/admin-cms-tree-type-property/update'),('root','cms/admin-cms-tree-type-property/update/own'),('root','cms/admin-cms-tree-type/activate-multi'),('root','cms/admin-cms-tree-type/create'),('cms/admin-cms-tree-type/delete/own','cms/admin-cms-tree-type/delete'),('root','cms/admin-cms-tree-type/delete'),('root','cms/admin-cms-tree-type/delete-multi'),('root','cms/admin-cms-tree-type/delete/own'),('root','cms/admin-cms-tree-type/inActivate-multi'),('root','cms/admin-cms-tree-type/index'),('cms/admin-cms-tree-type/update/own','cms/admin-cms-tree-type/update'),('root','cms/admin-cms-tree-type/update'),('root','cms/admin-cms-tree-type/update/own'),('admin','cms/admin-cms-user-universal-property'),('root','cms/admin-cms-user-universal-property'),('admin','cms/admin-cms-user-universal-property-enum'),('root','cms/admin-cms-user-universal-property-enum'),('root','cms/admin-cms-user-universal-property/create'),('cms/admin-cms-user-universal-property/delete/own','cms/admin-cms-user-universal-property/delete'),('root','cms/admin-cms-user-universal-property/delete'),('root','cms/admin-cms-user-universal-property/delete-multi'),('root','cms/admin-cms-user-universal-property/delete/own'),('root','cms/admin-cms-user-universal-property/index'),('cms/admin-cms-user-universal-property/update/own','cms/admin-cms-user-universal-property/update'),('root','cms/admin-cms-user-universal-property/update'),('root','cms/admin-cms-user-universal-property/update/own'),('root','cms/admin-component-settings'),('admin','cms/admin-file-manager'),('root','cms/admin-file-manager'),('admin','cms/admin-info'),('root','cms/admin-info'),('root','cms/admin-info/index'),('root','cms/admin-marketplace'),('root','cms/admin-message'),('root','cms/admin-profile'),('admin','cms/admin-search-phrase'),('manager','cms/admin-search-phrase'),('root','cms/admin-search-phrase'),('admin','cms/admin-search-phrase-group'),('manager','cms/admin-search-phrase-group'),('root','cms/admin-search-phrase-group'),('admin','cms/admin-settings'),('root','cms/admin-settings'),('root','cms/admin-settings/index'),('admin','cms/admin-site-user'),('root','cms/admin-site-user'),('admin','cms/admin-storage'),('root','cms/admin-storage'),('admin','cms/admin-storage-files'),('editor','cms/admin-storage-files'),('manager','cms/admin-storage-files'),('root','cms/admin-storage-files'),('root','cms/admin-storage-files/create'),('admin','cms/admin-storage-files/delete'),('cms/admin-storage-files/delete/own','cms/admin-storage-files/delete'),('root','cms/admin-storage-files/delete'),('root','cms/admin-storage-files/delete-multi'),('admin','cms/admin-storage-files/delete-tmp-dir'),('cms/admin-storage-files/delete-tmp-dir/own','cms/admin-storage-files/delete-tmp-dir'),('manager','cms/admin-storage-files/delete-tmp-dir'),('root','cms/admin-storage-files/delete-tmp-dir'),('editor','cms/admin-storage-files/delete-tmp-dir/own'),('root','cms/admin-storage-files/delete-tmp-dir/own'),('editor','cms/admin-storage-files/delete/own'),('manager','cms/admin-storage-files/delete/own'),('root','cms/admin-storage-files/delete/own'),('admin','cms/admin-storage-files/download'),('cms/admin-storage-files/download/own','cms/admin-storage-files/download'),('manager','cms/admin-storage-files/download'),('root','cms/admin-storage-files/download'),('editor','cms/admin-storage-files/download/own'),('root','cms/admin-storage-files/download/own'),('admin','cms/admin-storage-files/index'),('manager','cms/admin-storage-files/index'),('root','cms/admin-storage-files/index'),('editor','cms/admin-storage-files/index/own'),('root','cms/admin-storage-files/index/own'),('admin','cms/admin-storage-files/stat'),('root','cms/admin-storage-files/stat'),('admin','cms/admin-storage-files/update'),('cms/admin-storage-files/update/own','cms/admin-storage-files/update'),('manager','cms/admin-storage-files/update'),('root','cms/admin-storage-files/update'),('editor','cms/admin-storage-files/update/own'),('root','cms/admin-storage-files/update/own'),('admin','cms/admin-storage-files/upload'),('editor','cms/admin-storage-files/upload'),('manager','cms/admin-storage-files/upload'),('root','cms/admin-storage-files/upload'),('root','cms/admin-storage/index'),('root','cms/admin-tools'),('admin','cms/admin-tree'),('editor','cms/admin-tree'),('manager','cms/admin-tree'),('root','cms/admin-tree'),('root','cms/admin-tree-menu'),('admin','cms/admin-tree/delete'),('cms/admin-tree/delete/own','cms/admin-tree/delete'),('root','cms/admin-tree/delete'),('admin','cms/admin-tree/delete-multi'),('root','cms/admin-tree/delete-multi'),('editor','cms/admin-tree/delete/own'),('manager','cms/admin-tree/delete/own'),('root','cms/admin-tree/delete/own'),('root','cms/admin-tree/index'),('admin','cms/admin-tree/list'),('root','cms/admin-tree/list'),('admin','cms/admin-tree/move'),('cms/admin-tree/move/own','cms/admin-tree/move'),('manager','cms/admin-tree/move'),('root','cms/admin-tree/move'),('editor','cms/admin-tree/move/own'),('root','cms/admin-tree/move/own'),('admin','cms/admin-tree/new-children'),('editor','cms/admin-tree/new-children'),('manager','cms/admin-tree/new-children'),('root','cms/admin-tree/new-children'),('admin','cms/admin-tree/resort'),('manager','cms/admin-tree/resort'),('root','cms/admin-tree/resort'),('admin','cms/admin-tree/update'),('cms/admin-tree/update/own','cms/admin-tree/update'),('manager','cms/admin-tree/update'),('root','cms/admin-tree/update'),('editor','cms/admin-tree/update/own'),('root','cms/admin-tree/update/own'),('root','cms/admin-universal-component-settings'),('admin','cms/admin-user'),('root','cms/admin-user'),('root','cms/admin-user-auth-client'),('root','cms/admin-user-email'),('root','cms/admin-user-email/create'),('root','cms/admin-user-email/delete'),('root','cms/admin-user-email/delete-multi'),('root','cms/admin-user-email/index'),('root','cms/admin-user-email/update'),('root','cms/admin-user-phone'),('root','cms/admin-user-phone/create'),('root','cms/admin-user-phone/delete'),('root','cms/admin-user-phone/delete-multi'),('root','cms/admin-user-phone/index'),('root','cms/admin-user-phone/update'),('admin','cms/admin-user/activate-multi'),('root','cms/admin-user/activate-multi'),('admin','cms/admin-user/create'),('root','cms/admin-user/create'),('admin','cms/admin-user/delete'),('cms/admin-user/delete/own','cms/admin-user/delete'),('root','cms/admin-user/delete'),('admin','cms/admin-user/delete-multi'),('root','cms/admin-user/delete-multi'),('root','cms/admin-user/delete/own'),('root','cms/admin-user/inActivate-multi'),('root','cms/admin-user/index'),('admin','cms/admin-user/update'),('cms/admin-user/update/own','cms/admin-user/update'),('root','cms/admin-user/update'),('admin','cms/admin-user/update-advanced'),('cms/admin-user/update-advanced/own','cms/admin-user/update-advanced'),('root','cms/admin-user/update-advanced'),('admin','cms/admin-user/update-advanced/own'),('root','cms/admin-user/update-advanced/own'),('root','cms/admin-user/update/own'),('admin','cmsAgent/admin-cms-agent'),('root','cmsAgent/admin-cms-agent'),('root','cmsAgent/admin-cms-agent/activate-multi'),('root','cmsAgent/admin-cms-agent/create'),('root','cmsAgent/admin-cms-agent/delete'),('root','cmsAgent/admin-cms-agent/delete-multi'),('root','cmsAgent/admin-cms-agent/inActivate-multi'),('root','cmsAgent/admin-cms-agent/index'),('root','cmsAgent/admin-cms-agent/update'),('admin','cmsExport/admin-export-task'),('root','cmsExport/admin-export-task'),('root','cmsExport/admin-export-task/create'),('cmsExport/admin-export-task/delete/own','cmsExport/admin-export-task/delete'),('root','cmsExport/admin-export-task/delete'),('root','cmsExport/admin-export-task/delete-multi'),('root','cmsExport/admin-export-task/delete/own'),('root','cmsExport/admin-export-task/index'),('cmsExport/admin-export-task/update/own','cmsExport/admin-export-task/update'),('root','cmsExport/admin-export-task/update'),('root','cmsExport/admin-export-task/update/own'),('admin','cmsImport/admin-import-task'),('root','cmsImport/admin-import-task'),('root','cmsImport/admin-import-task/create'),('cmsImport/admin-import-task/delete/own','cmsImport/admin-import-task/delete'),('root','cmsImport/admin-import-task/delete'),('root','cmsImport/admin-import-task/delete-multi'),('root','cmsImport/admin-import-task/delete/own'),('root','cmsImport/admin-import-task/index'),('cmsImport/admin-import-task/update/own','cmsImport/admin-import-task/update'),('root','cmsImport/admin-import-task/update'),('root','cmsImport/admin-import-task/update/own'),('admin','cmsMarketplace/admin-composer-update'),('root','cmsMarketplace/admin-composer-update'),('root','cmsMarketplace/admin-composer-update/update'),('admin','cmsMarketplace/admin-marketplace'),('root','cmsMarketplace/admin-marketplace'),('root','cmsMarketplace/admin-marketplace/catalog'),('root','cmsMarketplace/admin-marketplace/index'),('root','cmsMarketplace/admin-marketplace/install'),('root','cmsMarketplace/admin-marketplace/test'),('root','cmsMarketplace/admin-marketplace/update'),('root','cmsSearch/admin-search-phrase'),('root','cmsSearch/admin-search-phrase-group'),('root','cmsSearch/admin-search-phrase-group/index'),('root','cmsSearch/admin-search-phrase/create'),('cmsSearch/admin-search-phrase/delete/own','cmsSearch/admin-search-phrase/delete'),('root','cmsSearch/admin-search-phrase/delete'),('root','cmsSearch/admin-search-phrase/delete-multi'),('root','cmsSearch/admin-search-phrase/delete/own'),('root','cmsSearch/admin-search-phrase/index'),('cmsSearch/admin-search-phrase/update/own','cmsSearch/admin-search-phrase/update'),('root','cmsSearch/admin-search-phrase/update'),('root','cmsSearch/admin-search-phrase/update/own'),('admin','dbDumper/admin-backup'),('root','dbDumper/admin-backup'),('admin','dbDumper/admin-settings'),('root','dbDumper/admin-settings'),('admin','dbDumper/admin-structure'),('root','dbDumper/admin-structure'),('root','editor'),('admin','form2/admin-form'),('root','form2/admin-form'),('admin','form2/admin-form-property'),('root','form2/admin-form-property'),('admin','form2/admin-form-send'),('editor','form2/admin-form-send'),('manager','form2/admin-form-send'),('root','form2/admin-form-send'),('form2/admin-form-send/delete/own','form2/admin-form-send/delete'),('root','form2/admin-form-send/delete'),('root','form2/admin-form-send/delete-multi'),('root','form2/admin-form-send/delete/own'),('root','form2/admin-form-send/index'),('form2/admin-form-send/view/own','form2/admin-form-send/view'),('root','form2/admin-form-send/view'),('root','form2/admin-form-send/view/own'),('root','form2/admin-form/create'),('form2/admin-form/delete/own','form2/admin-form/delete'),('root','form2/admin-form/delete'),('root','form2/admin-form/delete-multi'),('root','form2/admin-form/delete/own'),('root','form2/admin-form/index'),('form2/admin-form/update/own','form2/admin-form/update'),('root','form2/admin-form/update'),('root','form2/admin-form/update/own'),('form2/admin-form/view/own','form2/admin-form/view'),('root','form2/admin-form/view'),('root','form2/admin-form/view/own'),('root','guest'),('root','kladr/admin-kladr-location'),('admin','logDbTarget/admin-log-db-target'),('root','logDbTarget/admin-log-db-target'),('root','logDbTarget/admin-log-db-target/create'),('root','logDbTarget/admin-log-db-target/delete'),('root','logDbTarget/admin-log-db-target/delete-multi'),('root','logDbTarget/admin-log-db-target/index'),('root','logDbTarget/admin-log-db-target/update'),('admin','mailer/admin-test'),('root','mailer/admin-test'),('root','manager'),('admin','measure/admin-measure'),('root','measure/admin-measure'),('root','measure/admin-measure/create'),('root','measure/admin-measure/def-multi'),('measure/admin-measure/delete/own','measure/admin-measure/delete'),('root','measure/admin-measure/delete'),('root','measure/admin-measure/delete-multi'),('root','measure/admin-measure/delete/own'),('root','measure/admin-measure/index'),('measure/admin-measure/update/own','measure/admin-measure/update'),('root','measure/admin-measure/update'),('root','measure/admin-measure/update/own'),('admin','money/admin-currency'),('root','money/admin-currency'),('root','money/admin-currency/activate-multi'),('root','money/admin-currency/create'),('root','money/admin-currency/delete'),('root','money/admin-currency/delete-multi'),('root','money/admin-currency/inActivate-multi'),('root','money/admin-currency/index'),('root','money/admin-currency/update'),('root','money/admin-currency/update-all'),('root','money/admin-currency/update-course'),('root','rbac/admin-permission'),('root','rbac/admin-permission/create'),('root','rbac/admin-permission/delete'),('root','rbac/admin-permission/delete-multi'),('root','rbac/admin-permission/index'),('root','rbac/admin-permission/update'),('root','rbac/admin-permission/update-data'),('root','rbac/admin-permission/view'),('root','rbac/admin-role'),('root','rbac/admin-role/create'),('root','rbac/admin-role/delete'),('root','rbac/admin-role/delete-multi'),('root','rbac/admin-role/index'),('root','rbac/admin-role/update'),('root','rbac/admin-role/view'),('admin','reviews2.add.review'),('approved','reviews2.add.review'),('editor','reviews2.add.review'),('guest','reviews2.add.review'),('manager','reviews2.add.review'),('root','reviews2.add.review'),('user','reviews2.add.review'),('root','reviews2/admin-message'),('root','reviews2/admin-message/create'),('reviews2/admin-message/delete/own','reviews2/admin-message/delete'),('root','reviews2/admin-message/delete'),('root','reviews2/admin-message/delete-multi'),('root','reviews2/admin-message/delete/own'),('root','reviews2/admin-message/index'),('root','reviews2/admin-message/status-allowed-multi'),('root','reviews2/admin-message/status-canceled-multi'),('root','reviews2/admin-message/status-processed-multi'),('reviews2/admin-message/update/own','reviews2/admin-message/update'),('root','reviews2/admin-message/update'),('root','reviews2/admin-message/update/own'),('root','shop-discount-'),('admin','shop-discount-1'),('approved','shop-discount-1'),('editor','shop-discount-1'),('guest','shop-discount-1'),('manager','shop-discount-1'),('root','shop-discount-1'),('user','shop-discount-1'),('root','shop-type-price-1'),('root','shop/admin-affiliate'),('root','shop/admin-affiliate-plan'),('root','shop/admin-affiliate-plan/create'),('root','shop/admin-affiliate-plan/delete'),('shop/admin-affiliate-plan/delete/own','shop/admin-affiliate-plan/delete'),('root','shop/admin-affiliate-plan/delete-multi'),('root','shop/admin-affiliate-plan/delete/own'),('root','shop/admin-affiliate-plan/index'),('root','shop/admin-affiliate-plan/update'),('shop/admin-affiliate-plan/update/own','shop/admin-affiliate-plan/update'),('root','shop/admin-affiliate-plan/update/own'),('root','shop/admin-affiliate-tier'),('root','shop/admin-affiliate-tier/create'),('root','shop/admin-affiliate-tier/delete'),('shop/admin-affiliate-tier/delete/own','shop/admin-affiliate-tier/delete'),('root','shop/admin-affiliate-tier/delete-multi'),('root','shop/admin-affiliate-tier/delete/own'),('root','shop/admin-affiliate-tier/index'),('root','shop/admin-affiliate-tier/update'),('shop/admin-affiliate-tier/update/own','shop/admin-affiliate-tier/update'),('root','shop/admin-affiliate-tier/update/own'),('root','shop/admin-affiliate/create'),('root','shop/admin-affiliate/delete'),('shop/admin-affiliate/delete/own','shop/admin-affiliate/delete'),('root','shop/admin-affiliate/delete-multi'),('root','shop/admin-affiliate/delete/own'),('root','shop/admin-affiliate/index'),('root','shop/admin-affiliate/update'),('shop/admin-affiliate/update/own','shop/admin-affiliate/update'),('root','shop/admin-affiliate/update/own'),('manager','shop/admin-basket'),('root','shop/admin-basket'),('root','shop/admin-bill'),('admin','shop/admin-bonus-transaction'),('root','shop/admin-bonus-transaction'),('manager','shop/admin-buyer'),('root','shop/admin-buyer'),('root','shop/admin-buyer-1'),('root','shop/admin-buyer-1/create'),('root','shop/admin-buyer-1/delete'),('shop/admin-buyer-1/delete/own','shop/admin-buyer-1/delete'),('root','shop/admin-buyer-1/delete-multi'),('root','shop/admin-buyer-1/delete/own'),('root','shop/admin-buyer-1/index'),('root','shop/admin-buyer-1/update'),('shop/admin-buyer-1/update/own','shop/admin-buyer-1/update'),('root','shop/admin-buyer-1/update/own'),('root','shop/admin-buyer-2'),('root','shop/admin-buyer-user'),('root','shop/admin-buyer-user/delete-multi'),('root','shop/admin-buyer-user/index'),('root','shop/admin-buyer-user/update'),('shop/admin-buyer-user/update/own','shop/admin-buyer-user/update'),('root','shop/admin-buyer-user/update/own'),('root','shop/admin-buyer/create'),('root','shop/admin-buyer/delete'),('shop/admin-buyer/delete/own','shop/admin-buyer/delete'),('root','shop/admin-buyer/delete-multi'),('root','shop/admin-buyer/delete/own'),('root','shop/admin-buyer/index'),('root','shop/admin-buyer/update'),('shop/admin-buyer/update/own','shop/admin-buyer/update'),('root','shop/admin-buyer/update/own'),('admin','shop/admin-cart'),('manager','shop/admin-cart'),('root','shop/admin-cart'),('editor','shop/admin-cms-content-element'),('manager','shop/admin-cms-content-element'),('root','shop/admin-cms-content-element'),('root','shop/admin-cms-content-element/activate-multi'),('root','shop/admin-cms-content-element/change-tree-multi'),('root','shop/admin-cms-content-element/change-trees-multi'),('root','shop/admin-cms-content-element/create'),('root','shop/admin-cms-content-element/deactivate-multi'),('root','shop/admin-cms-content-element/delete'),('shop/admin-cms-content-element/delete/own','shop/admin-cms-content-element/delete'),('root','shop/admin-cms-content-element/delete-multi'),('root','shop/admin-cms-content-element/delete/own'),('root','shop/admin-cms-content-element/inActivate-multi'),('root','shop/admin-cms-content-element/index'),('root','shop/admin-cms-content-element/rp'),('root','shop/admin-cms-content-element/to-offer'),('root','shop/admin-cms-content-element/update'),('shop/admin-cms-content-element/update/own','shop/admin-cms-content-element/update'),('root','shop/admin-cms-content-element/update/own'),('root','shop/admin-cms-content-element__10'),('root','shop/admin-cms-content-element__10/activate-multi'),('root','shop/admin-cms-content-element__10/change-tree-multi'),('root','shop/admin-cms-content-element__10/change-trees-multi'),('root','shop/admin-cms-content-element__10/copy'),('shop/admin-cms-content-element__10/copy/own','shop/admin-cms-content-element__10/copy'),('root','shop/admin-cms-content-element__10/copy/own'),('root','shop/admin-cms-content-element__10/create'),('root','shop/admin-cms-content-element__10/deactivate-multi'),('root','shop/admin-cms-content-element__10/delete'),('shop/admin-cms-content-element__10/delete/own','shop/admin-cms-content-element__10/delete'),('root','shop/admin-cms-content-element__10/delete-multi'),('root','shop/admin-cms-content-element__10/delete/own'),('root','shop/admin-cms-content-element__10/index'),('root','shop/admin-cms-content-element__10/rp'),('root','shop/admin-cms-content-element__10/to-offer'),('root','shop/admin-cms-content-element__10/update'),('shop/admin-cms-content-element__10/update/own','shop/admin-cms-content-element__10/update'),('root','shop/admin-cms-content-element__10/update/own'),('root','shop/admin-cms-content-element__10__10'),('root','shop/admin-cms-content-element__10__10/copy'),('shop/admin-cms-content-element__10__10/copy/own','shop/admin-cms-content-element__10__10/copy'),('root','shop/admin-cms-content-element__10__10/copy/own'),('root','shop/admin-cms-content-element__10__10/delete'),('shop/admin-cms-content-element__10__10/delete/own','shop/admin-cms-content-element__10__10/delete'),('root','shop/admin-cms-content-element__10__10/delete/own'),('root','shop/admin-cms-content-element__10__10/update'),('shop/admin-cms-content-element__10__10/update/own','shop/admin-cms-content-element__10__10/update'),('root','shop/admin-cms-content-element__10__10/update/own'),('root','shop/admin-cms-content-element__2'),('root','shop/admin-cms-content-element__2/activate-multi'),('root','shop/admin-cms-content-element__2/change-tree-multi'),('root','shop/admin-cms-content-element__2/change-trees-multi'),('root','shop/admin-cms-content-element__2/copy'),('shop/admin-cms-content-element__2/copy/own','shop/admin-cms-content-element__2/copy'),('root','shop/admin-cms-content-element__2/copy/own'),('root','shop/admin-cms-content-element__2/create'),('root','shop/admin-cms-content-element__2/deactivate-multi'),('root','shop/admin-cms-content-element__2/delete'),('shop/admin-cms-content-element__2/delete/own','shop/admin-cms-content-element__2/delete'),('root','shop/admin-cms-content-element__2/delete-multi'),('root','shop/admin-cms-content-element__2/delete/own'),('admin','shop/admin-cms-content-element__2/duplicates'),('root','shop/admin-cms-content-element__2/duplicates'),('root','shop/admin-cms-content-element__2/inActivate-multi'),('root','shop/admin-cms-content-element__2/index'),('admin','shop/admin-cms-content-element__2/orders'),('root','shop/admin-cms-content-element__2/orders'),('shop/admin-cms-content-element__2/orders/own','shop/admin-cms-content-element__2/orders'),('admin','shop/admin-cms-content-element__2/orders/own'),('root','shop/admin-cms-content-element__2/orders/own'),('root','shop/admin-cms-content-element__2/rp'),('root','shop/admin-cms-content-element__2/shop-properties'),('admin','shop/admin-cms-content-element__2/stat'),('root','shop/admin-cms-content-element__2/stat'),('admin','shop/admin-cms-content-element__2/store-moves'),('root','shop/admin-cms-content-element__2/store-moves'),('shop/admin-cms-content-element__2/store-moves/own','shop/admin-cms-content-element__2/store-moves'),('admin','shop/admin-cms-content-element__2/store-moves/own'),('root','shop/admin-cms-content-element__2/store-moves/own'),('root','shop/admin-cms-content-element__2/to-offer'),('root','shop/admin-cms-content-element__2/update'),('shop/admin-cms-content-element__2/update/own','shop/admin-cms-content-element__2/update'),('admin','shop/admin-cms-content-element__2/update-data'),('root','shop/admin-cms-content-element__2/update-data'),('root','shop/admin-cms-content-element__2/update/own'),('admin','shop/admin-cms-content-element__2/viewed-products'),('root','shop/admin-cms-content-element__2/viewed-products'),('shop/admin-cms-content-element__2/viewed-products/own','shop/admin-cms-content-element__2/viewed-products'),('admin','shop/admin-cms-content-element__2/viewed-products/own'),('root','shop/admin-cms-content-element__2/viewed-products/own'),('root','shop/admin-cms-content-element__2__2'),('root','shop/admin-cms-content-element__2__2/copy'),('shop/admin-cms-content-element__2__2/copy/own','shop/admin-cms-content-element__2__2/copy'),('root','shop/admin-cms-content-element__2__2/copy/own'),('root','shop/admin-cms-content-element__2__2/delete'),('shop/admin-cms-content-element__2__2/delete/own','shop/admin-cms-content-element__2__2/delete'),('root','shop/admin-cms-content-element__2__2/delete/own'),('root','shop/admin-cms-content-element__2__2/update'),('shop/admin-cms-content-element__2__2/update/own','shop/admin-cms-content-element__2__2/update'),('root','shop/admin-cms-content-element__2__2/update/own'),('admin','shop/admin-cms-site'),('root','shop/admin-cms-site'),('admin','shop/admin-content'),('root','shop/admin-content'),('root','shop/admin-content/create'),('root','shop/admin-content/delete'),('shop/admin-content/delete/own','shop/admin-content/delete'),('root','shop/admin-content/delete-multi'),('root','shop/admin-content/delete/own'),('root','shop/admin-content/index'),('root','shop/admin-content/update'),('shop/admin-content/update/own','shop/admin-content/update'),('root','shop/admin-content/update/own'),('admin','shop/admin-delivery'),('root','shop/admin-delivery'),('root','shop/admin-delivery/create'),('root','shop/admin-delivery/delete'),('shop/admin-delivery/delete/own','shop/admin-delivery/delete'),('root','shop/admin-delivery/delete-multi'),('root','shop/admin-delivery/delete/own'),('root','shop/admin-delivery/index'),('root','shop/admin-delivery/update'),('shop/admin-delivery/update/own','shop/admin-delivery/update'),('root','shop/admin-delivery/update/own'),('admin','shop/admin-discount'),('root','shop/admin-discount'),('root','shop/admin-discount-coupon'),('root','shop/admin-discount-coupon/create'),('root','shop/admin-discount-coupon/delete'),('shop/admin-discount-coupon/delete/own','shop/admin-discount-coupon/delete'),('root','shop/admin-discount-coupon/delete-multi'),('root','shop/admin-discount-coupon/delete/own'),('root','shop/admin-discount-coupon/index'),('root','shop/admin-discount-coupon/update'),('shop/admin-discount-coupon/update/own','shop/admin-discount-coupon/update'),('root','shop/admin-discount-coupon/update/own'),('root','shop/admin-discount/activate-multi'),('root','shop/admin-discount/create'),('root','shop/admin-discount/deactivate-multi'),('root','shop/admin-discount/delete'),('shop/admin-discount/delete/own','shop/admin-discount/delete'),('root','shop/admin-discount/delete-multi'),('root','shop/admin-discount/delete/own'),('root','shop/admin-discount/index'),('root','shop/admin-discount/update'),('shop/admin-discount/update/own','shop/admin-discount/update'),('root','shop/admin-discount/update/own'),('root','shop/admin-discsave'),('root','shop/admin-discsave/create'),('root','shop/admin-discsave/delete'),('shop/admin-discsave/delete/own','shop/admin-discsave/delete'),('root','shop/admin-discsave/delete-multi'),('root','shop/admin-discsave/delete/own'),('root','shop/admin-discsave/index'),('root','shop/admin-discsave/update'),('shop/admin-discsave/update/own','shop/admin-discsave/update'),('root','shop/admin-discsave/update/own'),('root','shop/admin-extra'),('root','shop/admin-extra/create'),('root','shop/admin-extra/delete'),('shop/admin-extra/delete/own','shop/admin-extra/delete'),('root','shop/admin-extra/delete-multi'),('root','shop/admin-extra/delete/own'),('root','shop/admin-extra/index'),('root','shop/admin-extra/update'),('shop/admin-extra/update/own','shop/admin-extra/update'),('root','shop/admin-extra/update/own'),('root','shop/admin-fuser'),('root','shop/admin-fuser/delete'),('shop/admin-fuser/delete/own','shop/admin-fuser/delete'),('root','shop/admin-fuser/delete-multi'),('root','shop/admin-fuser/delete/own'),('root','shop/admin-fuser/index'),('admin','shop/admin-order'),('manager','shop/admin-order'),('root','shop/admin-order'),('root','shop/admin-order-change'),('admin','shop/admin-order-status'),('root','shop/admin-order-status'),('root','shop/admin-order-status/create'),('root','shop/admin-order-status/delete'),('shop/admin-order-status/delete/own','shop/admin-order-status/delete'),('root','shop/admin-order-status/delete-multi'),('root','shop/admin-order-status/delete/own'),('root','shop/admin-order-status/index'),('root','shop/admin-order-status/update'),('shop/admin-order-status/update/own','shop/admin-order-status/update'),('root','shop/admin-order-status/update/own'),('root','shop/admin-order/bills'),('shop/admin-order/bills/own','shop/admin-order/bills'),('root','shop/admin-order/bills/own'),('root','shop/admin-order/changes'),('shop/admin-order/changes/own','shop/admin-order/changes'),('root','shop/admin-order/changes/own'),('root','shop/admin-order/create'),('root','shop/admin-order/create-order'),('root','shop/admin-order/delete'),('shop/admin-order/delete/own','shop/admin-order/delete'),('root','shop/admin-order/delete-multi'),('root','shop/admin-order/delete/own'),('root','shop/admin-order/index'),('root','shop/admin-order/payments'),('shop/admin-order/payments/own','shop/admin-order/payments'),('root','shop/admin-order/payments/own'),('root','shop/admin-order/update'),('shop/admin-order/update/own','shop/admin-order/update'),('root','shop/admin-order/update/own'),('root','shop/admin-pay-system'),('root','shop/admin-pay-system/create'),('root','shop/admin-pay-system/delete'),('shop/admin-pay-system/delete/own','shop/admin-pay-system/delete'),('root','shop/admin-pay-system/delete-multi'),('root','shop/admin-pay-system/delete/own'),('root','shop/admin-pay-system/index'),('root','shop/admin-pay-system/update'),('shop/admin-pay-system/update/own','shop/admin-pay-system/update'),('root','shop/admin-pay-system/update/own'),('root','shop/admin-payment'),('admin','shop/admin-person-type'),('root','shop/admin-person-type'),('admin','shop/admin-person-type-property'),('root','shop/admin-person-type-property'),('root','shop/admin-person-type-property/create'),('root','shop/admin-person-type-property/delete'),('shop/admin-person-type-property/delete/own','shop/admin-person-type-property/delete'),('root','shop/admin-person-type-property/delete-multi'),('root','shop/admin-person-type-property/delete/own'),('root','shop/admin-person-type-property/index'),('root','shop/admin-person-type-property/update'),('shop/admin-person-type-property/update/own','shop/admin-person-type-property/update'),('root','shop/admin-person-type-property/update/own'),('root','shop/admin-person-type/create'),('root','shop/admin-person-type/delete'),('shop/admin-person-type/delete/own','shop/admin-person-type/delete'),('root','shop/admin-person-type/delete-multi'),('root','shop/admin-person-type/delete/own'),('root','shop/admin-person-type/index'),('root','shop/admin-person-type/update'),('shop/admin-person-type/update/own','shop/admin-person-type/update'),('root','shop/admin-person-type/update/own'),('admin','shop/admin-quantity-notice-email'),('manager','shop/admin-quantity-notice-email'),('root','shop/admin-quantity-notice-email'),('root','shop/admin-quantity-notice-email/create'),('root','shop/admin-quantity-notice-email/delete'),('shop/admin-quantity-notice-email/delete/own','shop/admin-quantity-notice-email/delete'),('root','shop/admin-quantity-notice-email/delete-multi'),('root','shop/admin-quantity-notice-email/delete/own'),('root','shop/admin-quantity-notice-email/index'),('root','shop/admin-quantity-notice-email/update'),('shop/admin-quantity-notice-email/update/own','shop/admin-quantity-notice-email/update'),('root','shop/admin-quantity-notice-email/update/own'),('manager','shop/admin-report-order'),('root','shop/admin-report-order'),('manager','shop/admin-report-product'),('root','shop/admin-report-product'),('admin','shop/admin-shop-cms-content-property'),('root','shop/admin-shop-cms-content-property'),('admin','shop/admin-shop-import-cms-site'),('root','shop/admin-shop-import-cms-site'),('admin','shop/admin-shop-site'),('root','shop/admin-shop-site'),('admin','shop/admin-shop-store'),('root','shop/admin-shop-store'),('root','shop/admin-shop-store-product'),('root','shop/admin-shop-store-supplier'),('admin','shop/admin-shop-supplier'),('root','shop/admin-shop-supplier'),('admin','shop/admin-shop-supplier-property'),('root','shop/admin-shop-supplier-property'),('root','shop/admin-store'),('root','shop/admin-store/activate-multi'),('root','shop/admin-store/change-tree-multi'),('root','shop/admin-store/change-trees-multi'),('root','shop/admin-store/create'),('root','shop/admin-store/delete'),('shop/admin-store/delete/own','shop/admin-store/delete'),('root','shop/admin-store/delete-multi'),('root','shop/admin-store/delete/own'),('root','shop/admin-store/inActivate-multi'),('root','shop/admin-store/index'),('root','shop/admin-store/rp'),('root','shop/admin-store/update'),('shop/admin-store/update/own','shop/admin-store/update'),('root','shop/admin-store/update/own'),('root','shop/admin-store__1'),('root','shop/admin-store__10'),('root','shop/admin-store__11'),('root','shop/admin-store__2'),('root','shop/admin-store__4'),('root','shop/admin-store__9'),('root','shop/admin-tax'),('root','shop/admin-tax-rate'),('root','shop/admin-tax-rate/create'),('root','shop/admin-tax-rate/delete'),('shop/admin-tax-rate/delete/own','shop/admin-tax-rate/delete'),('root','shop/admin-tax-rate/delete-multi'),('root','shop/admin-tax-rate/delete/own'),('root','shop/admin-tax-rate/index'),('root','shop/admin-tax-rate/update'),('shop/admin-tax-rate/update/own','shop/admin-tax-rate/update'),('root','shop/admin-tax-rate/update/own'),('root','shop/admin-tax/create'),('root','shop/admin-tax/delete'),('shop/admin-tax/delete/own','shop/admin-tax/delete'),('root','shop/admin-tax/delete-multi'),('root','shop/admin-tax/delete/own'),('root','shop/admin-tax/index'),('root','shop/admin-tax/update'),('shop/admin-tax/update/own','shop/admin-tax/update'),('root','shop/admin-tax/update/own'),('admin','shop/admin-type-price'),('root','shop/admin-type-price'),('root','shop/admin-type-price/create'),('root','shop/admin-type-price/def-multi'),('root','shop/admin-type-price/delete'),('shop/admin-type-price/delete/own','shop/admin-type-price/delete'),('root','shop/admin-type-price/delete-multi'),('root','shop/admin-type-price/delete/own'),('root','shop/admin-type-price/index'),('root','shop/admin-type-price/update'),('shop/admin-type-price/update/own','shop/admin-type-price/update'),('root','shop/admin-type-price/update/own'),('root','shop/admin-user-account'),('root','shop/admin-user-account/create'),('root','shop/admin-user-account/delete'),('shop/admin-user-account/delete/own','shop/admin-user-account/delete'),('root','shop/admin-user-account/delete-multi'),('root','shop/admin-user-account/delete/own'),('root','shop/admin-user-account/index'),('root','shop/admin-user-account/update'),('shop/admin-user-account/update/own','shop/admin-user-account/update'),('root','shop/admin-user-account/update/own'),('root','shop/admin-vat'),('root','shop/admin-vat/create'),('root','shop/admin-vat/delete'),('shop/admin-vat/delete/own','shop/admin-vat/delete'),('root','shop/admin-vat/delete-multi'),('root','shop/admin-vat/delete/own'),('root','shop/admin-vat/index'),('root','shop/admin-vat/update'),('shop/admin-vat/update/own','shop/admin-vat/update'),('root','shop/admin-vat/update/own'),('admin','shop/admin-viewed-product'),('manager','shop/admin-viewed-product'),('root','shop/admin-viewed-product'),('root','shop/admin-viewed-product/create'),('root','shop/admin-viewed-product/delete'),('shop/admin-viewed-product/delete/own','shop/admin-viewed-product/delete'),('root','shop/admin-viewed-product/delete-multi'),('root','shop/admin-viewed-product/delete/own'),('root','shop/admin-viewed-product/index'),('root','shop/admin-viewed-product/update'),('shop/admin-viewed-product/update/own','shop/admin-viewed-product/update'),('root','shop/admin-viewed-product/update/own'),('admin','shop/upa-order'),('root','shop/upa-order'),('user','shop/upa-order'),('root','sshConsole/admin-ssh'),('root','user'),('admin','view-shop-type-price-1'),('approved','view-shop-type-price-1'),('editor','view-shop-type-price-1'),('guest','view-shop-type-price-1'),('manager','view-shop-type-price-1'),('root','view-shop-type-price-1'),('user','view-shop-type-price-1'),('admin','view-shop-type-price-2'),('approved','view-shop-type-price-2'),('editor','view-shop-type-price-2'),('guest','view-shop-type-price-2'),('manager','view-shop-type-price-2'),('root','view-shop-type-price-2'),('user','view-shop-type-price-2'),('root','view-shop-type-price-3'),('admin','view-shop-type-price-5'),('approved','view-shop-type-price-5'),('editor','view-shop-type-price-5'),('guest','view-shop-type-price-5'),('manager','view-shop-type-price-5'),('root','view-shop-type-price-5'),('user','view-shop-type-price-5'),('root','worker');
+INSERT INTO `auth_item_child` VALUES ('admin','admin-import-stock-sale'),('admin','authclient/admin-user-auth-client'),('admin','cms.admin-access'),('admin','cms.admin-role-access'),('admin','cms.controll-panel-access'),('admin','cms.elfinder-additional-files'),('admin','cms.elfinder-common-public-files'),('admin','cms.elfinder-user-files'),('admin','cms.model-create'),('admin','cms.model-delete'),('admin','cms.model-update'),('admin','cms.model-update-advanced'),('admin','cms/admin-cache'),('admin','cms/admin-cms-content'),('admin','cms/admin-cms-content-element__1'),('admin','cms/admin-cms-content-element__1/stat'),('admin','cms/admin-cms-content-element__2'),('admin','cms/admin-cms-content-element__4'),('admin','cms/admin-cms-content-element__4/stat'),('admin','cms/admin-cms-content-element__8'),('admin','cms/admin-cms-content-element__9/stat'),('admin','cms/admin-cms-content-property'),('admin','cms/admin-cms-content-property-enum'),('admin','cms/admin-cms-content-type'),('admin','cms/admin-cms-contractor'),('admin','cms/admin-cms-lang'),('admin','cms/admin-cms-saved-filter'),('admin','cms/admin-cms-site'),('admin','cms/admin-cms-site-address'),('admin','cms/admin-cms-site-email'),('admin','cms/admin-cms-site-info'),('admin','cms/admin-cms-site-phone'),('admin','cms/admin-cms-site-social'),('admin','cms/admin-cms-sms-message'),('admin','cms/admin-cms-sms-provider'),('admin','cms/admin-cms-theme'),('admin','cms/admin-cms-tree-type'),('admin','cms/admin-cms-tree-type-property'),('admin','cms/admin-cms-tree-type-property-enum'),('admin','cms/admin-cms-user-universal-property'),('admin','cms/admin-cms-user-universal-property-enum'),('admin','cms/admin-file-manager'),('admin','cms/admin-info'),('admin','cms/admin-search-phrase'),('admin','cms/admin-search-phrase-group'),('admin','cms/admin-settings'),('admin','cms/admin-site-user'),('admin','cms/admin-storage'),('admin','cms/admin-storage-files'),('admin','cms/admin-storage-files/delete'),('admin','cms/admin-storage-files/delete-tmp-dir'),('admin','cms/admin-storage-files/download'),('admin','cms/admin-storage-files/index'),('admin','cms/admin-storage-files/stat'),('admin','cms/admin-storage-files/update'),('admin','cms/admin-storage-files/upload'),('admin','cms/admin-tree'),('admin','cms/admin-tree/delete'),('admin','cms/admin-tree/delete-multi'),('admin','cms/admin-tree/list'),('admin','cms/admin-tree/move'),('admin','cms/admin-tree/new-children'),('admin','cms/admin-tree/resort'),('admin','cms/admin-tree/update'),('admin','cms/admin-user'),('admin','cms/admin-user/activate-multi'),('admin','cms/admin-user/create'),('admin','cms/admin-user/delete'),('admin','cms/admin-user/delete-multi'),('admin','cms/admin-user/update'),('admin','cms/admin-user/update-advanced'),('admin','cms/admin-user/update-advanced/own'),('admin','cmsAgent/admin-cms-agent'),('admin','cmsExport/admin-export-task'),('admin','cmsImport/admin-import-task'),('admin','cmsMarketplace/admin-composer-update'),('admin','cmsMarketplace/admin-marketplace'),('admin','dbDumper/admin-backup'),('admin','dbDumper/admin-settings'),('admin','dbDumper/admin-structure'),('admin','form2/admin-form'),('admin','form2/admin-form-property'),('admin','form2/admin-form-send'),('admin','logDbTarget/admin-log-db-target'),('admin','mailer/admin-test'),('admin','measure/admin-measure'),('admin','money/admin-currency'),('admin','reviews2.add.review'),('admin','shop-discount-1'),('admin','shop/admin-bonus-transaction'),('admin','shop/admin-cart'),('admin','shop/admin-cms-content-element__2/duplicates'),('admin','shop/admin-cms-content-element__2/orders'),('admin','shop/admin-cms-content-element__2/orders/own'),('admin','shop/admin-cms-content-element__2/stat'),('admin','shop/admin-cms-content-element__2/store-moves'),('admin','shop/admin-cms-content-element__2/store-moves/own'),('admin','shop/admin-cms-content-element__2/update-data'),('admin','shop/admin-cms-content-element__2/viewed-products'),('admin','shop/admin-cms-content-element__2/viewed-products/own'),('admin','shop/admin-cms-site'),('admin','shop/admin-content'),('admin','shop/admin-delivery'),('admin','shop/admin-discount'),('admin','shop/admin-order'),('admin','shop/admin-order-status'),('admin','shop/admin-person-type'),('admin','shop/admin-person-type-property'),('admin','shop/admin-quantity-notice-email'),('admin','shop/admin-shop-cms-content-property'),('admin','shop/admin-shop-import-cms-site'),('admin','shop/admin-shop-site'),('admin','shop/admin-shop-store'),('admin','shop/admin-shop-supplier'),('admin','shop/admin-shop-supplier-property'),('admin','shop/admin-type-price'),('admin','shop/admin-viewed-product'),('admin','shop/upa-order'),('admin','view-shop-type-price-1'),('admin','view-shop-type-price-2'),('admin','view-shop-type-price-5'),('approved','reviews2.add.review'),('approved','shop-discount-1'),('approved','view-shop-type-price-1'),('approved','view-shop-type-price-2'),('approved','view-shop-type-price-5'),('backend/admin-backend-showing/delete/own','backend/admin-backend-showing/delete'),('backend/admin-backend-showing/update/own','backend/admin-backend-showing/update'),('cms.model-delete-own','cms.model-delete'),('cms.model-update-advanced-own','cms.model-update-advanced'),('cms.model-update-own','cms.model-update'),('cms/admin-cms-content-element/copy/own','cms/admin-cms-content-element/copy'),('cms/admin-cms-content-element/delete/own','cms/admin-cms-content-element/delete'),('cms/admin-cms-content-element/update/own','cms/admin-cms-content-element/update'),('cms/admin-cms-content-element__1/copy/own','cms/admin-cms-content-element__1/copy'),('cms/admin-cms-content-element__1/delete/own','cms/admin-cms-content-element__1/delete'),('cms/admin-cms-content-element__1/update/own','cms/admin-cms-content-element__1/update'),('cms/admin-cms-content-element__11/copy/own','cms/admin-cms-content-element__11/copy'),('cms/admin-cms-content-element__11/delete/own','cms/admin-cms-content-element__11/delete'),('cms/admin-cms-content-element__11/update/own','cms/admin-cms-content-element__11/update'),('cms/admin-cms-content-element__2/copy/own','cms/admin-cms-content-element__2/copy'),('cms/admin-cms-content-element__2/delete/own','cms/admin-cms-content-element__2/delete'),('cms/admin-cms-content-element__2/update/own','cms/admin-cms-content-element__2/update'),('cms/admin-cms-content-element__4/copy/own','cms/admin-cms-content-element__4/copy'),('cms/admin-cms-content-element__4/delete/own','cms/admin-cms-content-element__4/delete'),('cms/admin-cms-content-element__4/update/own','cms/admin-cms-content-element__4/update'),('cms/admin-cms-content-element__9/copy/own','cms/admin-cms-content-element__9/copy'),('cms/admin-cms-content-element__9/delete/own','cms/admin-cms-content-element__9/delete'),('cms/admin-cms-content-element__9/update/own','cms/admin-cms-content-element__9/update'),('cms/admin-cms-content-property-enum/delete/own','cms/admin-cms-content-property-enum/delete'),('cms/admin-cms-content-property-enum/update/own','cms/admin-cms-content-property-enum/update'),('cms/admin-cms-content-property/delete/own','cms/admin-cms-content-property/delete'),('cms/admin-cms-content-property/update/own','cms/admin-cms-content-property/update'),('cms/admin-cms-content-type/delete/own','cms/admin-cms-content-type/delete'),('cms/admin-cms-content-type/update/own','cms/admin-cms-content-type/update'),('cms/admin-cms-content/delete/own','cms/admin-cms-content/delete'),('cms/admin-cms-content/update/own','cms/admin-cms-content/update'),('cms/admin-cms-lang/delete/own','cms/admin-cms-lang/delete'),('cms/admin-cms-lang/update/own','cms/admin-cms-lang/update'),('cms/admin-cms-site/delete/own','cms/admin-cms-site/delete'),('cms/admin-cms-site/update/own','cms/admin-cms-site/update'),('cms/admin-cms-tree-type-property-enum/delete/own','cms/admin-cms-tree-type-property-enum/delete'),('cms/admin-cms-tree-type-property-enum/update/own','cms/admin-cms-tree-type-property-enum/update'),('cms/admin-cms-tree-type-property/delete/own','cms/admin-cms-tree-type-property/delete'),('cms/admin-cms-tree-type-property/update/own','cms/admin-cms-tree-type-property/update'),('cms/admin-cms-tree-type/delete/own','cms/admin-cms-tree-type/delete'),('cms/admin-cms-tree-type/update/own','cms/admin-cms-tree-type/update'),('cms/admin-cms-user-universal-property/delete/own','cms/admin-cms-user-universal-property/delete'),('cms/admin-cms-user-universal-property/update/own','cms/admin-cms-user-universal-property/update'),('cms/admin-storage-files/delete-tmp-dir/own','cms/admin-storage-files/delete-tmp-dir'),('cms/admin-storage-files/delete/own','cms/admin-storage-files/delete'),('cms/admin-storage-files/download/own','cms/admin-storage-files/download'),('cms/admin-storage-files/update/own','cms/admin-storage-files/update'),('cms/admin-tree/delete/own','cms/admin-tree/delete'),('cms/admin-tree/move/own','cms/admin-tree/move'),('cms/admin-tree/update/own','cms/admin-tree/update'),('cms/admin-user/delete/own','cms/admin-user/delete'),('cms/admin-user/update-advanced/own','cms/admin-user/update-advanced'),('cms/admin-user/update/own','cms/admin-user/update'),('cmsExport/admin-export-task/delete/own','cmsExport/admin-export-task/delete'),('cmsExport/admin-export-task/update/own','cmsExport/admin-export-task/update'),('cmsImport/admin-import-task/delete/own','cmsImport/admin-import-task/delete'),('cmsImport/admin-import-task/update/own','cmsImport/admin-import-task/update'),('cmsSearch/admin-search-phrase/delete/own','cmsSearch/admin-search-phrase/delete'),('cmsSearch/admin-search-phrase/update/own','cmsSearch/admin-search-phrase/update'),('editor','cms.admin-access'),('editor','cms.controll-panel-access'),('editor','cms.elfinder-common-public-files'),('editor','cms.elfinder-user-files'),('editor','cms.model-create'),('editor','cms.model-delete-own'),('editor','cms.model-update-own'),('editor','cms/admin-storage-files'),('editor','cms/admin-storage-files/delete-tmp-dir/own'),('editor','cms/admin-storage-files/delete/own'),('editor','cms/admin-storage-files/download/own'),('editor','cms/admin-storage-files/index/own'),('editor','cms/admin-storage-files/update/own'),('editor','cms/admin-storage-files/upload'),('editor','cms/admin-tree'),('editor','cms/admin-tree/delete/own'),('editor','cms/admin-tree/move/own'),('editor','cms/admin-tree/new-children'),('editor','cms/admin-tree/update/own'),('editor','form2/admin-form-send'),('editor','reviews2.add.review'),('editor','shop-discount-1'),('editor','shop/admin-cms-content-element'),('editor','view-shop-type-price-1'),('editor','view-shop-type-price-2'),('editor','view-shop-type-price-5'),('form2/admin-form-send/delete/own','form2/admin-form-send/delete'),('form2/admin-form-send/view/own','form2/admin-form-send/view'),('form2/admin-form/delete/own','form2/admin-form/delete'),('form2/admin-form/update/own','form2/admin-form/update'),('form2/admin-form/view/own','form2/admin-form/view'),('guest','reviews2.add.review'),('guest','shop-discount-1'),('guest','view-shop-type-price-1'),('guest','view-shop-type-price-2'),('guest','view-shop-type-price-5'),('manager','cms.admin-access'),('manager','cms.controll-panel-access'),('manager','cms.elfinder-common-public-files'),('manager','cms.elfinder-user-files'),('manager','cms.model-create'),('manager','cms.model-delete'),('manager','cms.model-update'),('manager','cms/admin-cache'),('manager','cms/admin-cms-content-element__1'),('manager','cms/admin-cms-content-element__2'),('manager','cms/admin-cms-content-element__4'),('manager','cms/admin-cms-content-element__8'),('manager','cms/admin-cms-saved-filter'),('manager','cms/admin-search-phrase'),('manager','cms/admin-search-phrase-group'),('manager','cms/admin-storage-files'),('manager','cms/admin-storage-files/delete-tmp-dir'),('manager','cms/admin-storage-files/delete/own'),('manager','cms/admin-storage-files/download'),('manager','cms/admin-storage-files/index'),('manager','cms/admin-storage-files/update'),('manager','cms/admin-storage-files/upload'),('manager','cms/admin-tree'),('manager','cms/admin-tree/delete/own'),('manager','cms/admin-tree/move'),('manager','cms/admin-tree/new-children'),('manager','cms/admin-tree/resort'),('manager','cms/admin-tree/update'),('manager','form2/admin-form-send'),('manager','reviews2.add.review'),('manager','shop-discount-1'),('manager','shop/admin-basket'),('manager','shop/admin-buyer'),('manager','shop/admin-cart'),('manager','shop/admin-cms-content-element'),('manager','shop/admin-order'),('manager','shop/admin-quantity-notice-email'),('manager','shop/admin-report-order'),('manager','shop/admin-report-product'),('manager','shop/admin-viewed-product'),('manager','view-shop-type-price-1'),('manager','view-shop-type-price-2'),('manager','view-shop-type-price-5'),('measure/admin-measure/delete/own','measure/admin-measure/delete'),('measure/admin-measure/update/own','measure/admin-measure/update'),('reviews2/admin-message/delete/own','reviews2/admin-message/delete'),('reviews2/admin-message/update/own','reviews2/admin-message/update'),('root',''),('root','admin'),('root','admin-import-stock-sale'),('root','admin/admin-permission'),('root','admin/admin-role'),('root','admin/checker'),('root','admin/clear'),('root','admin/db'),('root','admin/email'),('root','admin/gii'),('root','admin/index'),('root','admin/info'),('root','admin/ssh'),('root','approved'),('root','authclient/admin-user-auth-client'),('root','authclient/admin-user-auth-client/create'),('root','authclient/admin-user-auth-client/delete'),('root','authclient/admin-user-auth-client/delete-multi'),('root','authclient/admin-user-auth-client/index'),('root','authclient/admin-user-auth-client/update'),('root','backend/admin-backend-showing/create'),('root','backend/admin-backend-showing/delete'),('root','backend/admin-backend-showing/delete/own'),('root','backend/admin-backend-showing/index'),('root','backend/admin-backend-showing/update'),('root','backend/admin-backend-showing/update/own'),('root','buy-shop-type-price-1'),('root','cms-measure/admin-measure'),('root','cms-upa-permission'),('root','cms.admin-access'),('root','cms.admin-dashboards-edit'),('root','cms.admin-role-access'),('root','cms.controll-panel-access'),('root','cms.edit-view-files'),('root','cms.elfinder-additional-files'),('root','cms.elfinder-common-public-files'),('root','cms.elfinder-user-files'),('root','cms.model-create'),('root','cms.model-delete'),('root','cms.model-delete-own'),('root','cms.model-update'),('root','cms.model-update-advanced'),('root','cms.model-update-advanced-own'),('root','cms.model-update-own'),('root','cms.root'),('root','cms.user-full-edit'),('root','cms/admin-cache'),('root','cms/admin-clear'),('root','cms/admin-clear/index'),('root','cms/admin-cms-agent'),('root','cms/admin-cms-content'),('root','cms/admin-cms-content-element'),('root','cms/admin-cms-content-element/activate-multi'),('root','cms/admin-cms-content-element/change-tree-multi'),('root','cms/admin-cms-content-element/change-trees-multi'),('root','cms/admin-cms-content-element/copy'),('root','cms/admin-cms-content-element/copy/own'),('root','cms/admin-cms-content-element/create'),('root','cms/admin-cms-content-element/deactivate-multi'),('root','cms/admin-cms-content-element/delete'),('root','cms/admin-cms-content-element/delete-multi'),('root','cms/admin-cms-content-element/delete/own'),('root','cms/admin-cms-content-element/inActivate-multi'),('root','cms/admin-cms-content-element/index'),('root','cms/admin-cms-content-element/rp'),('root','cms/admin-cms-content-element/update'),('root','cms/admin-cms-content-element/update/own'),('root','cms/admin-cms-content-element__1'),('root','cms/admin-cms-content-element__1/activate-multi'),('root','cms/admin-cms-content-element__1/change-tree-multi'),('root','cms/admin-cms-content-element__1/change-trees-multi'),('root','cms/admin-cms-content-element__1/copy'),('root','cms/admin-cms-content-element__1/copy/own'),('root','cms/admin-cms-content-element__1/create'),('root','cms/admin-cms-content-element__1/deactivate-multi'),('root','cms/admin-cms-content-element__1/delete'),('root','cms/admin-cms-content-element__1/delete-multi'),('root','cms/admin-cms-content-element__1/delete/own'),('root','cms/admin-cms-content-element__1/index'),('root','cms/admin-cms-content-element__1/rp'),('root','cms/admin-cms-content-element__1/stat'),('root','cms/admin-cms-content-element__1/update'),('root','cms/admin-cms-content-element__1/update/own'),('root','cms/admin-cms-content-element__10'),('root','cms/admin-cms-content-element__11'),('root','cms/admin-cms-content-element__11/activate-multi'),('root','cms/admin-cms-content-element__11/change-tree-multi'),('root','cms/admin-cms-content-element__11/change-trees-multi'),('root','cms/admin-cms-content-element__11/copy'),('root','cms/admin-cms-content-element__11/copy/own'),('root','cms/admin-cms-content-element__11/create'),('root','cms/admin-cms-content-element__11/deactivate-multi'),('root','cms/admin-cms-content-element__11/delete'),('root','cms/admin-cms-content-element__11/delete-multi'),('root','cms/admin-cms-content-element__11/delete/own'),('root','cms/admin-cms-content-element__11/index'),('root','cms/admin-cms-content-element__11/rp'),('root','cms/admin-cms-content-element__11/update'),('root','cms/admin-cms-content-element__11/update/own'),('root','cms/admin-cms-content-element__2'),('root','cms/admin-cms-content-element__2/activate-multi'),('root','cms/admin-cms-content-element__2/change-tree-multi'),('root','cms/admin-cms-content-element__2/change-trees-multi'),('root','cms/admin-cms-content-element__2/copy'),('root','cms/admin-cms-content-element__2/copy/own'),('root','cms/admin-cms-content-element__2/create'),('root','cms/admin-cms-content-element__2/deactivate-multi'),('root','cms/admin-cms-content-element__2/delete'),('root','cms/admin-cms-content-element__2/delete-multi'),('root','cms/admin-cms-content-element__2/delete/own'),('root','cms/admin-cms-content-element__2/index'),('root','cms/admin-cms-content-element__2/rp'),('root','cms/admin-cms-content-element__2/update'),('root','cms/admin-cms-content-element__2/update/own'),('root','cms/admin-cms-content-element__3'),('root','cms/admin-cms-content-element__4'),('root','cms/admin-cms-content-element__4/activate-multi'),('root','cms/admin-cms-content-element__4/change-tree-multi'),('root','cms/admin-cms-content-element__4/change-trees-multi'),('root','cms/admin-cms-content-element__4/copy'),('root','cms/admin-cms-content-element__4/copy/own'),('root','cms/admin-cms-content-element__4/create'),('root','cms/admin-cms-content-element__4/deactivate-multi'),('root','cms/admin-cms-content-element__4/delete'),('root','cms/admin-cms-content-element__4/delete-multi'),('root','cms/admin-cms-content-element__4/delete/own'),('root','cms/admin-cms-content-element__4/index'),('root','cms/admin-cms-content-element__4/rp'),('root','cms/admin-cms-content-element__4/stat'),('root','cms/admin-cms-content-element__4/update'),('root','cms/admin-cms-content-element__4/update/own'),('root','cms/admin-cms-content-element__5'),('root','cms/admin-cms-content-element__6'),('root','cms/admin-cms-content-element__7'),('root','cms/admin-cms-content-element__8'),('root','cms/admin-cms-content-element__9'),('root','cms/admin-cms-content-element__9/activate-multi'),('root','cms/admin-cms-content-element__9/change-tree-multi'),('root','cms/admin-cms-content-element__9/change-trees-multi'),('root','cms/admin-cms-content-element__9/copy'),('root','cms/admin-cms-content-element__9/copy/own'),('root','cms/admin-cms-content-element__9/create'),('root','cms/admin-cms-content-element__9/deactivate-multi'),('root','cms/admin-cms-content-element__9/delete'),('root','cms/admin-cms-content-element__9/delete-multi'),('root','cms/admin-cms-content-element__9/delete/own'),('root','cms/admin-cms-content-element__9/index'),('root','cms/admin-cms-content-element__9/rp'),('root','cms/admin-cms-content-element__9/stat'),('root','cms/admin-cms-content-element__9/update'),('root','cms/admin-cms-content-element__9/update/own'),('root','cms/admin-cms-content-property'),('root','cms/admin-cms-content-property-enum'),('root','cms/admin-cms-content-property-enum/create'),('root','cms/admin-cms-content-property-enum/delete'),('root','cms/admin-cms-content-property-enum/delete-multi'),('root','cms/admin-cms-content-property-enum/delete/own'),('root','cms/admin-cms-content-property-enum/index'),('root','cms/admin-cms-content-property-enum/update'),('root','cms/admin-cms-content-property-enum/update/own'),('root','cms/admin-cms-content-property/create'),('root','cms/admin-cms-content-property/delete'),('root','cms/admin-cms-content-property/delete-multi'),('root','cms/admin-cms-content-property/delete/own'),('root','cms/admin-cms-content-property/index'),('root','cms/admin-cms-content-property/update'),('root','cms/admin-cms-content-property/update/own'),('root','cms/admin-cms-content-type'),('root','cms/admin-cms-content-type/create'),('root','cms/admin-cms-content-type/delete'),('root','cms/admin-cms-content-type/delete-multi'),('root','cms/admin-cms-content-type/delete/own'),('root','cms/admin-cms-content-type/index'),('root','cms/admin-cms-content-type/update'),('root','cms/admin-cms-content-type/update/own'),('root','cms/admin-cms-content/create'),('root','cms/admin-cms-content/delete'),('root','cms/admin-cms-content/delete-multi'),('root','cms/admin-cms-content/delete/own'),('root','cms/admin-cms-content/index'),('root','cms/admin-cms-content/update'),('root','cms/admin-cms-content/update/own'),('root','cms/admin-cms-contractor'),('root','cms/admin-cms-lang'),('root','cms/admin-cms-lang/activate-multi'),('root','cms/admin-cms-lang/create'),('root','cms/admin-cms-lang/delete'),('root','cms/admin-cms-lang/delete-multi'),('root','cms/admin-cms-lang/delete/own'),('root','cms/admin-cms-lang/inActivate-multi'),('root','cms/admin-cms-lang/index'),('root','cms/admin-cms-lang/update'),('root','cms/admin-cms-lang/update/own'),('root','cms/admin-cms-saved-filter'),('root','cms/admin-cms-site'),('root','cms/admin-cms-site-address'),('root','cms/admin-cms-site-domain'),('root','cms/admin-cms-site-email'),('root','cms/admin-cms-site-info'),('root','cms/admin-cms-site-phone'),('root','cms/admin-cms-site-social'),('root','cms/admin-cms-site/activate-multi'),('root','cms/admin-cms-site/create'),('root','cms/admin-cms-site/def-multi'),('root','cms/admin-cms-site/delete'),('root','cms/admin-cms-site/delete-multi'),('root','cms/admin-cms-site/delete/own'),('root','cms/admin-cms-site/inActivate-multi'),('root','cms/admin-cms-site/index'),('root','cms/admin-cms-site/update'),('root','cms/admin-cms-site/update/own'),('root','cms/admin-cms-sms-message'),('root','cms/admin-cms-sms-provider'),('root','cms/admin-cms-theme'),('root','cms/admin-cms-tree-type'),('root','cms/admin-cms-tree-type-property'),('root','cms/admin-cms-tree-type-property-enum'),('root','cms/admin-cms-tree-type-property-enum/create'),('root','cms/admin-cms-tree-type-property-enum/delete'),('root','cms/admin-cms-tree-type-property-enum/delete-multi'),('root','cms/admin-cms-tree-type-property-enum/delete/own'),('root','cms/admin-cms-tree-type-property-enum/index'),('root','cms/admin-cms-tree-type-property-enum/update'),('root','cms/admin-cms-tree-type-property-enum/update/own'),('root','cms/admin-cms-tree-type-property/create'),('root','cms/admin-cms-tree-type-property/delete'),('root','cms/admin-cms-tree-type-property/delete-multi'),('root','cms/admin-cms-tree-type-property/delete/own'),('root','cms/admin-cms-tree-type-property/index'),('root','cms/admin-cms-tree-type-property/update'),('root','cms/admin-cms-tree-type-property/update/own'),('root','cms/admin-cms-tree-type/activate-multi'),('root','cms/admin-cms-tree-type/create'),('root','cms/admin-cms-tree-type/delete'),('root','cms/admin-cms-tree-type/delete-multi'),('root','cms/admin-cms-tree-type/delete/own'),('root','cms/admin-cms-tree-type/inActivate-multi'),('root','cms/admin-cms-tree-type/index'),('root','cms/admin-cms-tree-type/update'),('root','cms/admin-cms-tree-type/update/own'),('root','cms/admin-cms-user-universal-property'),('root','cms/admin-cms-user-universal-property-enum'),('root','cms/admin-cms-user-universal-property/create'),('root','cms/admin-cms-user-universal-property/delete'),('root','cms/admin-cms-user-universal-property/delete-multi'),('root','cms/admin-cms-user-universal-property/delete/own'),('root','cms/admin-cms-user-universal-property/index'),('root','cms/admin-cms-user-universal-property/update'),('root','cms/admin-cms-user-universal-property/update/own'),('root','cms/admin-component-settings'),('root','cms/admin-file-manager'),('root','cms/admin-info'),('root','cms/admin-info/index'),('root','cms/admin-marketplace'),('root','cms/admin-message'),('root','cms/admin-profile'),('root','cms/admin-search-phrase'),('root','cms/admin-search-phrase-group'),('root','cms/admin-settings'),('root','cms/admin-settings/index'),('root','cms/admin-site-user'),('root','cms/admin-storage'),('root','cms/admin-storage-files'),('root','cms/admin-storage-files/create'),('root','cms/admin-storage-files/delete'),('root','cms/admin-storage-files/delete-multi'),('root','cms/admin-storage-files/delete-tmp-dir'),('root','cms/admin-storage-files/delete-tmp-dir/own'),('root','cms/admin-storage-files/delete/own'),('root','cms/admin-storage-files/download'),('root','cms/admin-storage-files/download/own'),('root','cms/admin-storage-files/index'),('root','cms/admin-storage-files/index/own'),('root','cms/admin-storage-files/stat'),('root','cms/admin-storage-files/update'),('root','cms/admin-storage-files/update/own'),('root','cms/admin-storage-files/upload'),('root','cms/admin-storage/index'),('root','cms/admin-tools'),('root','cms/admin-tree'),('root','cms/admin-tree-menu'),('root','cms/admin-tree/delete'),('root','cms/admin-tree/delete-multi'),('root','cms/admin-tree/delete/own'),('root','cms/admin-tree/index'),('root','cms/admin-tree/list'),('root','cms/admin-tree/move'),('root','cms/admin-tree/move/own'),('root','cms/admin-tree/new-children'),('root','cms/admin-tree/resort'),('root','cms/admin-tree/update'),('root','cms/admin-tree/update/own'),('root','cms/admin-universal-component-settings'),('root','cms/admin-user'),('root','cms/admin-user-auth-client'),('root','cms/admin-user-email'),('root','cms/admin-user-email/create'),('root','cms/admin-user-email/delete'),('root','cms/admin-user-email/delete-multi'),('root','cms/admin-user-email/index'),('root','cms/admin-user-email/update'),('root','cms/admin-user-phone'),('root','cms/admin-user-phone/create'),('root','cms/admin-user-phone/delete'),('root','cms/admin-user-phone/delete-multi'),('root','cms/admin-user-phone/index'),('root','cms/admin-user-phone/update'),('root','cms/admin-user/activate-multi'),('root','cms/admin-user/create'),('root','cms/admin-user/delete'),('root','cms/admin-user/delete-multi'),('root','cms/admin-user/delete/own'),('root','cms/admin-user/inActivate-multi'),('root','cms/admin-user/index'),('root','cms/admin-user/update'),('root','cms/admin-user/update-advanced'),('root','cms/admin-user/update-advanced/own'),('root','cms/admin-user/update/own'),('root','cmsAgent/admin-cms-agent'),('root','cmsAgent/admin-cms-agent/activate-multi'),('root','cmsAgent/admin-cms-agent/create'),('root','cmsAgent/admin-cms-agent/delete'),('root','cmsAgent/admin-cms-agent/delete-multi'),('root','cmsAgent/admin-cms-agent/inActivate-multi'),('root','cmsAgent/admin-cms-agent/index'),('root','cmsAgent/admin-cms-agent/update'),('root','cmsExport/admin-export-task'),('root','cmsExport/admin-export-task/create'),('root','cmsExport/admin-export-task/delete'),('root','cmsExport/admin-export-task/delete-multi'),('root','cmsExport/admin-export-task/delete/own'),('root','cmsExport/admin-export-task/index'),('root','cmsExport/admin-export-task/update'),('root','cmsExport/admin-export-task/update/own'),('root','cmsImport/admin-import-task'),('root','cmsImport/admin-import-task/create'),('root','cmsImport/admin-import-task/delete'),('root','cmsImport/admin-import-task/delete-multi'),('root','cmsImport/admin-import-task/delete/own'),('root','cmsImport/admin-import-task/index'),('root','cmsImport/admin-import-task/update'),('root','cmsImport/admin-import-task/update/own'),('root','cmsMarketplace/admin-composer-update'),('root','cmsMarketplace/admin-composer-update/update'),('root','cmsMarketplace/admin-marketplace'),('root','cmsMarketplace/admin-marketplace/catalog'),('root','cmsMarketplace/admin-marketplace/index'),('root','cmsMarketplace/admin-marketplace/install'),('root','cmsMarketplace/admin-marketplace/test'),('root','cmsMarketplace/admin-marketplace/update'),('root','cmsSearch/admin-search-phrase'),('root','cmsSearch/admin-search-phrase-group'),('root','cmsSearch/admin-search-phrase-group/index'),('root','cmsSearch/admin-search-phrase/create'),('root','cmsSearch/admin-search-phrase/delete'),('root','cmsSearch/admin-search-phrase/delete-multi'),('root','cmsSearch/admin-search-phrase/delete/own'),('root','cmsSearch/admin-search-phrase/index'),('root','cmsSearch/admin-search-phrase/update'),('root','cmsSearch/admin-search-phrase/update/own'),('root','dbDumper/admin-backup'),('root','dbDumper/admin-settings'),('root','dbDumper/admin-structure'),('root','editor'),('root','form2/admin-form'),('root','form2/admin-form-property'),('root','form2/admin-form-send'),('root','form2/admin-form-send/delete'),('root','form2/admin-form-send/delete-multi'),('root','form2/admin-form-send/delete/own'),('root','form2/admin-form-send/index'),('root','form2/admin-form-send/view'),('root','form2/admin-form-send/view/own'),('root','form2/admin-form/create'),('root','form2/admin-form/delete'),('root','form2/admin-form/delete-multi'),('root','form2/admin-form/delete/own'),('root','form2/admin-form/index'),('root','form2/admin-form/update'),('root','form2/admin-form/update/own'),('root','form2/admin-form/view'),('root','form2/admin-form/view/own'),('root','guest'),('root','kladr/admin-kladr-location'),('root','logDbTarget/admin-log-db-target'),('root','logDbTarget/admin-log-db-target/create'),('root','logDbTarget/admin-log-db-target/delete'),('root','logDbTarget/admin-log-db-target/delete-multi'),('root','logDbTarget/admin-log-db-target/index'),('root','logDbTarget/admin-log-db-target/update'),('root','mailer/admin-test'),('root','manager'),('root','measure/admin-measure'),('root','measure/admin-measure/create'),('root','measure/admin-measure/def-multi'),('root','measure/admin-measure/delete'),('root','measure/admin-measure/delete-multi'),('root','measure/admin-measure/delete/own'),('root','measure/admin-measure/index'),('root','measure/admin-measure/update'),('root','measure/admin-measure/update/own'),('root','money/admin-currency'),('root','money/admin-currency/activate-multi'),('root','money/admin-currency/create'),('root','money/admin-currency/delete'),('root','money/admin-currency/delete-multi'),('root','money/admin-currency/inActivate-multi'),('root','money/admin-currency/index'),('root','money/admin-currency/update'),('root','money/admin-currency/update-all'),('root','money/admin-currency/update-course'),('root','rbac/admin-permission'),('root','rbac/admin-permission/create'),('root','rbac/admin-permission/delete'),('root','rbac/admin-permission/delete-multi'),('root','rbac/admin-permission/index'),('root','rbac/admin-permission/update'),('root','rbac/admin-permission/update-data'),('root','rbac/admin-permission/view'),('root','rbac/admin-role'),('root','rbac/admin-role/create'),('root','rbac/admin-role/delete'),('root','rbac/admin-role/delete-multi'),('root','rbac/admin-role/index'),('root','rbac/admin-role/update'),('root','rbac/admin-role/view'),('root','reviews2.add.review'),('root','reviews2/admin-message'),('root','reviews2/admin-message/create'),('root','reviews2/admin-message/delete'),('root','reviews2/admin-message/delete-multi'),('root','reviews2/admin-message/delete/own'),('root','reviews2/admin-message/index'),('root','reviews2/admin-message/status-allowed-multi'),('root','reviews2/admin-message/status-canceled-multi'),('root','reviews2/admin-message/status-processed-multi'),('root','reviews2/admin-message/update'),('root','reviews2/admin-message/update/own'),('root','shop-discount-'),('root','shop-discount-1'),('root','shop-type-price-1'),('root','shop/admin-affiliate'),('root','shop/admin-affiliate-plan'),('root','shop/admin-affiliate-plan/create'),('root','shop/admin-affiliate-plan/delete'),('root','shop/admin-affiliate-plan/delete-multi'),('root','shop/admin-affiliate-plan/delete/own'),('root','shop/admin-affiliate-plan/index'),('root','shop/admin-affiliate-plan/update'),('root','shop/admin-affiliate-plan/update/own'),('root','shop/admin-affiliate-tier'),('root','shop/admin-affiliate-tier/create'),('root','shop/admin-affiliate-tier/delete'),('root','shop/admin-affiliate-tier/delete-multi'),('root','shop/admin-affiliate-tier/delete/own'),('root','shop/admin-affiliate-tier/index'),('root','shop/admin-affiliate-tier/update'),('root','shop/admin-affiliate-tier/update/own'),('root','shop/admin-affiliate/create'),('root','shop/admin-affiliate/delete'),('root','shop/admin-affiliate/delete-multi'),('root','shop/admin-affiliate/delete/own'),('root','shop/admin-affiliate/index'),('root','shop/admin-affiliate/update'),('root','shop/admin-affiliate/update/own'),('root','shop/admin-basket'),('root','shop/admin-bill'),('root','shop/admin-bonus-transaction'),('root','shop/admin-buyer'),('root','shop/admin-buyer-1'),('root','shop/admin-buyer-1/create'),('root','shop/admin-buyer-1/delete'),('root','shop/admin-buyer-1/delete-multi'),('root','shop/admin-buyer-1/delete/own'),('root','shop/admin-buyer-1/index'),('root','shop/admin-buyer-1/update'),('root','shop/admin-buyer-1/update/own'),('root','shop/admin-buyer-2'),('root','shop/admin-buyer-user'),('root','shop/admin-buyer-user/delete-multi'),('root','shop/admin-buyer-user/index'),('root','shop/admin-buyer-user/update'),('root','shop/admin-buyer-user/update/own'),('root','shop/admin-buyer/create'),('root','shop/admin-buyer/delete'),('root','shop/admin-buyer/delete-multi'),('root','shop/admin-buyer/delete/own'),('root','shop/admin-buyer/index'),('root','shop/admin-buyer/update'),('root','shop/admin-buyer/update/own'),('root','shop/admin-cart'),('root','shop/admin-cms-content-element'),('root','shop/admin-cms-content-element/activate-multi'),('root','shop/admin-cms-content-element/change-tree-multi'),('root','shop/admin-cms-content-element/change-trees-multi'),('root','shop/admin-cms-content-element/create'),('root','shop/admin-cms-content-element/deactivate-multi'),('root','shop/admin-cms-content-element/delete'),('root','shop/admin-cms-content-element/delete-multi'),('root','shop/admin-cms-content-element/delete/own'),('root','shop/admin-cms-content-element/inActivate-multi'),('root','shop/admin-cms-content-element/index'),('root','shop/admin-cms-content-element/rp'),('root','shop/admin-cms-content-element/to-offer'),('root','shop/admin-cms-content-element/update'),('root','shop/admin-cms-content-element/update/own'),('root','shop/admin-cms-content-element__10'),('root','shop/admin-cms-content-element__10/activate-multi'),('root','shop/admin-cms-content-element__10/change-tree-multi'),('root','shop/admin-cms-content-element__10/change-trees-multi'),('root','shop/admin-cms-content-element__10/copy'),('root','shop/admin-cms-content-element__10/copy/own'),('root','shop/admin-cms-content-element__10/create'),('root','shop/admin-cms-content-element__10/deactivate-multi'),('root','shop/admin-cms-content-element__10/delete'),('root','shop/admin-cms-content-element__10/delete-multi'),('root','shop/admin-cms-content-element__10/delete/own'),('root','shop/admin-cms-content-element__10/index'),('root','shop/admin-cms-content-element__10/rp'),('root','shop/admin-cms-content-element__10/to-offer'),('root','shop/admin-cms-content-element__10/update'),('root','shop/admin-cms-content-element__10/update/own'),('root','shop/admin-cms-content-element__10__10'),('root','shop/admin-cms-content-element__10__10/copy'),('root','shop/admin-cms-content-element__10__10/copy/own'),('root','shop/admin-cms-content-element__10__10/delete'),('root','shop/admin-cms-content-element__10__10/delete/own'),('root','shop/admin-cms-content-element__10__10/update'),('root','shop/admin-cms-content-element__10__10/update/own'),('root','shop/admin-cms-content-element__2'),('root','shop/admin-cms-content-element__2/activate-multi'),('root','shop/admin-cms-content-element__2/change-tree-multi'),('root','shop/admin-cms-content-element__2/change-trees-multi'),('root','shop/admin-cms-content-element__2/copy'),('root','shop/admin-cms-content-element__2/copy/own'),('root','shop/admin-cms-content-element__2/create'),('root','shop/admin-cms-content-element__2/deactivate-multi'),('root','shop/admin-cms-content-element__2/delete'),('root','shop/admin-cms-content-element__2/delete-multi'),('root','shop/admin-cms-content-element__2/delete/own'),('root','shop/admin-cms-content-element__2/duplicates'),('root','shop/admin-cms-content-element__2/inActivate-multi'),('root','shop/admin-cms-content-element__2/index'),('root','shop/admin-cms-content-element__2/orders'),('root','shop/admin-cms-content-element__2/orders/own'),('root','shop/admin-cms-content-element__2/rp'),('root','shop/admin-cms-content-element__2/shop-properties'),('root','shop/admin-cms-content-element__2/stat'),('root','shop/admin-cms-content-element__2/store-moves'),('root','shop/admin-cms-content-element__2/store-moves/own'),('root','shop/admin-cms-content-element__2/to-offer'),('root','shop/admin-cms-content-element__2/update'),('root','shop/admin-cms-content-element__2/update-data'),('root','shop/admin-cms-content-element__2/update/own'),('root','shop/admin-cms-content-element__2/viewed-products'),('root','shop/admin-cms-content-element__2/viewed-products/own'),('root','shop/admin-cms-content-element__2__2'),('root','shop/admin-cms-content-element__2__2/copy'),('root','shop/admin-cms-content-element__2__2/copy/own'),('root','shop/admin-cms-content-element__2__2/delete'),('root','shop/admin-cms-content-element__2__2/delete/own'),('root','shop/admin-cms-content-element__2__2/update'),('root','shop/admin-cms-content-element__2__2/update/own'),('root','shop/admin-cms-site'),('root','shop/admin-content'),('root','shop/admin-content/create'),('root','shop/admin-content/delete'),('root','shop/admin-content/delete-multi'),('root','shop/admin-content/delete/own'),('root','shop/admin-content/index'),('root','shop/admin-content/update'),('root','shop/admin-content/update/own'),('root','shop/admin-delivery'),('root','shop/admin-delivery/create'),('root','shop/admin-delivery/delete'),('root','shop/admin-delivery/delete-multi'),('root','shop/admin-delivery/delete/own'),('root','shop/admin-delivery/index'),('root','shop/admin-delivery/update'),('root','shop/admin-delivery/update/own'),('root','shop/admin-discount'),('root','shop/admin-discount-coupon'),('root','shop/admin-discount-coupon/create'),('root','shop/admin-discount-coupon/delete'),('root','shop/admin-discount-coupon/delete-multi'),('root','shop/admin-discount-coupon/delete/own'),('root','shop/admin-discount-coupon/index'),('root','shop/admin-discount-coupon/update'),('root','shop/admin-discount-coupon/update/own'),('root','shop/admin-discount/activate-multi'),('root','shop/admin-discount/create'),('root','shop/admin-discount/deactivate-multi'),('root','shop/admin-discount/delete'),('root','shop/admin-discount/delete-multi'),('root','shop/admin-discount/delete/own'),('root','shop/admin-discount/index'),('root','shop/admin-discount/update'),('root','shop/admin-discount/update/own'),('root','shop/admin-discsave'),('root','shop/admin-discsave/create'),('root','shop/admin-discsave/delete'),('root','shop/admin-discsave/delete-multi'),('root','shop/admin-discsave/delete/own'),('root','shop/admin-discsave/index'),('root','shop/admin-discsave/update'),('root','shop/admin-discsave/update/own'),('root','shop/admin-extra'),('root','shop/admin-extra/create'),('root','shop/admin-extra/delete'),('root','shop/admin-extra/delete-multi'),('root','shop/admin-extra/delete/own'),('root','shop/admin-extra/index'),('root','shop/admin-extra/update'),('root','shop/admin-extra/update/own'),('root','shop/admin-fuser'),('root','shop/admin-fuser/delete'),('root','shop/admin-fuser/delete-multi'),('root','shop/admin-fuser/delete/own'),('root','shop/admin-fuser/index'),('root','shop/admin-order'),('root','shop/admin-order-change'),('root','shop/admin-order-status'),('root','shop/admin-order-status/create'),('root','shop/admin-order-status/delete'),('root','shop/admin-order-status/delete-multi'),('root','shop/admin-order-status/delete/own'),('root','shop/admin-order-status/index'),('root','shop/admin-order-status/update'),('root','shop/admin-order-status/update/own'),('root','shop/admin-order/bills'),('root','shop/admin-order/bills/own'),('root','shop/admin-order/changes'),('root','shop/admin-order/changes/own'),('root','shop/admin-order/create'),('root','shop/admin-order/create-order'),('root','shop/admin-order/delete'),('root','shop/admin-order/delete-multi'),('root','shop/admin-order/delete/own'),('root','shop/admin-order/index'),('root','shop/admin-order/payments'),('root','shop/admin-order/payments/own'),('root','shop/admin-order/update'),('root','shop/admin-order/update/own'),('root','shop/admin-pay-system'),('root','shop/admin-pay-system/create'),('root','shop/admin-pay-system/delete'),('root','shop/admin-pay-system/delete-multi'),('root','shop/admin-pay-system/delete/own'),('root','shop/admin-pay-system/index'),('root','shop/admin-pay-system/update'),('root','shop/admin-pay-system/update/own'),('root','shop/admin-payment'),('root','shop/admin-person-type'),('root','shop/admin-person-type-property'),('root','shop/admin-person-type-property/create'),('root','shop/admin-person-type-property/delete'),('root','shop/admin-person-type-property/delete-multi'),('root','shop/admin-person-type-property/delete/own'),('root','shop/admin-person-type-property/index'),('root','shop/admin-person-type-property/update'),('root','shop/admin-person-type-property/update/own'),('root','shop/admin-person-type/create'),('root','shop/admin-person-type/delete'),('root','shop/admin-person-type/delete-multi'),('root','shop/admin-person-type/delete/own'),('root','shop/admin-person-type/index'),('root','shop/admin-person-type/update'),('root','shop/admin-person-type/update/own'),('root','shop/admin-quantity-notice-email'),('root','shop/admin-quantity-notice-email/create'),('root','shop/admin-quantity-notice-email/delete'),('root','shop/admin-quantity-notice-email/delete-multi'),('root','shop/admin-quantity-notice-email/delete/own'),('root','shop/admin-quantity-notice-email/index'),('root','shop/admin-quantity-notice-email/update'),('root','shop/admin-quantity-notice-email/update/own'),('root','shop/admin-report-order'),('root','shop/admin-report-product'),('root','shop/admin-shop-cms-content-property'),('root','shop/admin-shop-import-cms-site'),('root','shop/admin-shop-site'),('root','shop/admin-shop-store'),('root','shop/admin-shop-store-product'),('root','shop/admin-shop-store-supplier'),('root','shop/admin-shop-supplier'),('root','shop/admin-shop-supplier-property'),('root','shop/admin-store'),('root','shop/admin-store/activate-multi'),('root','shop/admin-store/change-tree-multi'),('root','shop/admin-store/change-trees-multi'),('root','shop/admin-store/create'),('root','shop/admin-store/delete'),('root','shop/admin-store/delete-multi'),('root','shop/admin-store/delete/own'),('root','shop/admin-store/inActivate-multi'),('root','shop/admin-store/index'),('root','shop/admin-store/rp'),('root','shop/admin-store/update'),('root','shop/admin-store/update/own'),('root','shop/admin-store__1'),('root','shop/admin-store__10'),('root','shop/admin-store__11'),('root','shop/admin-store__2'),('root','shop/admin-store__4'),('root','shop/admin-store__9'),('root','shop/admin-tax'),('root','shop/admin-tax-rate'),('root','shop/admin-tax-rate/create'),('root','shop/admin-tax-rate/delete'),('root','shop/admin-tax-rate/delete-multi'),('root','shop/admin-tax-rate/delete/own'),('root','shop/admin-tax-rate/index'),('root','shop/admin-tax-rate/update'),('root','shop/admin-tax-rate/update/own'),('root','shop/admin-tax/create'),('root','shop/admin-tax/delete'),('root','shop/admin-tax/delete-multi'),('root','shop/admin-tax/delete/own'),('root','shop/admin-tax/index'),('root','shop/admin-tax/update'),('root','shop/admin-tax/update/own'),('root','shop/admin-type-price'),('root','shop/admin-type-price/create'),('root','shop/admin-type-price/def-multi'),('root','shop/admin-type-price/delete'),('root','shop/admin-type-price/delete-multi'),('root','shop/admin-type-price/delete/own'),('root','shop/admin-type-price/index'),('root','shop/admin-type-price/update'),('root','shop/admin-type-price/update/own'),('root','shop/admin-user-account'),('root','shop/admin-user-account/create'),('root','shop/admin-user-account/delete'),('root','shop/admin-user-account/delete-multi'),('root','shop/admin-user-account/delete/own'),('root','shop/admin-user-account/index'),('root','shop/admin-user-account/update'),('root','shop/admin-user-account/update/own'),('root','shop/admin-vat'),('root','shop/admin-vat/create'),('root','shop/admin-vat/delete'),('root','shop/admin-vat/delete-multi'),('root','shop/admin-vat/delete/own'),('root','shop/admin-vat/index'),('root','shop/admin-vat/update'),('root','shop/admin-vat/update/own'),('root','shop/admin-viewed-product'),('root','shop/admin-viewed-product/create'),('root','shop/admin-viewed-product/delete'),('root','shop/admin-viewed-product/delete-multi'),('root','shop/admin-viewed-product/delete/own'),('root','shop/admin-viewed-product/index'),('root','shop/admin-viewed-product/update'),('root','shop/admin-viewed-product/update/own'),('root','shop/upa-order'),('root','sshConsole/admin-ssh'),('root','user'),('root','view-shop-type-price-1'),('root','view-shop-type-price-2'),('root','view-shop-type-price-3'),('root','view-shop-type-price-5'),('root','worker'),('shop/admin-affiliate-plan/delete/own','shop/admin-affiliate-plan/delete'),('shop/admin-affiliate-plan/update/own','shop/admin-affiliate-plan/update'),('shop/admin-affiliate-tier/delete/own','shop/admin-affiliate-tier/delete'),('shop/admin-affiliate-tier/update/own','shop/admin-affiliate-tier/update'),('shop/admin-affiliate/delete/own','shop/admin-affiliate/delete'),('shop/admin-affiliate/update/own','shop/admin-affiliate/update'),('shop/admin-buyer-1/delete/own','shop/admin-buyer-1/delete'),('shop/admin-buyer-1/update/own','shop/admin-buyer-1/update'),('shop/admin-buyer-user/update/own','shop/admin-buyer-user/update'),('shop/admin-buyer/delete/own','shop/admin-buyer/delete'),('shop/admin-buyer/update/own','shop/admin-buyer/update'),('shop/admin-cms-content-element/delete/own','shop/admin-cms-content-element/delete'),('shop/admin-cms-content-element/update/own','shop/admin-cms-content-element/update'),('shop/admin-cms-content-element__10/copy/own','shop/admin-cms-content-element__10/copy'),('shop/admin-cms-content-element__10/delete/own','shop/admin-cms-content-element__10/delete'),('shop/admin-cms-content-element__10/update/own','shop/admin-cms-content-element__10/update'),('shop/admin-cms-content-element__10__10/copy/own','shop/admin-cms-content-element__10__10/copy'),('shop/admin-cms-content-element__10__10/delete/own','shop/admin-cms-content-element__10__10/delete'),('shop/admin-cms-content-element__10__10/update/own','shop/admin-cms-content-element__10__10/update'),('shop/admin-cms-content-element__2/copy/own','shop/admin-cms-content-element__2/copy'),('shop/admin-cms-content-element__2/delete/own','shop/admin-cms-content-element__2/delete'),('shop/admin-cms-content-element__2/orders/own','shop/admin-cms-content-element__2/orders'),('shop/admin-cms-content-element__2/store-moves/own','shop/admin-cms-content-element__2/store-moves'),('shop/admin-cms-content-element__2/update/own','shop/admin-cms-content-element__2/update'),('shop/admin-cms-content-element__2/viewed-products/own','shop/admin-cms-content-element__2/viewed-products'),('shop/admin-cms-content-element__2__2/copy/own','shop/admin-cms-content-element__2__2/copy'),('shop/admin-cms-content-element__2__2/delete/own','shop/admin-cms-content-element__2__2/delete'),('shop/admin-cms-content-element__2__2/update/own','shop/admin-cms-content-element__2__2/update'),('shop/admin-content/delete/own','shop/admin-content/delete'),('shop/admin-content/update/own','shop/admin-content/update'),('shop/admin-delivery/delete/own','shop/admin-delivery/delete'),('shop/admin-delivery/update/own','shop/admin-delivery/update'),('shop/admin-discount-coupon/delete/own','shop/admin-discount-coupon/delete'),('shop/admin-discount-coupon/update/own','shop/admin-discount-coupon/update'),('shop/admin-discount/delete/own','shop/admin-discount/delete'),('shop/admin-discount/update/own','shop/admin-discount/update'),('shop/admin-discsave/delete/own','shop/admin-discsave/delete'),('shop/admin-discsave/update/own','shop/admin-discsave/update'),('shop/admin-extra/delete/own','shop/admin-extra/delete'),('shop/admin-extra/update/own','shop/admin-extra/update'),('shop/admin-fuser/delete/own','shop/admin-fuser/delete'),('shop/admin-order-status/delete/own','shop/admin-order-status/delete'),('shop/admin-order-status/update/own','shop/admin-order-status/update'),('shop/admin-order/bills/own','shop/admin-order/bills'),('shop/admin-order/changes/own','shop/admin-order/changes'),('shop/admin-order/delete/own','shop/admin-order/delete'),('shop/admin-order/payments/own','shop/admin-order/payments'),('shop/admin-order/update/own','shop/admin-order/update'),('shop/admin-pay-system/delete/own','shop/admin-pay-system/delete'),('shop/admin-pay-system/update/own','shop/admin-pay-system/update'),('shop/admin-person-type-property/delete/own','shop/admin-person-type-property/delete'),('shop/admin-person-type-property/update/own','shop/admin-person-type-property/update'),('shop/admin-person-type/delete/own','shop/admin-person-type/delete'),('shop/admin-person-type/update/own','shop/admin-person-type/update'),('shop/admin-quantity-notice-email/delete/own','shop/admin-quantity-notice-email/delete'),('shop/admin-quantity-notice-email/update/own','shop/admin-quantity-notice-email/update'),('shop/admin-store/delete/own','shop/admin-store/delete'),('shop/admin-store/update/own','shop/admin-store/update'),('shop/admin-tax-rate/delete/own','shop/admin-tax-rate/delete'),('shop/admin-tax-rate/update/own','shop/admin-tax-rate/update'),('shop/admin-tax/delete/own','shop/admin-tax/delete'),('shop/admin-tax/update/own','shop/admin-tax/update'),('shop/admin-type-price/delete/own','shop/admin-type-price/delete'),('shop/admin-type-price/update/own','shop/admin-type-price/update'),('shop/admin-user-account/delete/own','shop/admin-user-account/delete'),('shop/admin-user-account/update/own','shop/admin-user-account/update'),('shop/admin-vat/delete/own','shop/admin-vat/delete'),('shop/admin-vat/update/own','shop/admin-vat/update'),('shop/admin-viewed-product/delete/own','shop/admin-viewed-product/delete'),('shop/admin-viewed-product/update/own','shop/admin-viewed-product/update'),('user','cms-upa-permission'),('user','cms.elfinder-user-files'),('user','reviews2.add.review'),('user','shop-discount-1'),('user','shop/upa-order'),('user','view-shop-type-price-1'),('user','view-shop-type-price-2'),('user','view-shop-type-price-5');
 /*!40000 ALTER TABLE `auth_item_child` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -126,11 +126,11 @@ COMMIT;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `auth_rule` (
   `name` varchar(64) NOT NULL,
-  `data` text,
+  `data` text DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,10 +162,10 @@ CREATE TABLE `backend_showing` (
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `cms_user_id` int(11) DEFAULT NULL,
-  `is_default` int(1) NOT NULL DEFAULT '1',
+  `is_default` int(1) NOT NULL DEFAULT 1,
   `key` varchar(255) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
-  `config_jsoned` text,
+  `priority` int(11) NOT NULL DEFAULT 100,
+  `config_jsoned` text DEFAULT NULL,
   `cms_site_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `backend_showing__updated_by` (`updated_by`),
@@ -182,7 +182,7 @@ CREATE TABLE `backend_showing` (
   CONSTRAINT `backend_showing__cms_user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `backend_showing__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `backend_showing__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,8 +216,8 @@ CREATE TABLE `cms_admin_filter` (
   `is_default` int(11) DEFAULT NULL,
   `name` varchar(64) DEFAULT NULL,
   `namespace` varchar(255) NOT NULL,
-  `values` text COMMENT 'Values filters',
-  `visibles` text COMMENT 'Visible fields',
+  `values` text DEFAULT NULL COMMENT 'Values filters',
+  `visibles` text DEFAULT NULL COMMENT 'Visible fields',
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -228,7 +228,7 @@ CREATE TABLE `cms_admin_filter` (
   CONSTRAINT `cms_admin_filter__cms_user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_admin_filter__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_admin_filter__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='Filters in the administrative part';
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Filters in the administrative part' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,13 +257,13 @@ CREATE TABLE `cms_agent` (
   `last_exec_at` int(11) DEFAULT NULL,
   `next_exec_at` int(11) NOT NULL,
   `name` text NOT NULL,
-  `description` text,
-  `agent_interval` int(11) NOT NULL DEFAULT '86400',
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `description` text DEFAULT NULL,
+  `agent_interval` int(11) NOT NULL DEFAULT 86400,
+  `priority` int(11) NOT NULL DEFAULT 100,
   `is_period` char(1) NOT NULL DEFAULT 'Y',
-  `is_running` int(1) NOT NULL DEFAULT '0',
+  `is_running` int(1) NOT NULL DEFAULT 0,
   `cms_site_id` int(11) DEFAULT NULL,
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_active` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `last_exec_at` (`last_exec_at`),
   KEY `next_exec_at` (`next_exec_at`),
@@ -273,7 +273,7 @@ CREATE TABLE `cms_agent` (
   KEY `is_running` (`is_running`),
   KEY `cms_site_id` (`cms_site_id`),
   CONSTRAINT `cms_agent__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COMMENT='Агенты';
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Агенты' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -312,7 +312,7 @@ CREATE TABLE `cms_callcheck_message` (
   `error_message` varchar(255) DEFAULT NULL,
   `provider_status` varchar(255) DEFAULT NULL,
   `provider_call_id` varchar(255) DEFAULT NULL,
-  `provider_response_data` text,
+  `provider_response_data` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `cms_callcheck_message__updated_by` (`updated_by`),
   KEY `cms_callcheck_message__created_by` (`created_by`),
@@ -328,7 +328,7 @@ CREATE TABLE `cms_callcheck_message` (
   CONSTRAINT `cms_callcheck_message__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_callcheck_message__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_callcheck_message__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Авторзиация по звонку сообщения';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Авторзиация по звонку сообщения' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -359,10 +359,10 @@ CREATE TABLE `cms_callcheck_provider` (
   `updated_at` int(11) DEFAULT NULL,
   `cms_site_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
-  `is_main` int(11) DEFAULT '1',
+  `priority` int(11) NOT NULL DEFAULT 100,
+  `is_main` int(11) DEFAULT 1,
   `component` varchar(255) NOT NULL,
-  `component_config` text,
+  `component_config` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cms_callcheck_provider__site_main_uniq` (`cms_site_id`,`is_main`),
   KEY `cms_callcheck_provider__updated_by` (`updated_by`),
@@ -376,7 +376,7 @@ CREATE TABLE `cms_callcheck_provider` (
   CONSTRAINT `cms_callcheck_provider__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_callcheck_provider__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_callcheck_provider__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Авторизация по звонку провайдеры';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Авторизация по звонку провайдеры' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -406,7 +406,7 @@ CREATE TABLE `cms_component_settings` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `component` varchar(255) DEFAULT NULL,
-  `value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `namespace` varchar(50) DEFAULT NULL,
   `cms_site_id` int(11) DEFAULT NULL,
@@ -419,11 +419,11 @@ CREATE TABLE `cms_component_settings` (
   KEY `user_id` (`user_id`),
   KEY `namespace` (`namespace`),
   KEY `cms_site_id` (`cms_site_id`),
-  CONSTRAINT `cms_component_settings_user_id` FOREIGN KEY (`user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_component_settings__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `cms_component_settings_user_id` FOREIGN KEY (`user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_settings_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_settings_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -455,8 +455,8 @@ CREATE TABLE `cms_content` (
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `code` varchar(50) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
-  `description` text,
+  `priority` int(11) NOT NULL DEFAULT 500,
+  `description` text DEFAULT NULL,
   `index_for_search` char(1) NOT NULL DEFAULT 'Y',
   `name_meny` varchar(100) DEFAULT NULL,
   `name_one` varchar(100) DEFAULT NULL,
@@ -468,20 +468,20 @@ CREATE TABLE `cms_content` (
   `root_tree_id` int(11) DEFAULT NULL,
   `view_file` varchar(255) DEFAULT NULL,
   `meta_title_template` varchar(500) DEFAULT NULL,
-  `meta_description_template` text,
-  `meta_keywords_template` text,
+  `meta_description_template` text DEFAULT NULL,
+  `meta_keywords_template` text DEFAULT NULL,
   `parent_content_id` int(11) DEFAULT NULL,
   `parent_content_on_delete` varchar(10) NOT NULL DEFAULT 'CASCADE',
-  `is_count_views` int(1) NOT NULL DEFAULT '0',
-  `is_have_page` int(1) NOT NULL DEFAULT '1',
-  `element_notice` text,
-  `list_notice` text,
-  `is_active` int(1) NOT NULL DEFAULT '1',
-  `is_access_check_element` int(1) NOT NULL DEFAULT '0',
-  `is_visible` int(1) NOT NULL DEFAULT '1',
-  `is_parent_content_required` int(1) NOT NULL DEFAULT '0',
-  `editable_fields` text,
-  `is_show_on_all_sites` int(1) DEFAULT '0' COMMENT 'Элементы контента показывать на всех сайтах?',
+  `is_count_views` int(1) NOT NULL DEFAULT 0,
+  `is_have_page` int(1) NOT NULL DEFAULT 1,
+  `element_notice` text DEFAULT NULL,
+  `list_notice` text DEFAULT NULL,
+  `is_active` int(1) NOT NULL DEFAULT 1,
+  `is_access_check_element` int(1) NOT NULL DEFAULT 0,
+  `is_visible` int(1) NOT NULL DEFAULT 1,
+  `is_parent_content_required` int(1) NOT NULL DEFAULT 0,
+  `editable_fields` text DEFAULT NULL,
+  `is_show_on_all_sites` int(1) DEFAULT 0 COMMENT 'Элементы контента показывать на всех сайтах?',
   `cms_tree_type_id` int(11) DEFAULT NULL COMMENT 'Элементы контента относятся к разделам этого тип',
   `saved_filter_tree_type_id` int(11) DEFAULT NULL COMMENT 'Это контент посадочных страниц',
   PRIMARY KEY (`id`),
@@ -509,15 +509,15 @@ CREATE TABLE `cms_content` (
   KEY `is_active` (`is_active`),
   KEY `cms_tree_type_id` (`cms_tree_type_id`),
   KEY `saved_filter_tree_type_id` (`saved_filter_tree_type_id`),
-  CONSTRAINT `cms_content_cms_content_type` FOREIGN KEY (`content_type`) REFERENCES `cms_content_type` (`code`),
-  CONSTRAINT `cms_content_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_content_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content__cms_content` FOREIGN KEY (`parent_content_id`) REFERENCES `cms_content` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content__cms_tree_type_id` FOREIGN KEY (`cms_tree_type_id`) REFERENCES `cms_tree_type` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content__default_tree_id` FOREIGN KEY (`default_tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content__root_tree_id` FOREIGN KEY (`root_tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_content__saved_filter_tree_type_id` FOREIGN KEY (`saved_filter_tree_type_id`) REFERENCES `cms_tree_type` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  CONSTRAINT `cms_content__saved_filter_tree_type_id` FOREIGN KEY (`saved_filter_tree_type_id`) REFERENCES `cms_tree_type` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_content_cms_content_type` FOREIGN KEY (`content_type`) REFERENCES `cms_content_type` (`code`),
+  CONSTRAINT `cms_content_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_content_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -549,21 +549,21 @@ CREATE TABLE `cms_content_element` (
   `updated_at` int(11) DEFAULT NULL,
   `published_at` int(11) DEFAULT NULL,
   `published_to` int(11) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   `active` char(1) NOT NULL DEFAULT 'Y',
   `name` varchar(255) NOT NULL,
   `image_id` int(11) DEFAULT NULL,
   `image_full_id` int(11) DEFAULT NULL,
   `code` varchar(255) DEFAULT NULL,
-  `description_short` longtext,
-  `description_full` longtext,
+  `description_short` longtext DEFAULT NULL,
+  `description_full` longtext DEFAULT NULL,
   `content_id` int(11) DEFAULT NULL,
   `tree_id` int(11) DEFAULT NULL,
   `show_counter` int(11) DEFAULT NULL,
   `show_counter_start` int(11) DEFAULT NULL,
   `meta_title` varchar(500) NOT NULL,
-  `meta_description` text,
-  `meta_keywords` text,
+  `meta_description` text DEFAULT NULL,
+  `meta_keywords` text DEFAULT NULL,
   `description_short_type` varchar(10) NOT NULL DEFAULT 'text',
   `description_full_type` varchar(10) NOT NULL DEFAULT 'text',
   `parent_content_element_id` int(11) DEFAULT NULL,
@@ -573,7 +573,7 @@ CREATE TABLE `cms_content_element` (
   `main_cce_id` int(11) DEFAULT NULL COMMENT 'Элемент берет информацию с другого элемента',
   `main_cce_at` int(11) DEFAULT NULL COMMENT 'Когда создана привязка',
   `main_cce_by` int(1) DEFAULT NULL COMMENT 'Кем создана привязка',
-  `is_adult` int(1) DEFAULT '0' COMMENT 'Содержит контент для взрослых?',
+  `is_adult` int(1) DEFAULT 0 COMMENT 'Содержит контент для взрослых?',
   PRIMARY KEY (`id`),
   UNIQUE KEY `external_id_unique` (`cms_site_id`,`external_id`,`content_id`),
   KEY `updated_by` (`updated_by`),
@@ -603,17 +603,17 @@ CREATE TABLE `cms_content_element` (
   KEY `main_cce_at` (`main_cce_at`),
   KEY `main_cce_by` (`main_cce_by`),
   KEY `cms_content_element__is_adult` (`is_adult`),
-  CONSTRAINT `cms_content_element_content_id` FOREIGN KEY (`content_id`) REFERENCES `cms_content` (`id`),
-  CONSTRAINT `cms_content_element_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_content_element_tree_id` FOREIGN KEY (`tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_content_element_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content_element__cms_content_element` FOREIGN KEY (`parent_content_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content_element__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `cms_content_element__image_full_id` FOREIGN KEY (`image_full_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content_element__image_id` FOREIGN KEY (`image_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content_element__main_cce_by` FOREIGN KEY (`main_cce_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_content_element__main_cce_id` FOREIGN KEY (`main_cce_id`) REFERENCES `cms_content_element` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12762 DEFAULT CHARSET=utf8;
+  CONSTRAINT `cms_content_element__main_cce_id` FOREIGN KEY (`main_cce_id`) REFERENCES `cms_content_element` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_content_element_content_id` FOREIGN KEY (`content_id`) REFERENCES `cms_content` (`id`),
+  CONSTRAINT `cms_content_element_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_content_element_tree_id` FOREIGN KEY (`tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_content_element_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=12762 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -656,7 +656,7 @@ CREATE TABLE `cms_content_element2cms_user` (
   CONSTRAINT `cms_content_element2cms_user__cms_user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_content_element2cms_user__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content_element2cms_user__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Favorites content items';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Favorites content items' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -687,7 +687,7 @@ CREATE TABLE `cms_content_element_file` (
   `updated_at` int(11) DEFAULT NULL,
   `storage_file_id` int(11) NOT NULL,
   `content_element_id` int(11) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   UNIQUE KEY `storage_file_id__content_element_id` (`storage_file_id`,`content_element_id`),
   KEY `updated_by` (`updated_by`),
@@ -697,11 +697,11 @@ CREATE TABLE `cms_content_element_file` (
   KEY `storage_file_id` (`storage_file_id`),
   KEY `content_element_id` (`content_element_id`),
   KEY `priority` (`priority`),
-  CONSTRAINT `cms_content_element_file_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_content_element_file_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content_element_file__content_element_id` FOREIGN KEY (`content_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `cms_content_element_file__storage_file_id` FOREIGN KEY (`storage_file_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Связь элементов и файлов';
+  CONSTRAINT `cms_content_element_file__storage_file_id` FOREIGN KEY (`storage_file_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `cms_content_element_file_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_content_element_file_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь элементов и файлов' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -732,7 +732,7 @@ CREATE TABLE `cms_content_element_image` (
   `updated_at` int(11) DEFAULT NULL,
   `storage_file_id` int(11) NOT NULL,
   `content_element_id` int(11) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   UNIQUE KEY `storage_file_id__content_element_id` (`storage_file_id`,`content_element_id`),
   KEY `updated_by` (`updated_by`),
@@ -742,11 +742,11 @@ CREATE TABLE `cms_content_element_image` (
   KEY `storage_file_id` (`storage_file_id`),
   KEY `content_element_id` (`content_element_id`),
   KEY `priority` (`priority`),
-  CONSTRAINT `cms_content_element_image_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_content_element_image_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content_element_image__content_element_id` FOREIGN KEY (`content_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `cms_content_element_image__storage_file_id` FOREIGN KEY (`storage_file_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Связь элементов и файлов изображений';
+  CONSTRAINT `cms_content_element_image__storage_file_id` FOREIGN KEY (`storage_file_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `cms_content_element_image_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_content_element_image_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь элементов и файлов изображений' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -798,11 +798,11 @@ CREATE TABLE `cms_content_element_property` (
   KEY `property2element2value_string` (`property_id`,`element_id`,`value_string`),
   KEY `value_element_id` (`value_element_id`),
   KEY `value_enum_id` (`value_enum_id`),
+  CONSTRAINT `cms_content_element_property__value_cms_element_id` FOREIGN KEY (`value_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_content_element_property_element_id` FOREIGN KEY (`element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_content_element_property_property_id` FOREIGN KEY (`property_id`) REFERENCES `cms_content_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `cms_content_element_property__value_cms_element_id` FOREIGN KEY (`value_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_content_element_property}__value_enum_id` FOREIGN KEY (`value_enum_id`) REFERENCES `cms_content_property_enum` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=48036 DEFAULT CHARSET=utf8 COMMENT='Связь товара свойства и значения';
+) ENGINE=InnoDB AUTO_INCREMENT=48036 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь товара свойства и значения' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -842,11 +842,11 @@ CREATE TABLE `cms_content_element_tree` (
   KEY `updated_at` (`updated_at`),
   KEY `tree_id` (`tree_id`),
   KEY `element_id` (`element_id`),
-  CONSTRAINT `cms_content_element_tree_element_id` FOREIGN KEY (`element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `cms_content_element_tree_tree_id` FOREIGN KEY (`tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_content_element_tree__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_content_element_tree__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Связь контента и разделов';
+  CONSTRAINT `cms_content_element_tree__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_content_element_tree_element_id` FOREIGN KEY (`element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `cms_content_element_tree_tree_id` FOREIGN KEY (`tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь контента и разделов' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -877,14 +877,14 @@ CREATE TABLE `cms_content_property` (
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `code` varchar(64) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   `property_type` char(1) NOT NULL DEFAULT 'S',
-  `is_required` int(1) NOT NULL DEFAULT '0',
+  `is_required` int(1) NOT NULL DEFAULT 0,
   `component` varchar(255) DEFAULT NULL,
-  `component_settings` longtext,
+  `component_settings` longtext DEFAULT NULL,
   `hint` varchar(255) DEFAULT NULL,
-  `is_multiple` int(1) NOT NULL DEFAULT '0',
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_multiple` int(1) NOT NULL DEFAULT 0,
+  `is_active` int(1) NOT NULL DEFAULT 1,
   `cms_measure_code` varchar(20) DEFAULT NULL,
   `cms_site_id` int(11) DEFAULT NULL,
   `is_country` int(1) DEFAULT NULL COMMENT 'Страна',
@@ -915,7 +915,7 @@ CREATE TABLE `cms_content_property` (
   CONSTRAINT `cms_content_property__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content_property__measure_code` FOREIGN KEY (`cms_measure_code`) REFERENCES `cms_measure` (`code`) ON UPDATE CASCADE,
   CONSTRAINT `cms_content_property__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='Свойства элементов';
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Свойства элементов' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -959,7 +959,7 @@ CREATE TABLE `cms_content_property2content` (
   CONSTRAINT `cms_content_property2content__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content_property2content__property_id` FOREIGN KEY (`cms_content_property_id`) REFERENCES `cms_content_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_content_property2content__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1003,7 +1003,7 @@ CREATE TABLE `cms_content_property2tree` (
   CONSTRAINT `cms_content_property2tree__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content_property2tree__property_id` FOREIGN KEY (`cms_content_property_id`) REFERENCES `cms_content_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_content_property2tree__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1036,9 +1036,9 @@ CREATE TABLE `cms_content_property_enum` (
   `value` varchar(255) NOT NULL,
   `def` char(1) NOT NULL DEFAULT 'N',
   `code` varchar(32) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   `value_for_saved_filter` varchar(255) DEFAULT NULL COMMENT 'Название (для сохраненных фильтров)',
-  `description` text COMMENT 'Описание',
+  `description` text DEFAULT NULL COMMENT 'Описание',
   `cms_image_id` int(11) DEFAULT NULL COMMENT 'Фото/Изображение',
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
@@ -1052,11 +1052,11 @@ CREATE TABLE `cms_content_property_enum` (
   KEY `value` (`value`),
   KEY `cms_content_property_enum__value_for_saved_filter` (`value_for_saved_filter`),
   KEY `cms_content_property_enum__cms_image_id` (`cms_image_id`),
-  CONSTRAINT `cms_content_property_enum_property_id` FOREIGN KEY (`property_id`) REFERENCES `cms_content_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_content_property_enum__cms_image_id` FOREIGN KEY (`cms_image_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content_property_enum__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_content_property_enum__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='Справочник значений свойств типа список';
+  CONSTRAINT `cms_content_property_enum__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_content_property_enum_property_id` FOREIGN KEY (`property_id`) REFERENCES `cms_content_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Справочник значений свойств типа список' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1086,8 +1086,8 @@ CREATE TABLE `cms_content_type` (
   `updated_by` int(11) DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
-  `files` text,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `files` text DEFAULT NULL,
+  `priority` int(11) NOT NULL DEFAULT 500,
   `name` varchar(255) NOT NULL,
   `code` varchar(32) NOT NULL,
   PRIMARY KEY (`id`),
@@ -1100,7 +1100,7 @@ CREATE TABLE `cms_content_type` (
   KEY `name` (`name`),
   CONSTRAINT `cms_content_type_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_content_type_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1151,8 +1151,8 @@ CREATE TABLE `cms_contractor` (
   `signature_accountant_id` int(11) DEFAULT NULL COMMENT 'Подпись гл. бухгалтера',
   `phone` varchar(255) DEFAULT NULL COMMENT 'Телефон',
   `email` varchar(255) DEFAULT NULL COMMENT 'Email',
-  `is_our` int(1) NOT NULL DEFAULT '0' COMMENT 'Это наш контрагент?',
-  `description` text COMMENT 'Описание',
+  `is_our` int(1) NOT NULL DEFAULT 0 COMMENT 'Это наш контрагент?',
+  `description` text DEFAULT NULL COMMENT 'Описание',
   PRIMARY KEY (`id`),
   UNIQUE KEY `cms_contractor__cms_site_id_inn` (`cms_site_id`,`inn`,`contractor_type`),
   KEY `cms_contractor__updated_by` (`updated_by`),
@@ -1180,7 +1180,7 @@ CREATE TABLE `cms_contractor` (
   CONSTRAINT `cms_contractor__signature_accountant_id` FOREIGN KEY (`signature_accountant_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_contractor__stamp_id` FOREIGN KEY (`stamp_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_contractor__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Контрагенты';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Контрагенты' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1223,7 +1223,7 @@ CREATE TABLE `cms_contractor_map` (
   CONSTRAINT `cms_contractor_map__cms_user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_contractor_map__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_contractor_map__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Связь пользователей и контрагентов';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь пользователей и контрагентов' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1254,9 +1254,9 @@ CREATE TABLE `cms_dashboard` (
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `cms_user_id` int(11) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
-  `columns` int(11) unsigned NOT NULL DEFAULT '1',
-  `columns_settings` text,
+  `priority` int(11) NOT NULL DEFAULT 100,
+  `columns` int(11) unsigned NOT NULL DEFAULT 1,
+  `columns_settings` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -1266,10 +1266,10 @@ CREATE TABLE `cms_dashboard` (
   KEY `cms_user_id` (`cms_user_id`),
   KEY `priority` (`priority`),
   KEY `columns` (`columns`),
+  CONSTRAINT `cms_dashboard__cms_user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_dashboard_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_dashboard_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_dashboard__cms_user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Рабочий стол';
+  CONSTRAINT `cms_dashboard_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Рабочий стол' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1300,10 +1300,10 @@ CREATE TABLE `cms_dashboard_widget` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `cms_dashboard_id` int(11) NOT NULL,
-  `cms_dashboard_column` int(11) NOT NULL DEFAULT '1',
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `cms_dashboard_column` int(11) NOT NULL DEFAULT 1,
+  `priority` int(11) NOT NULL DEFAULT 100,
   `component` varchar(255) NOT NULL,
-  `component_settings` text,
+  `component_settings` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -1313,10 +1313,10 @@ CREATE TABLE `cms_dashboard_widget` (
   KEY `component` (`component`),
   KEY `cms_dashboard_id` (`cms_dashboard_id`),
   KEY `cms_dashboard_column` (`cms_dashboard_column`),
+  CONSTRAINT `cms_dashboard_widget__cms_dashboard_id` FOREIGN KEY (`cms_dashboard_id`) REFERENCES `cms_dashboard` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_dashboard_widget_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_dashboard_widget_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_dashboard_widget__cms_dashboard_id` FOREIGN KEY (`cms_dashboard_id`) REFERENCES `cms_dashboard` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Виджет рабочего стола';
+  CONSTRAINT `cms_dashboard_widget_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Виджет рабочего стола' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1344,13 +1344,13 @@ CREATE TABLE `cms_event` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `event_name` varchar(255) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
-  `description` text,
-  `priority` int(11) NOT NULL DEFAULT '150',
+  `description` text DEFAULT NULL,
+  `priority` int(11) NOT NULL DEFAULT 150,
   PRIMARY KEY (`id`),
   UNIQUE KEY `event_name` (`event_name`),
   KEY `priority` (`priority`),
   KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1379,12 +1379,12 @@ CREATE TABLE `cms_lang` (
   `updated_by` int(11) DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   `code` char(5) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `image_id` int(11) DEFAULT NULL,
-  `is_active` int(1) NOT NULL DEFAULT '0',
+  `is_active` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code_2` (`code`),
   KEY `updated_by` (`updated_by`),
@@ -1397,10 +1397,10 @@ CREATE TABLE `cms_lang` (
   KEY `description` (`description`),
   KEY `cms_lang__image_id` (`image_id`),
   KEY `is_active` (`is_active`),
+  CONSTRAINT `cms_lang__image_id` FOREIGN KEY (`image_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_lang_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_lang_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_lang__image_id` FOREIGN KEY (`image_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Доступные языки';
+  CONSTRAINT `cms_lang_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Доступные языки' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1435,7 +1435,7 @@ CREATE TABLE `cms_measure` (
   `symbol` varchar(20) DEFAULT NULL,
   `symbol_intl` varchar(20) DEFAULT NULL,
   `symbol_letter_intl` varchar(20) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`),
   KEY `cms_measure__updated_by` (`updated_by`),
@@ -1450,7 +1450,7 @@ CREATE TABLE `cms_measure` (
   KEY `cms_measure__priority` (`priority`),
   CONSTRAINT `cms_measure_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_measure_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1488,15 +1488,15 @@ CREATE TABLE `cms_saved_filter` (
   `cms_image_id` int(11) DEFAULT NULL,
   `short_name` varchar(255) DEFAULT NULL,
   `code` varchar(255) DEFAULT NULL,
-  `description_short` longtext,
-  `description_full` longtext,
+  `description_short` longtext DEFAULT NULL,
+  `description_full` longtext DEFAULT NULL,
   `meta_title` varchar(500) DEFAULT NULL,
-  `meta_description` text,
-  `meta_keywords` text,
+  `meta_description` text DEFAULT NULL,
+  `meta_keywords` text DEFAULT NULL,
   `description_short_type` varchar(10) NOT NULL DEFAULT 'text',
   `description_full_type` varchar(10) NOT NULL DEFAULT 'text',
   `seo_h1` varchar(255) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   PRIMARY KEY (`id`),
   KEY `cms_saved_filter__updated_by` (`updated_by`),
   KEY `cms_saved_filter__created_by` (`created_by`),
@@ -1520,7 +1520,7 @@ CREATE TABLE `cms_saved_filter` (
   CONSTRAINT `cms_saved_filter__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_saved_filter__value_content_element_id` FOREIGN KEY (`value_content_element_id`) REFERENCES `cms_content_element` (`id`),
   CONSTRAINT `cms_saved_filter__value_content_property_enum_id` FOREIGN KEY (`value_content_property_enum_id`) REFERENCES `cms_content_property_enum` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Сохраненные фильтры';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Сохраненные фильтры' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1551,14 +1551,14 @@ CREATE TABLE `cms_search_phrase` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `phrase` varchar(255) DEFAULT NULL,
-  `result_count` int(11) NOT NULL DEFAULT '0',
-  `pages` int(11) NOT NULL DEFAULT '0',
+  `result_count` int(11) NOT NULL DEFAULT 0,
+  `pages` int(11) NOT NULL DEFAULT 0,
   `ip` varchar(32) DEFAULT NULL,
   `session_id` varchar(32) DEFAULT NULL,
-  `data_server` text,
-  `data_session` text,
-  `data_cookie` text,
-  `data_request` text,
+  `data_server` text DEFAULT NULL,
+  `data_session` text DEFAULT NULL,
+  `data_cookie` text DEFAULT NULL,
+  `data_request` text DEFAULT NULL,
   `cms_site_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
@@ -1571,10 +1571,10 @@ CREATE TABLE `cms_search_phrase` (
   KEY `ip` (`ip`),
   KEY `session_id` (`session_id`),
   KEY `cms_search_phrase__cms_site_id` (`cms_site_id`),
+  CONSTRAINT `cms_search_phrase__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_search_phrase_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_search_phrase_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_search_phrase__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8 COMMENT='Поисковые фразы';
+  CONSTRAINT `cms_search_phrase_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Поисковые фразы' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1601,7 +1601,7 @@ COMMIT;
 CREATE TABLE `cms_session` (
   `id` varchar(40) NOT NULL DEFAULT '',
   `expire` int(11) DEFAULT NULL,
-  `data` blob,
+  `data` blob DEFAULT NULL,
   `cms_site_id` int(11) DEFAULT NULL,
   `cms_user_id` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
@@ -1612,7 +1612,7 @@ CREATE TABLE `cms_session` (
   KEY `cms_session__cms_user_id` (`cms_user_id`),
   CONSTRAINT `cms_session__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_session__cms_user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1622,12 +1622,12 @@ CREATE TABLE `cms_session` (
 LOCK TABLES `cms_session` WRITE;
 /*!40000 ALTER TABLE `cms_session` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `cms_session` VALUES ('538d80n6plv0mbgfekuni012up5jr0df',1718178861,0x5F5F666C6173687C613A303A7B7D5F5F72657475726E55726C7C733A34343A222F7E73782F61646D696E2F61646D696E2D696E6465782F696E6465783F5F5F636D735F736974655F69643D31223B5F5F69647C693A313B5F5F617574684B65797C733A33323A226F7476363059572D6E56362D38475249344C613376594E68755F2D646D705F6E223B,1,1,1686642861,'31.148.139.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'),('5nd0hc0fq1008j18pephiluhl2brneqm',1717488783,0x5F5F666C6173687C613A303A7B7D5F5F72657475726E55726C7C733A34343A222F7E73782F61646D696E2F61646D696E2D696E6465782F696E6465783F5F5F636D735F736974655F69643D31223B617574685F656D61696C5F646174617C613A333A7B733A353A2270686F6E65223B733A31383A2273656D656E6F7640736B65656B732E636F6D223B733A31303A22637265617465645F6174223B693A313638353738373033323B733A31303A2270686F6E655F636F6465223B693A323537303B7D5F5F69647C693A313B5F5F617574684B65797C733A33323A226F7476363059572D6E56362D38475249344C613376594E68755F2D646D705F6E223B636D732D747265652D6F70656E65642D76327C613A323A7B693A303B733A313A2231223B693A313B733A313A2239223B7D656C46696E6465724361636865737C613A383A7B733A383A225F6F7074734D4435223B733A33323A223662353831383236666663666665303165313532326536393662323664383131223B733A333A226C315F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36323A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F75736572732F31223B623A303B7D7D733A393A22617263686976657273223B613A323A7B733A363A22637265617465223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D636866223B733A333A22657874223B733A333A22746172223B7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D637A6866223B733A333A22657874223B733A333A2274677A223B7D733A31363A226170706C69636174696F6E2F782D787A223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D634A6866223B733A333A22657874223B733A323A22787A223B7D733A31353A226170706C69636174696F6E2F7A6970223B613A333A7B733A333A22636D64223B733A31313A2270687066756E6374696F6E223B733A343A2261726763223B613A323A7B693A303B733A343A2273656C66223B693A313B733A31333A227A6970417263686976655A6970223B7D733A333A22657874223B733A333A227A6970223B7D7D733A373A2265787472616374223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A333A222D7866223B733A333A22657874223B733A333A22746172223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D787A66223B733A333A22657874223B733A333A2274677A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31363A226170706C69636174696F6E2F782D787A223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D784A66223B733A333A22657874223B733A323A22787A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31353A226170706C69636174696F6E2F7A6970223B613A353A7B733A333A22636D64223B733A353A22756E7A6970223B733A343A2261726763223B733A323A222D71223B733A333A22657874223B733A333A227A6970223B733A363A22746F53706563223B733A333A222D6420223B733A373A2267657473697A65223B613A333A7B733A343A2261726763223B733A353A222D5A202D74223B733A353A227265676578223B733A32313A222F5E2E2B3F2C5C733F285B302D395D2B292E2B242F223B733A373A227265706C616365223B733A323A222431223B7D7D7D7D733A383A22766964656F4C6962223B733A303A22223B733A333A226C325F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F696E626F78223B623A303B7D7D733A333A226C335F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A33333A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E7275223B623A313B7D7D733A333A226C345F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A34363A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F776562223B623A313B7D7D733A31343A223A4C4153545F4143544956495459223B693A313638353935323433363B7D656C46696E6465724E6574566F6C756D65737C613A303A7B7D73782D736F72742D76616C75657C733A383A222D706F70756C6172223B73782D617661696C61626C652D76616C75657C693A303B,1,1,1685952783,'31.148.139.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'),('873i6qrng5gcmktcn3mjnvir2q6i9t7o',1656337687,0x5F5F666C6173687C613A303A7B7D,1,NULL,1656334087,'93.170.234.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'),('ao3hsa51u13pbgrsfq2au6l57pdiafut',1702563784,0x5F5F666C6173687C613A303A7B7D5F5F69647C693A313B5F5F617574684B65797C733A33323A226F7476363059572D6E56362D38475249344C613376594E68755F2D646D705F6E223B656C46696E6465724361636865737C613A383A7B733A383A225F6F7074734D4435223B733A33323A223162393537666362326362386663666363646534636533636331613131326364223B733A333A226C315F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36323A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F75736572732F31223B623A303B7D7D733A393A22617263686976657273223B613A323A7B733A363A22637265617465223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D636866223B733A333A22657874223B733A333A22746172223B7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D637A6866223B733A333A22657874223B733A333A2274677A223B7D733A31363A226170706C69636174696F6E2F782D787A223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D634A6866223B733A333A22657874223B733A323A22787A223B7D733A31353A226170706C69636174696F6E2F7A6970223B613A333A7B733A333A22636D64223B733A31313A2270687066756E6374696F6E223B733A343A2261726763223B613A323A7B693A303B733A343A2273656C66223B693A313B733A31333A227A6970417263686976655A6970223B7D733A333A22657874223B733A333A227A6970223B7D7D733A373A2265787472616374223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A333A222D7866223B733A333A22657874223B733A333A22746172223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D787A66223B733A333A22657874223B733A333A2274677A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31363A226170706C69636174696F6E2F782D787A223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D784A66223B733A333A22657874223B733A323A22787A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31353A226170706C69636174696F6E2F7A6970223B613A353A7B733A333A22636D64223B733A353A22756E7A6970223B733A343A2261726763223B733A323A222D71223B733A333A22657874223B733A333A227A6970223B733A363A22746F53706563223B733A333A222D6420223B733A373A2267657473697A65223B613A333A7B733A343A2261726763223B733A353A222D5A202D74223B733A353A227265676578223B733A32313A222F5E2E2B3F2C5C733F285B302D395D2B292E2B242F223B733A373A227265706C616365223B733A323A222431223B7D7D7D7D733A383A22766964656F4C6962223B733A303A22223B733A333A226C325F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F696E626F78223B623A313B7D7D733A333A226C335F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A33333A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E7275223B623A313B7D7D733A333A226C345F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A34363A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F776562223B623A313B7D7D733A31343A223A4C4153545F4143544956495459223B693A313637313032373432383B7D656C46696E6465724E6574566F6C756D65737C613A303A7B7D,1,1,1671027784,'31.148.139.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),('caa3n3eig90r9on86jdhndio2nv92464',1647898971,0x5F5F666C6173687C613A303A7B7D5F5F69647C693A313B5F5F617574684B65797C733A33323A226F7476363059572D6E56362D38475249344C613376594E68755F2D646D705F6E223B636D732D747265652D6F70656E65642D76327C613A333A7B693A303B733A313A2231223B693A313B733A313A2239223B693A323B733A343A2231343232223B7D656C46696E6465724361636865737C613A383A7B733A383A225F6F7074734D4435223B733A33323A223634356365653261383634623632303037376364336234343335363131636639223B733A333A226C315F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36323A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F75736572732F31223B623A303B7D7D733A393A22617263686976657273223B613A323A7B733A363A22637265617465223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D636866223B733A333A22657874223B733A333A22746172223B7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D637A6866223B733A333A22657874223B733A333A2274677A223B7D733A31363A226170706C69636174696F6E2F782D787A223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D634A6866223B733A333A22657874223B733A323A22787A223B7D733A31353A226170706C69636174696F6E2F7A6970223B613A333A7B733A333A22636D64223B733A31313A2270687066756E6374696F6E223B733A343A2261726763223B613A323A7B693A303B733A343A2273656C66223B693A313B733A31333A227A6970417263686976655A6970223B7D733A333A22657874223B733A333A227A6970223B7D7D733A373A2265787472616374223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A333A222D7866223B733A333A22657874223B733A333A22746172223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D787A66223B733A333A22657874223B733A333A2274677A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31363A226170706C69636174696F6E2F782D787A223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D784A66223B733A333A22657874223B733A323A22787A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31353A226170706C69636174696F6E2F7A6970223B613A353A7B733A333A22636D64223B733A353A22756E7A6970223B733A343A2261726763223B733A323A222D71223B733A333A22657874223B733A333A227A6970223B733A363A22746F53706563223B733A333A222D6420223B733A373A2267657473697A65223B613A333A7B733A343A2261726763223B733A353A222D5A202D74223B733A353A227265676578223B733A32313A222F5E2E2B3F2C5C733F285B302D395D2B292E2B242F223B733A373A227265706C616365223B733A323A222431223B7D7D7D7D733A383A22766964656F4C6962223B733A303A22223B733A333A226C325F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F696E626F78223B623A313B7D7D733A333A226C335F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A33333A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E7275223B623A313B7D7D733A333A226C345F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A34363A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F776562223B623A313B7D7D733A31343A223A4C4153545F4143544956495459223B693A313634373839333633393B7D656C46696E6465724E6574566F6C756D65737C613A303A7B7D,1,1,1647895371,'31.148.139.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36'),('edhrabm27di4hh742577dgtunr807853',1656365271,0x5F5F666C6173687C613A303A7B7D5F5F69647C693A313B5F5F617574684B65797C733A33323A226F7476363059572D6E56362D38475249344C613376594E68755F2D646D705F6E223B656C46696E6465724361636865737C613A383A7B733A383A225F6F7074734D4435223B733A33323A223634356365653261383634623632303037376364336234343335363131636639223B733A333A226C315F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36323A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F75736572732F31223B623A303B7D7D733A393A22617263686976657273223B613A323A7B733A363A22637265617465223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D636866223B733A333A22657874223B733A333A22746172223B7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D637A6866223B733A333A22657874223B733A333A2274677A223B7D733A31363A226170706C69636174696F6E2F782D787A223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D634A6866223B733A333A22657874223B733A323A22787A223B7D733A31353A226170706C69636174696F6E2F7A6970223B613A333A7B733A333A22636D64223B733A31313A2270687066756E6374696F6E223B733A343A2261726763223B613A323A7B693A303B733A343A2273656C66223B693A313B733A31333A227A6970417263686976655A6970223B7D733A333A22657874223B733A333A227A6970223B7D7D733A373A2265787472616374223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A333A222D7866223B733A333A22657874223B733A333A22746172223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D787A66223B733A333A22657874223B733A333A2274677A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31363A226170706C69636174696F6E2F782D787A223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D784A66223B733A333A22657874223B733A323A22787A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31353A226170706C69636174696F6E2F7A6970223B613A353A7B733A333A22636D64223B733A353A22756E7A6970223B733A343A2261726763223B733A323A222D71223B733A333A22657874223B733A333A227A6970223B733A363A22746F53706563223B733A333A222D6420223B733A373A2267657473697A65223B613A333A7B733A343A2261726763223B733A353A222D5A202D74223B733A353A227265676578223B733A32313A222F5E2E2B3F2C5C733F285B302D395D2B292E2B242F223B733A373A227265706C616365223B733A323A222431223B7D7D7D7D733A383A22766964656F4C6962223B733A303A22223B733A333A226C325F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F696E626F78223B623A313B7D7D733A333A226C335F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A31313A7B733A33333A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E7275223B623A313B733A34303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F6261636B7570223B623A313B733A34333A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F6261636B75702F6462223B623A303B733A34363A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F6261636B75702F706773716C223B623A303B733A35313A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F6261636B75702F6D6967726174696F6E73223B623A303B733A34303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F636F6D6D6F6E223B623A313B733A34313A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F636F6E736F6C65223B623A313B733A34323A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E64223B623A313B733A33383A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F5F696465223B623A303B733A34333A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F2E636F6D706F736572223B623A313B733A34303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F76656E646F72223B623A313B7D7D733A333A226C345F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A34363A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F776562223B623A313B7D7D733A31343A223A4C4153545F4143544956495459223B693A313635363336313538363B7D656C46696E6465724E6574566F6C756D65737C613A303A7B7D,1,1,1656361671,'146.70.97.241','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'),('p5ug46n3qpn5msseldjo2vcau9787jv3',1647897437,0x5F5F666C6173687C613A303A7B7D,1,NULL,1647893837,'31.148.139.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36'),('rg7do8bm74j0qvkstfp3rrfdd68c7a2r',1647897479,0x5F5F666C6173687C613A303A7B7D,1,NULL,1647893879,'31.148.139.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36');
+INSERT INTO `cms_session` VALUES ('538d80n6plv0mbgfekuni012up5jr0df',1718178861,0x5F5F666C6173687C613A303A7B7D5F5F72657475726E55726C7C733A34343A222F7E73782F61646D696E2F61646D696E2D696E6465782F696E6465783F5F5F636D735F736974655F69643D31223B5F5F69647C693A313B5F5F617574684B65797C733A33323A226F7476363059572D6E56362D38475249344C613376594E68755F2D646D705F6E223B,1,1,1686642861,'31.148.139.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'),('5nd0hc0fq1008j18pephiluhl2brneqm',1717488783,0x5F5F666C6173687C613A303A7B7D5F5F72657475726E55726C7C733A34343A222F7E73782F61646D696E2F61646D696E2D696E6465782F696E6465783F5F5F636D735F736974655F69643D31223B617574685F656D61696C5F646174617C613A333A7B733A353A2270686F6E65223B733A31383A2273656D656E6F7640736B65656B732E636F6D223B733A31303A22637265617465645F6174223B693A313638353738373033323B733A31303A2270686F6E655F636F6465223B693A323537303B7D5F5F69647C693A313B5F5F617574684B65797C733A33323A226F7476363059572D6E56362D38475249344C613376594E68755F2D646D705F6E223B636D732D747265652D6F70656E65642D76327C613A323A7B693A303B733A313A2231223B693A313B733A313A2239223B7D656C46696E6465724361636865737C613A383A7B733A383A225F6F7074734D4435223B733A33323A223662353831383236666663666665303165313532326536393662323664383131223B733A333A226C315F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36323A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F75736572732F31223B623A303B7D7D733A393A22617263686976657273223B613A323A7B733A363A22637265617465223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D636866223B733A333A22657874223B733A333A22746172223B7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D637A6866223B733A333A22657874223B733A333A2274677A223B7D733A31363A226170706C69636174696F6E2F782D787A223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D634A6866223B733A333A22657874223B733A323A22787A223B7D733A31353A226170706C69636174696F6E2F7A6970223B613A333A7B733A333A22636D64223B733A31313A2270687066756E6374696F6E223B733A343A2261726763223B613A323A7B693A303B733A343A2273656C66223B693A313B733A31333A227A6970417263686976655A6970223B7D733A333A22657874223B733A333A227A6970223B7D7D733A373A2265787472616374223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A333A222D7866223B733A333A22657874223B733A333A22746172223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D787A66223B733A333A22657874223B733A333A2274677A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31363A226170706C69636174696F6E2F782D787A223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D784A66223B733A333A22657874223B733A323A22787A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31353A226170706C69636174696F6E2F7A6970223B613A353A7B733A333A22636D64223B733A353A22756E7A6970223B733A343A2261726763223B733A323A222D71223B733A333A22657874223B733A333A227A6970223B733A363A22746F53706563223B733A333A222D6420223B733A373A2267657473697A65223B613A333A7B733A343A2261726763223B733A353A222D5A202D74223B733A353A227265676578223B733A32313A222F5E2E2B3F2C5C733F285B302D395D2B292E2B242F223B733A373A227265706C616365223B733A323A222431223B7D7D7D7D733A383A22766964656F4C6962223B733A303A22223B733A333A226C325F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F696E626F78223B623A303B7D7D733A333A226C335F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A33333A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E7275223B623A313B7D7D733A333A226C345F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A34363A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F776562223B623A313B7D7D733A31343A223A4C4153545F4143544956495459223B693A313638353935323433363B7D656C46696E6465724E6574566F6C756D65737C613A303A7B7D73782D736F72742D76616C75657C733A383A222D706F70756C6172223B73782D617661696C61626C652D76616C75657C693A303B,1,1,1685952783,'31.148.139.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'),('873i6qrng5gcmktcn3mjnvir2q6i9t7o',1656337687,0x5F5F666C6173687C613A303A7B7D,1,NULL,1656334087,'93.170.234.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'),('ao3hsa51u13pbgrsfq2au6l57pdiafut',1702563784,0x5F5F666C6173687C613A303A7B7D5F5F69647C693A313B5F5F617574684B65797C733A33323A226F7476363059572D6E56362D38475249344C613376594E68755F2D646D705F6E223B656C46696E6465724361636865737C613A383A7B733A383A225F6F7074734D4435223B733A33323A223162393537666362326362386663666363646534636533636331613131326364223B733A333A226C315F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36323A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F75736572732F31223B623A303B7D7D733A393A22617263686976657273223B613A323A7B733A363A22637265617465223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D636866223B733A333A22657874223B733A333A22746172223B7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D637A6866223B733A333A22657874223B733A333A2274677A223B7D733A31363A226170706C69636174696F6E2F782D787A223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D634A6866223B733A333A22657874223B733A323A22787A223B7D733A31353A226170706C69636174696F6E2F7A6970223B613A333A7B733A333A22636D64223B733A31313A2270687066756E6374696F6E223B733A343A2261726763223B613A323A7B693A303B733A343A2273656C66223B693A313B733A31333A227A6970417263686976655A6970223B7D733A333A22657874223B733A333A227A6970223B7D7D733A373A2265787472616374223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A333A222D7866223B733A333A22657874223B733A333A22746172223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D787A66223B733A333A22657874223B733A333A2274677A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31363A226170706C69636174696F6E2F782D787A223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D784A66223B733A333A22657874223B733A323A22787A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31353A226170706C69636174696F6E2F7A6970223B613A353A7B733A333A22636D64223B733A353A22756E7A6970223B733A343A2261726763223B733A323A222D71223B733A333A22657874223B733A333A227A6970223B733A363A22746F53706563223B733A333A222D6420223B733A373A2267657473697A65223B613A333A7B733A343A2261726763223B733A353A222D5A202D74223B733A353A227265676578223B733A32313A222F5E2E2B3F2C5C733F285B302D395D2B292E2B242F223B733A373A227265706C616365223B733A323A222431223B7D7D7D7D733A383A22766964656F4C6962223B733A303A22223B733A333A226C325F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F696E626F78223B623A313B7D7D733A333A226C335F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A33333A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E7275223B623A313B7D7D733A333A226C345F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A34363A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F776562223B623A313B7D7D733A31343A223A4C4153545F4143544956495459223B693A313637313032373432383B7D656C46696E6465724E6574566F6C756D65737C613A303A7B7D,1,1,1671027784,'31.148.139.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'),('caa3n3eig90r9on86jdhndio2nv92464',1647898971,0x5F5F666C6173687C613A303A7B7D5F5F69647C693A313B5F5F617574684B65797C733A33323A226F7476363059572D6E56362D38475249344C613376594E68755F2D646D705F6E223B636D732D747265652D6F70656E65642D76327C613A333A7B693A303B733A313A2231223B693A313B733A313A2239223B693A323B733A343A2231343232223B7D656C46696E6465724361636865737C613A383A7B733A383A225F6F7074734D4435223B733A33323A223634356365653261383634623632303037376364336234343335363131636639223B733A333A226C315F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36323A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F75736572732F31223B623A303B7D7D733A393A22617263686976657273223B613A323A7B733A363A22637265617465223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D636866223B733A333A22657874223B733A333A22746172223B7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D637A6866223B733A333A22657874223B733A333A2274677A223B7D733A31363A226170706C69636174696F6E2F782D787A223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D634A6866223B733A333A22657874223B733A323A22787A223B7D733A31353A226170706C69636174696F6E2F7A6970223B613A333A7B733A333A22636D64223B733A31313A2270687066756E6374696F6E223B733A343A2261726763223B613A323A7B693A303B733A343A2273656C66223B693A313B733A31333A227A6970417263686976655A6970223B7D733A333A22657874223B733A333A227A6970223B7D7D733A373A2265787472616374223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A333A222D7866223B733A333A22657874223B733A333A22746172223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D787A66223B733A333A22657874223B733A333A2274677A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31363A226170706C69636174696F6E2F782D787A223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D784A66223B733A333A22657874223B733A323A22787A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31353A226170706C69636174696F6E2F7A6970223B613A353A7B733A333A22636D64223B733A353A22756E7A6970223B733A343A2261726763223B733A323A222D71223B733A333A22657874223B733A333A227A6970223B733A363A22746F53706563223B733A333A222D6420223B733A373A2267657473697A65223B613A333A7B733A343A2261726763223B733A353A222D5A202D74223B733A353A227265676578223B733A32313A222F5E2E2B3F2C5C733F285B302D395D2B292E2B242F223B733A373A227265706C616365223B733A323A222431223B7D7D7D7D733A383A22766964656F4C6962223B733A303A22223B733A333A226C325F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F696E626F78223B623A313B7D7D733A333A226C335F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A33333A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E7275223B623A313B7D7D733A333A226C345F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A34363A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F776562223B623A313B7D7D733A31343A223A4C4153545F4143544956495459223B693A313634373839333633393B7D656C46696E6465724E6574566F6C756D65737C613A303A7B7D,1,1,1647895371,'31.148.139.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36'),('edhrabm27di4hh742577dgtunr807853',1656365271,0x5F5F666C6173687C613A303A7B7D5F5F69647C693A313B5F5F617574684B65797C733A33323A226F7476363059572D6E56362D38475249344C613376594E68755F2D646D705F6E223B656C46696E6465724361636865737C613A383A7B733A383A225F6F7074734D4435223B733A33323A223634356365653261383634623632303037376364336234343335363131636639223B733A333A226C315F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36323A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F75736572732F31223B623A303B7D7D733A393A22617263686976657273223B613A323A7B733A363A22637265617465223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D636866223B733A333A22657874223B733A333A22746172223B7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D637A6866223B733A333A22657874223B733A333A2274677A223B7D733A31363A226170706C69636174696F6E2F782D787A223B613A333A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A353A222D634A6866223B733A333A22657874223B733A323A22787A223B7D733A31353A226170706C69636174696F6E2F7A6970223B613A333A7B733A333A22636D64223B733A31313A2270687066756E6374696F6E223B733A343A2261726763223B613A323A7B693A303B733A343A2273656C66223B693A313B733A31333A227A6970417263686976655A6970223B7D733A333A22657874223B733A333A227A6970223B7D7D733A373A2265787472616374223B613A343A7B733A31373A226170706C69636174696F6E2F782D746172223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A333A222D7866223B733A333A22657874223B733A333A22746172223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31383A226170706C69636174696F6E2F782D677A6970223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D787A66223B733A333A22657874223B733A333A2274677A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31363A226170706C69636174696F6E2F782D787A223B613A353A7B733A333A22636D64223B733A333A22746172223B733A343A2261726763223B733A343A222D784A66223B733A333A22657874223B733A323A22787A223B733A363A22746F53706563223B733A333A222D4320223B733A373A2267657473697A65223B613A343A7B733A343A2261726763223B733A343A222D787666223B733A363A22746F53706563223B733A31373A222D2D746F2D7374646F75747C7763202D63223B733A353A227265676578223B733A34383A222F5E2E2B283F3A5C725C6E7C5C6E7C5C72295B5E5C725C6E302D395D2A285B302D395D2B295B5E5C725C6E5D2A242F73223B733A373A227265706C616365223B733A323A222431223B7D7D733A31353A226170706C69636174696F6E2F7A6970223B613A353A7B733A333A22636D64223B733A353A22756E7A6970223B733A343A2261726763223B733A323A222D71223B733A333A22657874223B733A333A227A6970223B733A363A22746F53706563223B733A333A222D6420223B733A373A2267657473697A65223B613A333A7B733A343A2261726763223B733A353A222D5A202D74223B733A353A227265676578223B733A32313A222F5E2E2B3F2C5C733F285B302D395D2B292E2B242F223B733A373A227265706C616365223B733A323A222431223B7D7D7D7D733A383A22766964656F4C6962223B733A303A22223B733A333A226C325F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A36303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F7765622F75706C6F6164732F696E626F78223B623A313B7D7D733A333A226C335F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A31313A7B733A33333A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E7275223B623A313B733A34303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F6261636B7570223B623A313B733A34333A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F6261636B75702F6462223B623A303B733A34363A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F6261636B75702F706773716C223B623A303B733A35313A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F6261636B75702F6D6967726174696F6E73223B623A303B733A34303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F636F6D6D6F6E223B623A313B733A34313A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F636F6E736F6C65223B623A313B733A34323A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E64223B623A313B733A33383A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F5F696465223B623A303B733A34333A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F2E636F6D706F736572223B623A313B733A34303A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F76656E646F72223B623A313B7D7D733A333A226C345F223B613A323A7B733A383A22726F6F7473746174223B613A303A7B7D733A373A2273756264697273223B613A313A7B733A34363A222F7661722F7777772F73697465732F6170702D73686F702D756E696679322E72752F66726F6E74656E642F776562223B623A313B7D7D733A31343A223A4C4153545F4143544956495459223B693A313635363336313538363B7D656C46696E6465724E6574566F6C756D65737C613A303A7B7D,1,1,1656361671,'146.70.97.241','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'),('p5ug46n3qpn5msseldjo2vcau9787jv3',1647897437,0x5F5F666C6173687C613A303A7B7D,1,NULL,1647893837,'31.148.139.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36'),('rg7do8bm74j0qvkstfp3rrfdd68c7a2r',1647897479,0x5F5F666C6173687C613A303A7B7D,1,NULL,1647893879,'31.148.139.240','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36'),('rrtgr1l3gaoh2f6he63ub1tm30j5ksee',1722347568,0x5F5F666C6173687C613A303A7B7D5F5F72657475726E55726C7C733A34343A222F7E73782F61646D696E2F61646D696E2D696E6465782F696E6465783F5F5F636D735F736974655F69643D31223B5F5F69647C693A313B5F5F617574684B65797C733A33323A226F7476363059572D6E56362D38475249344C613376594E68755F2D646D705F6E223B,1,1,1690811568,'127.0.0.82','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36');
 /*!40000 ALTER TABLE `cms_session` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `cms_session` with 8 row(s)
+-- Dumped table `cms_session` with 9 row(s)
 --
 
 --
@@ -1642,14 +1642,14 @@ CREATE TABLE `cms_site` (
   `updated_by` int(11) DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `image_id` int(11) DEFAULT NULL,
-  `is_active` int(1) unsigned NOT NULL DEFAULT '1',
+  `is_active` int(1) unsigned NOT NULL DEFAULT 1,
   `is_default` int(1) unsigned DEFAULT NULL,
   `favicon_storage_file_id` int(11) DEFAULT NULL COMMENT 'Favicon',
-  `work_time` text COMMENT 'Рабочее время',
+  `work_time` text DEFAULT NULL COMMENT 'Рабочее время',
   `internal_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `is_default` (`is_default`),
@@ -1660,11 +1660,11 @@ CREATE TABLE `cms_site` (
   KEY `priority` (`priority`),
   KEY `cms_site__image_id` (`image_id`),
   KEY `favicon_storage_file_id` (`favicon_storage_file_id`),
-  CONSTRAINT `cms_site_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_site_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_site__favicon_storage_file_id` FOREIGN KEY (`favicon_storage_file_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_site__image_id` FOREIGN KEY (`image_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Сайты';
+  CONSTRAINT `cms_site__image_id` FOREIGN KEY (`image_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_site_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_site_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Сайты' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1699,9 +1699,9 @@ CREATE TABLE `cms_site_address` (
   `value` varchar(255) NOT NULL COMMENT 'Полный адрес',
   `latitude` double NOT NULL COMMENT 'Широта',
   `longitude` double NOT NULL COMMENT 'Долгота',
-  `work_time` text COMMENT 'Рабочее время',
+  `work_time` text DEFAULT NULL COMMENT 'Рабочее время',
   `cms_image_id` int(11) DEFAULT NULL COMMENT 'Фото адреса',
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cms_site_address__value_uniq` (`cms_site_id`,`value`),
   KEY `cms_site_address__updated_by` (`updated_by`),
@@ -1716,7 +1716,7 @@ CREATE TABLE `cms_site_address` (
   CONSTRAINT `cms_site_address__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_site_address__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_site_address__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Адреса сайта';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Адреса сайта' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1749,7 +1749,7 @@ CREATE TABLE `cms_site_address_email` (
   `cms_site_address_id` int(11) NOT NULL,
   `value` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cms_site_address_email__value_uniq` (`cms_site_address_id`,`value`),
   KEY `cms_site_address_email__updated_by` (`updated_by`),
@@ -1761,7 +1761,7 @@ CREATE TABLE `cms_site_address_email` (
   CONSTRAINT `cms_site_address_email__cms_site_address_id` FOREIGN KEY (`cms_site_address_id`) REFERENCES `cms_site_address` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_site_address_email__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_site_address_email__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Телефоны адреса';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Телефоны адреса' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1793,7 +1793,7 @@ CREATE TABLE `cms_site_address_phone` (
   `cms_site_address_id` int(11) NOT NULL,
   `value` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cms_site_address_phone__value_uniq` (`cms_site_address_id`,`value`),
   KEY `cms_site_address_phone__updated_by` (`updated_by`),
@@ -1805,7 +1805,7 @@ CREATE TABLE `cms_site_address_phone` (
   CONSTRAINT `cms_site_address_phone__cms_site_address_id` FOREIGN KEY (`cms_site_address_id`) REFERENCES `cms_site_address` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_site_address_phone__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_site_address_phone__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Телефоны сайта';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Телефоны сайта' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1848,10 +1848,10 @@ CREATE TABLE `cms_site_domain` (
   KEY `cms_site_id` (`cms_site_id`),
   KEY `is_https` (`is_https`),
   KEY `is_main` (`is_main`),
+  CONSTRAINT `cms_site_domain__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_site_domain_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_site_domain_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_site_domain__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Доменные имена сайтов';
+  CONSTRAINT `cms_site_domain_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Доменные имена сайтов' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1883,7 +1883,7 @@ CREATE TABLE `cms_site_email` (
   `cms_site_id` int(11) NOT NULL,
   `value` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cms_site_email__value_uniq` (`cms_site_id`,`value`),
   KEY `cms_site_email__updated_by` (`updated_by`),
@@ -1895,7 +1895,7 @@ CREATE TABLE `cms_site_email` (
   CONSTRAINT `cms_site_email__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_site_email__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_site_email__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Телефоны сайта';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Телефоны сайта' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1928,7 +1928,7 @@ CREATE TABLE `cms_site_phone` (
   `cms_site_id` int(11) NOT NULL,
   `value` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cms_site_phone__value_uniq` (`cms_site_id`,`value`),
   KEY `cms_site_phone__updated_by` (`updated_by`),
@@ -1940,7 +1940,7 @@ CREATE TABLE `cms_site_phone` (
   CONSTRAINT `cms_site_phone__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_site_phone__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_site_phone__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Телефоны сайта';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Телефоны сайта' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1974,7 +1974,7 @@ CREATE TABLE `cms_site_social` (
   `social_type` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cms_site_social__url_uniq` (`cms_site_id`,`url`),
   KEY `cms_site_social__updated_by` (`updated_by`),
@@ -1987,7 +1987,7 @@ CREATE TABLE `cms_site_social` (
   CONSTRAINT `cms_site_social__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_site_social__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_site_social__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Социальные сети сайта';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Социальные сети сайта' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2040,7 +2040,7 @@ CREATE TABLE `cms_sms_message` (
   CONSTRAINT `cms_sms_message__cms_sms_provider_id` FOREIGN KEY (`cms_sms_provider_id`) REFERENCES `cms_sms_provider` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_sms_message__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_sms_message__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sms сообщения';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Sms сообщения' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2071,10 +2071,10 @@ CREATE TABLE `cms_sms_provider` (
   `updated_at` int(11) DEFAULT NULL,
   `cms_site_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
-  `is_main` int(11) DEFAULT '1',
+  `priority` int(11) NOT NULL DEFAULT 100,
+  `is_main` int(11) DEFAULT 1,
   `component` varchar(255) NOT NULL,
-  `component_config` text,
+  `component_config` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cms_sms_provider__site_main_uniq` (`cms_site_id`,`is_main`),
   KEY `cms_sms_provider__updated_by` (`updated_by`),
@@ -2088,7 +2088,7 @@ CREATE TABLE `cms_sms_provider` (
   CONSTRAINT `cms_sms_provider__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_sms_provider__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_sms_provider__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sms провайдеры';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Sms провайдеры' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2125,11 +2125,11 @@ CREATE TABLE `cms_storage_file` (
   `original_name` varchar(255) DEFAULT NULL,
   `name_to_save` varchar(32) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `description_short` text,
-  `description_full` text,
+  `description_short` text DEFAULT NULL,
+  `description_full` text DEFAULT NULL,
   `image_height` int(11) DEFAULT NULL,
   `image_width` int(11) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   `cms_site_id` int(11) NOT NULL,
   `external_id` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -2153,7 +2153,7 @@ CREATE TABLE `cms_storage_file` (
   CONSTRAINT `cms_storage_file__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`),
   CONSTRAINT `storage_file_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `storage_file_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16836 DEFAULT CHARSET=utf8 COMMENT='Файл';
+) ENGINE=InnoDB AUTO_INCREMENT=16836 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Файл' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2185,11 +2185,11 @@ CREATE TABLE `cms_theme` (
   `updated_at` int(11) DEFAULT NULL,
   `cms_site_id` int(11) NOT NULL,
   `code` varchar(255) NOT NULL COMMENT 'Уникальный код темы',
-  `config` text COMMENT 'Настройки темы',
+  `config` text DEFAULT NULL COMMENT 'Настройки темы',
   `name` varchar(255) DEFAULT NULL COMMENT 'Название темы',
   `description` varchar(255) DEFAULT NULL COMMENT 'Описание темы',
   `cms_image_id` int(11) DEFAULT NULL COMMENT 'Фото',
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   `is_active` int(1) DEFAULT NULL COMMENT 'Активирована?',
   PRIMARY KEY (`id`),
   UNIQUE KEY `cms_theme__code_uniq` (`cms_site_id`,`code`),
@@ -2205,7 +2205,7 @@ CREATE TABLE `cms_theme` (
   CONSTRAINT `cms_theme__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_theme__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_theme__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Темы сайта';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Темы сайта' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2238,33 +2238,33 @@ CREATE TABLE `cms_tree` (
   `name` varchar(255) NOT NULL,
   `image_id` int(11) DEFAULT NULL,
   `image_full_id` int(11) DEFAULT NULL,
-  `description_short` longtext,
-  `description_full` longtext,
+  `description_short` longtext DEFAULT NULL,
+  `description_full` longtext DEFAULT NULL,
   `code` varchar(64) DEFAULT NULL,
   `pid` int(11) DEFAULT NULL,
   `pids` varchar(255) DEFAULT NULL,
-  `level` int(11) DEFAULT '0',
+  `level` int(11) DEFAULT 0,
   `dir` varchar(500) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '0',
+  `priority` int(11) NOT NULL DEFAULT 0,
   `published_at` int(11) DEFAULT NULL,
   `redirect` varchar(500) DEFAULT NULL,
   `active` char(1) NOT NULL DEFAULT 'Y',
   `meta_title` varchar(500) DEFAULT NULL,
-  `meta_description` text,
-  `meta_keywords` text,
+  `meta_description` text DEFAULT NULL,
+  `meta_keywords` text DEFAULT NULL,
   `tree_type_id` int(11) DEFAULT NULL,
   `description_short_type` varchar(10) NOT NULL DEFAULT 'text',
   `description_full_type` varchar(10) NOT NULL DEFAULT 'text',
   `redirect_tree_id` int(11) DEFAULT NULL,
-  `redirect_code` int(11) NOT NULL DEFAULT '301',
+  `redirect_code` int(11) NOT NULL DEFAULT 301,
   `name_hidden` varchar(255) DEFAULT NULL,
   `view_file` varchar(128) DEFAULT NULL,
   `cms_site_id` int(11) DEFAULT NULL,
   `seo_h1` varchar(255) NOT NULL,
   `external_id` varchar(255) DEFAULT NULL,
   `main_cms_tree_id` int(11) DEFAULT NULL,
-  `is_adult` int(1) DEFAULT '0' COMMENT 'Содержит контент для взрослых?',
-  `is_index` int(1) DEFAULT '1' COMMENT 'Страница индексируется?',
+  `is_adult` int(1) DEFAULT 0 COMMENT 'Содержит контент для взрослых?',
+  `is_index` int(1) DEFAULT 1 COMMENT 'Страница индексируется?',
   `canonical_link` varchar(500) DEFAULT NULL COMMENT 'Canonical на другую страницу',
   `canonical_tree_id` int(11) DEFAULT NULL COMMENT 'Canonical раздел сайта',
   `canonical_content_element_id` int(11) DEFAULT NULL COMMENT 'Canonical на раздел сайта',
@@ -2308,8 +2308,6 @@ CREATE TABLE `cms_tree` (
   KEY `cms_tree__canonical_saved_filter_id` (`canonical_saved_filter_id`),
   KEY `cms_tree__redirect_content_element_id` (`redirect_content_element_id`),
   KEY `cms_tree__redirect_saved_filter_id` (`redirect_saved_filter_id`),
-  CONSTRAINT `cms_tree_pid_cms_tree` FOREIGN KEY (`pid`) REFERENCES `cms_tree` (`id`),
-  CONSTRAINT `cms_tree_tree_type_id` FOREIGN KEY (`tree_type_id`) REFERENCES `cms_tree_type` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_tree__canonical_content_element_id` FOREIGN KEY (`canonical_content_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_tree__canonical_saved_filter_id` FOREIGN KEY (`canonical_saved_filter_id`) REFERENCES `cms_saved_filter` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_tree__canonical_tree_id` FOREIGN KEY (`canonical_tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
@@ -2321,8 +2319,10 @@ CREATE TABLE `cms_tree` (
   CONSTRAINT `cms_tree__redirect_content_element_id` FOREIGN KEY (`redirect_content_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_tree__redirect_saved_filter_id` FOREIGN KEY (`redirect_saved_filter_id`) REFERENCES `cms_saved_filter` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_tree__redirect_tree_id` FOREIGN KEY (`redirect_tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_tree__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1433 DEFAULT CHARSET=utf8 COMMENT='Страницы дерево';
+  CONSTRAINT `cms_tree__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_tree_pid_cms_tree` FOREIGN KEY (`pid`) REFERENCES `cms_tree` (`id`),
+  CONSTRAINT `cms_tree_tree_type_id` FOREIGN KEY (`tree_type_id`) REFERENCES `cms_tree_type` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=1433 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Страницы дерево' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2354,7 +2354,7 @@ CREATE TABLE `cms_tree_file` (
   `updated_at` int(11) DEFAULT NULL,
   `storage_file_id` int(11) NOT NULL,
   `tree_id` int(11) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   UNIQUE KEY `storage_file_id__tree_id` (`storage_file_id`,`tree_id`),
   KEY `updated_by` (`updated_by`),
@@ -2364,11 +2364,11 @@ CREATE TABLE `cms_tree_file` (
   KEY `storage_file_id` (`storage_file_id`),
   KEY `tree_id` (`tree_id`),
   KEY `priority` (`priority`),
-  CONSTRAINT `cms_tree_file_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_tree_file_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_tree_file__storage_file_id` FOREIGN KEY (`storage_file_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `cms_tree_file__tree_id` FOREIGN KEY (`tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Связь разделов и файлов';
+  CONSTRAINT `cms_tree_file__tree_id` FOREIGN KEY (`tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `cms_tree_file_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_tree_file_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь разделов и файлов' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2399,7 +2399,7 @@ CREATE TABLE `cms_tree_image` (
   `updated_at` int(11) DEFAULT NULL,
   `storage_file_id` int(11) NOT NULL,
   `tree_id` int(11) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   UNIQUE KEY `storage_file_id__tree_id` (`storage_file_id`,`tree_id`),
   KEY `updated_by` (`updated_by`),
@@ -2409,11 +2409,11 @@ CREATE TABLE `cms_tree_image` (
   KEY `storage_file_id` (`storage_file_id`),
   KEY `tree_id` (`tree_id`),
   KEY `priority` (`priority`),
-  CONSTRAINT `cms_tree_image_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_tree_image_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_tree_image__storage_file_id` FOREIGN KEY (`storage_file_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `cms_tree_image__tree_id` FOREIGN KEY (`tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Связь разделов и файлов изображений';
+  CONSTRAINT `cms_tree_image__tree_id` FOREIGN KEY (`tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `cms_tree_image_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_tree_image_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь разделов и файлов изображений' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2470,13 +2470,13 @@ CREATE TABLE `cms_tree_property` (
   KEY `value_string` (`value_string`),
   KEY `value_element_id` (`value_element_id`),
   KEY `value_enum_id` (`value_enum_id`),
-  CONSTRAINT `cms_tree_property_element_id` FOREIGN KEY (`element_id`) REFERENCES `cms_tree` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `cms_tree_property_property_id` FOREIGN KEY (`property_id`) REFERENCES `cms_tree_type_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_tree_property__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_tree_property__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_tree_property__value_cms_element_id` FOREIGN KEY (`value_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `cms_tree_property_element_id` FOREIGN KEY (`element_id`) REFERENCES `cms_tree` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `cms_tree_property_property_id` FOREIGN KEY (`property_id`) REFERENCES `cms_tree_type_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_tree_property}__value_enum_id` FOREIGN KEY (`value_enum_id`) REFERENCES `cms_tree_type_property_enum` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=738 DEFAULT CHARSET=utf8 COMMENT='Связь свойства и значения';
+) ENGINE=InnoDB AUTO_INCREMENT=738 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь свойства и значения' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2508,16 +2508,16 @@ CREATE TABLE `cms_tree_type` (
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `code` varchar(50) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
-  `description` text,
+  `priority` int(11) NOT NULL DEFAULT 500,
+  `description` text DEFAULT NULL,
   `name_meny` varchar(100) DEFAULT NULL,
   `name_one` varchar(100) DEFAULT NULL,
   `view_file` varchar(255) DEFAULT NULL,
   `default_children_tree_type` int(11) DEFAULT NULL,
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_active` int(1) NOT NULL DEFAULT 1,
   `meta_title_template` varchar(500) DEFAULT NULL COMMENT 'Шаблон meta title',
-  `meta_description_template` text COMMENT 'Шаблон meta description',
-  `meta_keywords_template` text COMMENT 'Шаблон meta keywords',
+  `meta_description_template` text DEFAULT NULL COMMENT 'Шаблон meta description',
+  `meta_keywords_template` text DEFAULT NULL COMMENT 'Шаблон meta keywords',
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`),
   KEY `updated_by` (`updated_by`),
@@ -2531,10 +2531,10 @@ CREATE TABLE `cms_tree_type` (
   KEY `viewFile` (`view_file`),
   KEY `default_children_tree_type` (`default_children_tree_type`),
   KEY `cms_tree_type__is_active` (`is_active`),
+  CONSTRAINT `cms_tree_type__default_children_tree_type` FOREIGN KEY (`default_children_tree_type`) REFERENCES `cms_tree_type` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_tree_type_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_tree_type_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_tree_type__default_children_tree_type` FOREIGN KEY (`default_children_tree_type`) REFERENCES `cms_tree_type` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Тип раздела';
+  CONSTRAINT `cms_tree_type_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Тип раздела' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2566,15 +2566,15 @@ CREATE TABLE `cms_tree_type_property` (
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `code` varchar(64) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   `property_type` char(1) NOT NULL DEFAULT 'S',
-  `is_required` int(1) NOT NULL DEFAULT '0',
+  `is_required` int(1) NOT NULL DEFAULT 0,
   `component` varchar(255) DEFAULT NULL,
-  `component_settings` longtext,
+  `component_settings` longtext DEFAULT NULL,
   `hint` varchar(255) DEFAULT NULL,
   `tree_type_id` int(11) DEFAULT NULL,
-  `is_multiple` int(1) NOT NULL DEFAULT '0',
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_multiple` int(1) NOT NULL DEFAULT 0,
+  `is_active` int(1) NOT NULL DEFAULT 1,
   `cms_measure_code` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code_2` (`code`,`tree_type_id`),
@@ -2593,11 +2593,11 @@ CREATE TABLE `cms_tree_type_property` (
   KEY `is_multiple` (`is_multiple`),
   KEY `is_active` (`is_active`),
   KEY `cms_tree_type_property__measure_code` (`cms_measure_code`),
-  CONSTRAINT `cms_tree_type_property_tree_type_id` FOREIGN KEY (`tree_type_id`) REFERENCES `cms_tree_type` (`id`),
   CONSTRAINT `cms_tree_type_property__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_tree_type_property__measure_code` FOREIGN KEY (`cms_measure_code`) REFERENCES `cms_measure` (`code`) ON UPDATE CASCADE,
-  CONSTRAINT `cms_tree_type_property__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Свойство раздела';
+  CONSTRAINT `cms_tree_type_property__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_tree_type_property_tree_type_id` FOREIGN KEY (`tree_type_id`) REFERENCES `cms_tree_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Свойство раздела' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2641,7 +2641,7 @@ CREATE TABLE `cms_tree_type_property2type` (
   CONSTRAINT `cms_tree_type_property2type__property_id` FOREIGN KEY (`cms_tree_type_property_id`) REFERENCES `cms_tree_type_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_tree_type_property2type__type_id` FOREIGN KEY (`cms_tree_type_id`) REFERENCES `cms_tree_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_tree_type_property2type__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2674,7 +2674,7 @@ CREATE TABLE `cms_tree_type_property_enum` (
   `value` varchar(255) NOT NULL,
   `def` char(1) NOT NULL DEFAULT 'N',
   `code` varchar(32) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -2685,10 +2685,10 @@ CREATE TABLE `cms_tree_type_property_enum` (
   KEY `code` (`code`),
   KEY `priority` (`priority`),
   KEY `value` (`value`),
-  CONSTRAINT `cms_tree_type_property_enum_property_id` FOREIGN KEY (`property_id`) REFERENCES `cms_tree_type_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_tree_type_property_enum__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_tree_type_property_enum__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Справочник значений свойств для разделов';
+  CONSTRAINT `cms_tree_type_property_enum__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_tree_type_property_enum_property_id` FOREIGN KEY (`property_id`) REFERENCES `cms_tree_type_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Справочник значений свойств для разделов' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2728,15 +2728,15 @@ CREATE TABLE `cms_user` (
   `last_admin_activity_at` int(11) DEFAULT NULL,
   `__to_del__email` varchar(255) DEFAULT NULL,
   `__to_del__phone` varchar(64) DEFAULT NULL,
-  `__to_del__email_is_approved` int(1) unsigned NOT NULL DEFAULT '0',
-  `__to_del__phone_is_approved` int(1) unsigned NOT NULL DEFAULT '0',
+  `__to_del__email_is_approved` int(1) unsigned NOT NULL DEFAULT 0,
+  `__to_del__phone_is_approved` int(1) unsigned NOT NULL DEFAULT 0,
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
   `patronymic` varchar(255) DEFAULT NULL,
   `cms_site_id` int(11) NOT NULL,
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_active` int(1) NOT NULL DEFAULT 1,
   `alias` varchar(255) DEFAULT NULL COMMENT 'Псевдоним',
-  `is_company` int(1) DEFAULT '0' COMMENT 'Аккаунт компании?',
+  `is_company` int(1) DEFAULT 0 COMMENT 'Аккаунт компании?',
   `company_name` varchar(255) DEFAULT NULL COMMENT 'Название компании',
   `birthday_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -2766,11 +2766,11 @@ CREATE TABLE `cms_user` (
   KEY `company_name` (`company_name`),
   KEY `cms_user__birthday_at` (`birthday_at`),
   KEY `cms_user__gender` (`gender`),
-  CONSTRAINT `cms_user_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_user_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_user__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`),
-  CONSTRAINT `cms_user__image_id` FOREIGN KEY (`image_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Пользователь';
+  CONSTRAINT `cms_user__image_id` FOREIGN KEY (`image_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_user_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_user_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Пользователь' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2780,7 +2780,7 @@ CREATE TABLE `cms_user` (
 LOCK TABLES `cms_user` WRITE;
 /*!40000 ALTER TABLE `cms_user` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `cms_user` VALUES (1,'root','otv60YW-nV6-8GRI4La3vYNhu_-dmp_n','$2y$13$ArCTNgwzXk4Zc5senfVDNeX0.5HFbqyv1/BL14bG/9rvuKpKPtY8y','xBzwPlxW6XqmJtV_cCtmI_8lmHjISRBn_1443102807',NULL,1686642879,16834,'men',1,NULL,1685954086,1686642879,1686642879,'semenov@skeeks.com','+7 906 645-26-12',1,0,'Александр','Семенов','Сергеевич',1,1,NULL,0,NULL,NULL);
+INSERT INTO `cms_user` VALUES (1,'root','otv60YW-nV6-8GRI4La3vYNhu_-dmp_n','$2y$13$ArCTNgwzXk4Zc5senfVDNeX0.5HFbqyv1/BL14bG/9rvuKpKPtY8y','xBzwPlxW6XqmJtV_cCtmI_8lmHjISRBn_1443102807',NULL,1690811580,16834,'men',1,NULL,1690811528,1690811580,1690811580,'semenov@skeeks.com','+7 906 645-26-12',1,0,'Александр','Семенов','Сергеевич',1,1,NULL,0,NULL,NULL);
 /*!40000 ALTER TABLE `cms_user` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -2809,9 +2809,9 @@ CREATE TABLE `cms_user_address` (
   `entrance` varchar(255) DEFAULT NULL COMMENT 'Подъезд',
   `floor` varchar(255) DEFAULT NULL COMMENT 'Этаж',
   `apartment_number` varchar(255) DEFAULT NULL COMMENT 'Номер квартиры',
-  `comment` text COMMENT 'Комментарий',
+  `comment` text DEFAULT NULL COMMENT 'Комментарий',
   `cms_image_id` int(11) DEFAULT NULL COMMENT 'Фото адреса',
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cms_user_address__name_uniq` (`cms_user_id`,`name`),
   KEY `cms_user_address__updated_by` (`updated_by`),
@@ -2828,7 +2828,7 @@ CREATE TABLE `cms_user_address` (
   CONSTRAINT `cms_user_address__cms_user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_user_address__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_user_address__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Адреса пользователя';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Адреса пользователя' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2856,7 +2856,7 @@ CREATE TABLE `cms_user_authclient` (
   `user_id` int(11) NOT NULL,
   `provider` varchar(50) DEFAULT NULL,
   `provider_identifier` varchar(100) DEFAULT NULL,
-  `provider_data` text,
+  `provider_data` text DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -2866,7 +2866,7 @@ CREATE TABLE `cms_user_authclient` (
   KEY `provider` (`provider`),
   KEY `provider_identifier` (`provider_identifier`),
   CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2900,8 +2900,8 @@ CREATE TABLE `cms_user_email` (
   `cms_user_id` int(11) NOT NULL,
   `value` varchar(255) NOT NULL COMMENT 'Email',
   `name` varchar(255) DEFAULT NULL COMMENT 'Примечание к Email',
-  `sort` int(11) NOT NULL DEFAULT '500',
-  `is_approved` int(11) NOT NULL DEFAULT '0' COMMENT 'Email подтвержден?',
+  `sort` int(11) NOT NULL DEFAULT 500,
+  `is_approved` int(11) NOT NULL DEFAULT 0 COMMENT 'Email подтвержден?',
   `approved_key` varchar(255) DEFAULT NULL COMMENT 'Ключ для подтверждения Email',
   `approved_key_at` int(11) DEFAULT NULL COMMENT 'Время генерация ключа',
   PRIMARY KEY (`id`),
@@ -2918,7 +2918,7 @@ CREATE TABLE `cms_user_email` (
   CONSTRAINT `cms_user_email__cms_user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_user_email__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_user_email__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Email пользователей';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Email пользователей' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2952,8 +2952,8 @@ CREATE TABLE `cms_user_phone` (
   `cms_user_id` int(11) NOT NULL,
   `value` varchar(255) NOT NULL COMMENT 'Телефон',
   `name` varchar(255) DEFAULT NULL COMMENT 'Примечание к телефону',
-  `sort` int(11) NOT NULL DEFAULT '500',
-  `is_approved` int(11) NOT NULL DEFAULT '0' COMMENT 'Телефон подтвержден?',
+  `sort` int(11) NOT NULL DEFAULT 500,
+  `is_approved` int(11) NOT NULL DEFAULT 0 COMMENT 'Телефон подтвержден?',
   `approved_key` varchar(255) DEFAULT NULL COMMENT 'Ключ для подтверждения телефона',
   `approved_key_at` int(11) DEFAULT NULL COMMENT 'Время генерация ключа',
   PRIMARY KEY (`id`),
@@ -2970,7 +2970,7 @@ CREATE TABLE `cms_user_phone` (
   CONSTRAINT `cms_user_phone__cms_user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_user_phone__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_user_phone__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Телефоны пользователей';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Телефоны пользователей' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3028,13 +3028,13 @@ CREATE TABLE `cms_user_property` (
   KEY `value_string` (`value_string`),
   KEY `value_element_id` (`value_element_id`),
   KEY `value_enum_id` (`value_enum_id`),
+  CONSTRAINT `cms_user_property__value_cms_element_id` FOREIGN KEY (`value_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `cms_user_property__value_enum_id` FOREIGN KEY (`value_enum_id`) REFERENCES `cms_user_universal_property_enum` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_user_property_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_user_property_element_id` FOREIGN KEY (`element_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_user_property_property_id` FOREIGN KEY (`property_id`) REFERENCES `cms_user_universal_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `cms_user_property_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_user_property__value_cms_element_id` FOREIGN KEY (`value_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `cms_user_property__value_enum_id` FOREIGN KEY (`value_enum_id`) REFERENCES `cms_user_universal_property_enum` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Связь свойства и значения';
+  CONSTRAINT `cms_user_property_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь свойства и значения' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3065,14 +3065,14 @@ CREATE TABLE `cms_user_universal_property` (
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `code` varchar(64) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   `property_type` char(1) NOT NULL DEFAULT 'S',
-  `is_required` int(1) NOT NULL DEFAULT '0',
+  `is_required` int(1) NOT NULL DEFAULT 0,
   `component` varchar(255) DEFAULT NULL,
-  `component_settings` text,
+  `component_settings` text DEFAULT NULL,
   `hint` varchar(255) DEFAULT NULL,
-  `is_multiple` int(1) NOT NULL DEFAULT '0',
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_multiple` int(1) NOT NULL DEFAULT 0,
+  `is_active` int(1) NOT NULL DEFAULT 1,
   `cms_measure_code` varchar(20) DEFAULT NULL,
   `cms_site_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -3091,11 +3091,11 @@ CREATE TABLE `cms_user_universal_property` (
   KEY `is_active` (`is_active`),
   KEY `cms_user_universal_property__measure_code` (`cms_measure_code`),
   KEY `cms_site_id` (`cms_site_id`),
-  CONSTRAINT `cms_user_universal_property_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `cms_user_universal_property_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_user_universal_property__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`),
-  CONSTRAINT `cms_user_universal_property__measure_code` FOREIGN KEY (`cms_measure_code`) REFERENCES `cms_measure` (`code`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Свойства пользователей';
+  CONSTRAINT `cms_user_universal_property__measure_code` FOREIGN KEY (`cms_measure_code`) REFERENCES `cms_measure` (`code`) ON UPDATE CASCADE,
+  CONSTRAINT `cms_user_universal_property_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `cms_user_universal_property_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Свойства пользователей' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3128,7 +3128,7 @@ CREATE TABLE `cms_user_universal_property_enum` (
   `value` varchar(255) NOT NULL,
   `def` char(1) NOT NULL DEFAULT 'N',
   `code` varchar(32) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -3142,7 +3142,7 @@ CREATE TABLE `cms_user_universal_property_enum` (
   CONSTRAINT `cms_user_universal_property_enum_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `cms_user_universal_property_enum_property_id` FOREIGN KEY (`property_id`) REFERENCES `cms_user_universal_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cms_user_universal_property_enum_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Справочник значений свойств типа список';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Справочник значений свойств типа список' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3173,9 +3173,9 @@ CREATE TABLE `export_task` (
   `updated_at` int(11) DEFAULT NULL,
   `type` varchar(20) DEFAULT NULL COMMENT 'Export type (csv, xml)',
   `name` varchar(255) DEFAULT NULL COMMENT 'Name',
-  `description` text COMMENT 'description',
+  `description` text DEFAULT NULL COMMENT 'description',
   `component` varchar(255) NOT NULL,
-  `component_settings` text,
+  `component_settings` text DEFAULT NULL,
   `cms_site_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
@@ -3187,7 +3187,7 @@ CREATE TABLE `export_task` (
   CONSTRAINT `export_task__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `export_task__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `export_task__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tasks for export';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Tasks for export' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3217,11 +3217,11 @@ CREATE TABLE `form2_form` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text,
+  `description` text DEFAULT NULL,
   `code` varchar(32) DEFAULT NULL,
-  `emails` text,
-  `phones` text,
-  `user_ids` text,
+  `emails` text DEFAULT NULL,
+  `phones` text DEFAULT NULL,
+  `user_ids` text DEFAULT NULL,
   `cms_site_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `form2_form_code_unique` (`cms_site_id`,`code`),
@@ -3230,10 +3230,10 @@ CREATE TABLE `form2_form` (
   KEY `created_at` (`created_at`),
   KEY `updated_at` (`updated_at`),
   KEY `name` (`name`),
+  CONSTRAINT `form2_form__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `form2_form_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `form2_form_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `form2_form__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Формы';
+  CONSTRAINT `form2_form_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Формы' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3265,15 +3265,15 @@ CREATE TABLE `form2_form_property` (
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `code` varchar(64) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   `property_type` char(1) NOT NULL DEFAULT 'S',
-  `is_required` int(1) NOT NULL DEFAULT '0',
+  `is_required` int(1) NOT NULL DEFAULT 0,
   `component` varchar(255) DEFAULT NULL,
-  `component_settings` text,
+  `component_settings` text DEFAULT NULL,
   `hint` varchar(255) DEFAULT NULL,
   `form_id` int(11) DEFAULT NULL,
-  `is_multiple` int(1) NOT NULL DEFAULT '0',
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_multiple` int(1) NOT NULL DEFAULT 0,
+  `is_active` int(1) NOT NULL DEFAULT 1,
   `cms_measure_code` varchar(20) DEFAULT NULL,
   `cms_site_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -3293,12 +3293,12 @@ CREATE TABLE `form2_form_property` (
   KEY `is_active` (`is_active`),
   KEY `form2_form_property__measure_code` (`cms_measure_code`),
   KEY `form2_form_property__cms_site_id` (`cms_site_id`),
+  CONSTRAINT `form2_form_property__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `form2_form_property__measure_code` FOREIGN KEY (`cms_measure_code`) REFERENCES `cms_measure` (`code`) ON UPDATE CASCADE,
   CONSTRAINT `form2_form_property_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `form2_form_property_form2_form` FOREIGN KEY (`form_id`) REFERENCES `form2_form` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `form2_form_property_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `form2_form_property__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `form2_form_property__measure_code` FOREIGN KEY (`cms_measure_code`) REFERENCES `cms_measure` (`code`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='Свойство раздела';
+  CONSTRAINT `form2_form_property_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Свойство раздела' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3332,7 +3332,7 @@ CREATE TABLE `form2_form_property_enum` (
   `value` varchar(255) NOT NULL,
   `def` char(1) NOT NULL DEFAULT 'N',
   `code` varchar(32) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -3346,7 +3346,7 @@ CREATE TABLE `form2_form_property_enum` (
   CONSTRAINT `form2_form_property_enum_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `form2_form_property_enum_property_id` FOREIGN KEY (`property_id`) REFERENCES `form2_form_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `form2_form_property_enum_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Справочник значений свойств';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Справочник значений свойств' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3377,25 +3377,25 @@ CREATE TABLE `form2_form_send` (
   `updated_at` int(11) DEFAULT NULL,
   `processed_by` int(11) DEFAULT NULL,
   `processed_at` int(11) DEFAULT NULL,
-  `data_values` text,
-  `data_labels` text,
-  `emails` text,
-  `phones` text,
-  `user_ids` text,
-  `email_message` text,
-  `phone_message` text,
-  `status` smallint(6) NOT NULL DEFAULT '0',
+  `data_values` text DEFAULT NULL,
+  `data_labels` text DEFAULT NULL,
+  `emails` text DEFAULT NULL,
+  `phones` text DEFAULT NULL,
+  `user_ids` text DEFAULT NULL,
+  `email_message` text DEFAULT NULL,
+  `phone_message` text DEFAULT NULL,
+  `status` smallint(6) NOT NULL DEFAULT 0,
   `form_id` int(255) DEFAULT NULL,
   `ip` varchar(32) DEFAULT NULL,
   `page_url` varchar(500) DEFAULT NULL,
-  `data_server` text,
-  `data_session` text,
-  `data_cookie` text,
-  `data_request` text,
-  `additional_data` text,
-  `comment` text,
+  `data_server` text DEFAULT NULL,
+  `data_session` text DEFAULT NULL,
+  `data_cookie` text DEFAULT NULL,
+  `data_request` text DEFAULT NULL,
+  `additional_data` text DEFAULT NULL,
+  `comment` text DEFAULT NULL,
   `cms_site_id` int(11) DEFAULT NULL,
-  `utms` text,
+  `utms` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -3408,12 +3408,12 @@ CREATE TABLE `form2_form_send` (
   KEY `ip` (`ip`),
   KEY `page_url` (`page_url`(255)),
   KEY `form2_form_send__cms_site_id` (`cms_site_id`),
+  CONSTRAINT `form2_form_send__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `form2_form_send_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `form2_form_send_form_id` FOREIGN KEY (`form_id`) REFERENCES `form2_form` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `form2_form_send_processed_by` FOREIGN KEY (`processed_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `form2_form_send_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `form2_form_send__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 COMMENT='Сообщения с форм';
+  CONSTRAINT `form2_form_send_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Сообщения с форм' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3470,13 +3470,13 @@ CREATE TABLE `form2_form_send_property` (
   KEY `value_string` (`value_string`),
   KEY `value_element_id` (`value_element_id`),
   KEY `value_enum_id` (`value_enum_id`),
+  CONSTRAINT `form2_form_send_property__value_cms_element_id` FOREIGN KEY (`value_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `form2_form_send_property__value_enum_id` FOREIGN KEY (`value_enum_id`) REFERENCES `form2_form_property_enum` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `form2_form_send_property_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `form2_form_send_property_element_id` FOREIGN KEY (`element_id`) REFERENCES `form2_form_send` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `form2_form_send_property_property_id` FOREIGN KEY (`property_id`) REFERENCES `form2_form_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `form2_form_send_property_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `form2_form_send_property__value_cms_element_id` FOREIGN KEY (`value_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `form2_form_send_property__value_enum_id` FOREIGN KEY (`value_enum_id`) REFERENCES `form2_form_property_enum` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=211 DEFAULT CHARSET=utf8 COMMENT='Связь свойства и значения';
+  CONSTRAINT `form2_form_send_property_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=211 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь свойства и значения' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3508,9 +3508,9 @@ CREATE TABLE `import_task` (
   `updated_at` int(11) DEFAULT NULL,
   `type` varchar(20) DEFAULT NULL COMMENT 'Import type (csv, xml)',
   `name` varchar(255) DEFAULT NULL COMMENT 'Name',
-  `description` text COMMENT 'description',
+  `description` text DEFAULT NULL COMMENT 'description',
   `component` varchar(255) NOT NULL,
-  `component_settings` text,
+  `component_settings` text DEFAULT NULL,
   `cms_site_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
@@ -3522,7 +3522,7 @@ CREATE TABLE `import_task` (
   CONSTRAINT `import_task__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `import_task__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `import_task__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tasks for import';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Tasks for import' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3576,7 +3576,7 @@ CREATE TABLE `kladr_location` (
   KEY `parent_sort` (`parent_id`,`sort`),
   CONSTRAINT `kladr_location_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `kladr_location_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1093 DEFAULT CHARSET=utf8 COMMENT='База адресов';
+) ENGINE=InnoDB AUTO_INCREMENT=1093 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='База адресов' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3605,12 +3605,12 @@ CREATE TABLE `log_db_target` (
   `level` int(11) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
   `log_time` int(11) DEFAULT NULL,
-  `prefix` text,
-  `message` longtext,
+  `prefix` text DEFAULT NULL,
+  `message` longtext DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_log_level` (`level`),
   KEY `idx_log_category` (`category`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3620,11 +3620,12 @@ CREATE TABLE `log_db_target` (
 LOCK TABLES `log_db_target` WRITE;
 /*!40000 ALTER TABLE `log_db_target` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `log_db_target` VALUES (1,1,'yii\\web\\HttpException:404',1690811514,'[127.0.0.82][-][9v5484bepsm6pebv8q7rcbt7f7rs605g]','yii\\base\\InvalidRouteException: Unable to resolve the request \"assets/50e198c1/img/loader/Ripple-1.5s-163px.svg\". in /var/www/sites/app-shop.ru/vendor/yiisoft/yii2/base/Module.php:561\nStack trace:\n#0 /var/www/sites/app-shop.ru/vendor/yiisoft/yii2/web/Application.php(103): yii\\base\\Module->runAction()\n#1 /var/www/sites/app-shop.ru/vendor/yiisoft/yii2/base/Application.php(384): yii\\web\\Application->handleRequest()\n#2 /var/www/sites/app-shop.ru/vendor/skeeks/cms/app-web.php(47): yii\\base\\Application->run()\n#3 /var/www/sites/app-shop.ru/frontend/web/index.php(28): include(\'...\')\n#4 {main}\n\nNext yii\\web\\NotFoundHttpException: Страница не найдена. in /var/www/sites/app-shop.ru/vendor/yiisoft/yii2/web/Application.php:115\nStack trace:\n#0 /var/www/sites/app-shop.ru/vendor/yiisoft/yii2/base/Application.php(384): yii\\web\\Application->handleRequest()\n#1 /var/www/sites/app-shop.ru/vendor/skeeks/cms/app-web.php(47): yii\\base\\Application->run()\n#2 /var/www/sites/app-shop.ru/frontend/web/index.php(28): include(\'...\')\n#3 {main}'),(2,1,'yii\\web\\HttpException:404',1690811528,'[127.0.0.82][-][9v5484bepsm6pebv8q7rcbt7f7rs605g]','yii\\base\\InvalidRouteException: Unable to resolve the request \"assets/50e198c1/img/loader/Ripple-1.5s-163px.svg\". in /var/www/sites/app-shop.ru/vendor/yiisoft/yii2/base/Module.php:561\nStack trace:\n#0 /var/www/sites/app-shop.ru/vendor/yiisoft/yii2/web/Application.php(103): yii\\base\\Module->runAction()\n#1 /var/www/sites/app-shop.ru/vendor/yiisoft/yii2/base/Application.php(384): yii\\web\\Application->handleRequest()\n#2 /var/www/sites/app-shop.ru/vendor/skeeks/cms/app-web.php(47): yii\\base\\Application->run()\n#3 /var/www/sites/app-shop.ru/frontend/web/index.php(28): include(\'...\')\n#4 {main}\n\nNext yii\\web\\NotFoundHttpException: Страница не найдена. in /var/www/sites/app-shop.ru/vendor/yiisoft/yii2/web/Application.php:115\nStack trace:\n#0 /var/www/sites/app-shop.ru/vendor/yiisoft/yii2/base/Application.php(384): yii\\web\\Application->handleRequest()\n#1 /var/www/sites/app-shop.ru/vendor/skeeks/cms/app-web.php(47): yii\\base\\Application->run()\n#2 /var/www/sites/app-shop.ru/frontend/web/index.php(28): include(\'...\')\n#3 {main}');
 /*!40000 ALTER TABLE `log_db_target` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `log_db_target` with 0 row(s)
+-- Dumped table `log_db_target` with 2 row(s)
 --
 
 --
@@ -3657,7 +3658,7 @@ CREATE TABLE `measure` (
   KEY `symbol_letter_intl` (`symbol_letter_intl`),
   CONSTRAINT `measure_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `measure_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Единицы измерения';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Единицы измерения' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3682,12 +3683,12 @@ COMMIT;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `message` (
-  `id` int(11) NOT NULL DEFAULT '0',
+  `id` int(11) NOT NULL DEFAULT 0,
   `language` varchar(255) NOT NULL DEFAULT '',
-  `translation` text,
+  `translation` text DEFAULT NULL,
   PRIMARY KEY (`id`,`language`),
   CONSTRAINT `fk_source_message_message` FOREIGN KEY (`id`) REFERENCES `source_message` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3715,7 +3716,7 @@ CREATE TABLE `migration` (
   `version` varchar(180) NOT NULL,
   `apply_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3744,14 +3745,14 @@ CREATE TABLE `money_currency` (
   `code` varchar(3) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `course` decimal(10,6) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
-  `is_active` int(1) NOT NULL DEFAULT '0',
+  `priority` int(11) NOT NULL DEFAULT 100,
+  `is_active` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`),
   KEY `course` (`course`),
   KEY `name` (`name`),
   KEY `is_active` (`is_active`)
-) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8 COMMENT='Валюты';
+) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Валюты' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3786,17 +3787,17 @@ CREATE TABLE `reviews2_message` (
   `processed_at` int(11) DEFAULT NULL,
   `element_id` int(11) NOT NULL,
   `content_id` int(11) DEFAULT NULL,
-  `dignity` text,
-  `disadvantages` text,
-  `comments` text,
+  `dignity` text DEFAULT NULL,
+  `disadvantages` text DEFAULT NULL,
+  `comments` text DEFAULT NULL,
   `rating` int(11) NOT NULL,
-  `status` smallint(6) NOT NULL DEFAULT '0',
+  `status` smallint(6) NOT NULL DEFAULT 0,
   `ip` varchar(32) DEFAULT NULL,
-  `page_url` text,
-  `data_server` text,
-  `data_session` text,
-  `data_cookie` text,
-  `data_request` text,
+  `page_url` text DEFAULT NULL,
+  `data_server` text DEFAULT NULL,
+  `data_session` text DEFAULT NULL,
+  `data_cookie` text DEFAULT NULL,
+  `data_request` text DEFAULT NULL,
   `user_name` varchar(255) DEFAULT NULL,
   `user_email` varchar(255) DEFAULT NULL,
   `user_phone` varchar(255) DEFAULT NULL,
@@ -3820,13 +3821,13 @@ CREATE TABLE `reviews2_message` (
   KEY `user_email` (`user_email`),
   KEY `user_city` (`user_city`),
   KEY `reviews2_message__cms_site_id` (`cms_site_id`),
+  CONSTRAINT `reviews2_message__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `reviews2_message_content_id` FOREIGN KEY (`content_id`) REFERENCES `cms_content` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `reviews2_message_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `reviews2_message_element_id` FOREIGN KEY (`element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `reviews2_message_processed_by` FOREIGN KEY (`processed_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `reviews2_message_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `reviews2_message__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Отзывы';
+  CONSTRAINT `reviews2_message_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Отзывы' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3861,12 +3862,12 @@ CREATE TABLE `shop_bill` (
   `paid_at` int(11) DEFAULT NULL COMMENT 'Дата оплаты',
   `shop_payment_id` int(11) DEFAULT NULL COMMENT 'Платеж',
   `closed_at` int(11) DEFAULT NULL COMMENT 'Дата отмены',
-  `reason_closed` text COMMENT 'Причина отмены',
-  `amount` decimal(18,4) NOT NULL DEFAULT '0.0000',
+  `reason_closed` text DEFAULT NULL COMMENT 'Причина отмены',
+  `amount` decimal(18,4) NOT NULL DEFAULT 0.0000,
   `currency_code` varchar(3) NOT NULL DEFAULT 'RUB',
-  `description` text,
+  `description` text DEFAULT NULL,
   `code` varchar(255) NOT NULL COMMENT 'Уникальный код счета',
-  `external_data` text,
+  `external_data` text DEFAULT NULL,
   `external_id` varchar(255) DEFAULT NULL,
   `external_name` varchar(255) DEFAULT NULL,
   `cms_user_id` int(11) DEFAULT NULL COMMENT 'Клиент (пользователь)',
@@ -3890,10 +3891,10 @@ CREATE TABLE `shop_bill` (
   CONSTRAINT `shop_bill__currency_code` FOREIGN KEY (`currency_code`) REFERENCES `money_currency` (`code`),
   CONSTRAINT `shop_bill__shop_buyer_id` FOREIGN KEY (`shop_buyer_id`) REFERENCES `shop_buyer` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_bill__shop_order_id` FOREIGN KEY (`shop_order_id`) REFERENCES `shop_order` (`id`),
-  CONSTRAINT `shop_bill__shop_payment_id` FOREIGN KEY (`shop_payment_id`) REFERENCES `shop_payment` (`id`),
   CONSTRAINT `shop_bill__shop_pay_system_id` FOREIGN KEY (`shop_pay_system_id`) REFERENCES `shop_pay_system` (`id`),
+  CONSTRAINT `shop_bill__shop_payment_id` FOREIGN KEY (`shop_payment_id`) REFERENCES `shop_payment` (`id`),
   CONSTRAINT `shop_bill__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Счета для оплаты покупателей';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Счета для оплаты покупателей' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3925,10 +3926,10 @@ CREATE TABLE `shop_bonus_transaction` (
   `cms_site_id` int(11) NOT NULL COMMENT 'Сайт',
   `cms_user_id` int(11) DEFAULT NULL COMMENT 'Пользователь',
   `shop_order_id` int(11) DEFAULT NULL COMMENT 'Заказ',
-  `is_debit` int(1) NOT NULL DEFAULT '1' COMMENT 'Дебет? (иначе кредит)',
-  `value` decimal(18,2) NOT NULL DEFAULT '0.00' COMMENT 'Количество бонусов',
+  `is_debit` int(1) NOT NULL DEFAULT 1 COMMENT 'Дебет? (иначе кредит)',
+  `value` decimal(18,2) NOT NULL DEFAULT 0.00 COMMENT 'Количество бонусов',
   `end_at` int(11) DEFAULT NULL COMMENT 'Дата до которой действуют бонусы',
-  `comment` text COMMENT 'Комментарий',
+  `comment` text DEFAULT NULL COMMENT 'Комментарий',
   PRIMARY KEY (`id`),
   KEY `shop_bonus_transaction__updated_by` (`updated_by`),
   KEY `shop_bonus_transaction__created_by` (`created_by`),
@@ -3945,7 +3946,7 @@ CREATE TABLE `shop_bonus_transaction` (
   CONSTRAINT `shop_bonus_transaction__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_bonus_transaction__shop_order_id` FOREIGN KEY (`shop_order_id`) REFERENCES `shop_order` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_bonus_transaction__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Движение бонусов';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Движение бонусов' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3989,7 +3990,7 @@ CREATE TABLE `shop_buyer` (
   CONSTRAINT `shop_buyer_cms__user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_buyer_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_buyer_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Покупатели';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Покупатели' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4047,13 +4048,13 @@ CREATE TABLE `shop_buyer_property` (
   KEY `value_string` (`value_string`),
   KEY `value_element_id` (`value_element_id`),
   KEY `value_enum_id` (`value_enum_id`),
+  CONSTRAINT `shop_buyer_property__value_cms_element_id` FOREIGN KEY (`value_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `shop_buyer_property__value_enum_id` FOREIGN KEY (`value_enum_id`) REFERENCES `shop_person_type_property_enum` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_buyer_property_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`),
   CONSTRAINT `shop_buyer_property_element_id` FOREIGN KEY (`element_id`) REFERENCES `shop_buyer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_buyer_property_property_id` FOREIGN KEY (`property_id`) REFERENCES `shop_person_type_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `shop_buyer_property_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`),
-  CONSTRAINT `shop_buyer_property__value_cms_element_id` FOREIGN KEY (`value_element_id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `shop_buyer_property__value_enum_id` FOREIGN KEY (`value_enum_id`) REFERENCES `shop_person_type_property_enum` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='Связь свойства и значения';
+  CONSTRAINT `shop_buyer_property_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь свойства и значения' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4082,8 +4083,8 @@ CREATE TABLE `shop_cashebox` (
   `cms_site_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `shop_store_id` int(11) DEFAULT NULL,
-  `is_active` int(1) NOT NULL DEFAULT '1',
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `is_active` int(1) NOT NULL DEFAULT 1,
+  `priority` int(11) NOT NULL DEFAULT 100,
   `shop_cloudkassa_id` int(11) DEFAULT NULL COMMENT 'Облачная касса',
   PRIMARY KEY (`id`),
   KEY `shop_cashebox__shop_store_id` (`shop_store_id`),
@@ -4094,7 +4095,7 @@ CREATE TABLE `shop_cashebox` (
   CONSTRAINT `shop_cashebox__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_cashebox__shop_cloudkassa_id` FOREIGN KEY (`shop_cloudkassa_id`) REFERENCES `shop_cloudkassa` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_cashebox__shop_store_id` FOREIGN KEY (`shop_store_id`) REFERENCES `shop_store` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Касса';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Касса' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4123,9 +4124,9 @@ CREATE TABLE `shop_cashebox2user` (
   `created_by` int(11) DEFAULT NULL,
   `cms_user_id` int(11) DEFAULT NULL COMMENT 'Сотрудник',
   `shop_cashebox_id` int(11) DEFAULT NULL COMMENT 'Касса',
-  `is_active` int(1) NOT NULL DEFAULT '1' COMMENT 'Активен?',
+  `is_active` int(1) NOT NULL DEFAULT 1 COMMENT 'Активен?',
   `cashiers_name` varchar(255) DEFAULT NULL COMMENT 'Имя кассира на чеке',
-  `comment` text COMMENT 'Комментарий',
+  `comment` text DEFAULT NULL COMMENT 'Комментарий',
   PRIMARY KEY (`id`),
   UNIQUE KEY `shop_cashebox2user__uniq` (`shop_cashebox_id`,`cms_user_id`),
   KEY `shop_cashebox2user__created_by` (`created_by`),
@@ -4136,7 +4137,7 @@ CREATE TABLE `shop_cashebox2user` (
   CONSTRAINT `shop_cashebox2user__cms_user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_cashebox2user__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_cashebox2user__shop_cashebox_id` FOREIGN KEY (`shop_cashebox_id`) REFERENCES `shop_cashebox` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Кассиры';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Кассиры' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4161,7 +4162,7 @@ COMMIT;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `shop_cashebox_shift` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `shift_number` int(11) NOT NULL DEFAULT '1',
+  `shift_number` int(11) NOT NULL DEFAULT 1,
   `shop_cashebox_id` int(11) NOT NULL,
   `created_by` int(11) DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
@@ -4171,7 +4172,7 @@ CREATE TABLE `shop_cashebox_shift` (
   UNIQUE KEY `shop_cashebox_shift__number_cachebox_uniq` (`shift_number`,`shop_cashebox_id`),
   KEY `shop_cashebox_shift__shop_cashebox_id` (`shop_cashebox_id`),
   CONSTRAINT `shop_cashebox_shift__shop_cashebox_id` FOREIGN KEY (`shop_cashebox_id`) REFERENCES `shop_cashebox` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Кассовая смена';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Кассовая смена' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4213,9 +4214,9 @@ CREATE TABLE `shop_check` (
   `cashier_position` varchar(255) DEFAULT NULL COMMENT 'Должность',
   `cashier_cms_user_id` int(11) DEFAULT NULL COMMENT 'Кассир - пользователь',
   `tax_mode` varchar(255) DEFAULT NULL COMMENT 'Применяемая система налогообложения',
-  `amount` decimal(18,2) NOT NULL DEFAULT '0.00' COMMENT 'Сумма чека',
-  `moneyPositions` text COMMENT 'Json объект с типом оплаты и суммы платежа',
-  `inventPositions` text COMMENT 'Json объект с позициями',
+  `amount` decimal(18,2) NOT NULL DEFAULT 0.00 COMMENT 'Сумма чека',
+  `moneyPositions` text DEFAULT NULL COMMENT 'Json объект с типом оплаты и суммы платежа',
+  `inventPositions` text DEFAULT NULL COMMENT 'Json объект с позициями',
   `fiscal_date_at` int(11) DEFAULT NULL,
   `fiscal_date` varchar(255) DEFAULT NULL,
   `fiscal_kkt_number` varchar(255) DEFAULT NULL,
@@ -4226,15 +4227,15 @@ CREATE TABLE `shop_check` (
   `fiscal_check_number` varchar(255) DEFAULT NULL,
   `fiscal_ecr_registration_umber` varchar(255) DEFAULT NULL,
   `qr` varchar(255) DEFAULT NULL COMMENT 'QR код чека',
-  `error_message` text COMMENT 'Сообщение об ошибке',
-  `is_print` int(1) DEFAULT '0' COMMENT 'Печатать бумажную версию чека?',
+  `error_message` text DEFAULT NULL COMMENT 'Сообщение об ошибке',
+  `is_print` int(1) DEFAULT 0 COMMENT 'Печатать бумажную версию чека?',
   `seller_address` varchar(255) DEFAULT NULL COMMENT 'Адрес торговой точки',
   `seller_name` varchar(255) DEFAULT NULL COMMENT 'Название юр. лица (ИП или ООО и т.д.)',
   `seller_inn` varchar(255) DEFAULT NULL COMMENT 'ИНН торговой точки',
   `kkm_payments_address` varchar(255) DEFAULT NULL COMMENT 'Платежные адреса (сайт; Разъездная; Магазин)',
   `provider_uid` varchar(255) DEFAULT NULL COMMENT 'Уникальный ID внешней системы',
-  `provider_request_data` text COMMENT 'Данные для создания объекта чека',
-  `provider_response_data` text COMMENT 'Все данные из внешней системы по чеку',
+  `provider_request_data` text DEFAULT NULL COMMENT 'Данные для создания объекта чека',
+  `provider_response_data` text DEFAULT NULL COMMENT 'Все данные из внешней системы по чеку',
   PRIMARY KEY (`id`),
   KEY `shop_check__updated_by` (`updated_by`),
   KEY `shop_check__created_by` (`created_by`),
@@ -4257,7 +4258,7 @@ CREATE TABLE `shop_check` (
   CONSTRAINT `shop_check__shop_order_id` FOREIGN KEY (`shop_order_id`) REFERENCES `shop_order` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_check__shop_store_id` FOREIGN KEY (`shop_store_id`) REFERENCES `shop_store` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_check__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Кассовые чеки';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Кассовые чеки' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4286,10 +4287,10 @@ CREATE TABLE `shop_cloudkassa` (
   `updated_at` int(11) DEFAULT NULL,
   `cms_site_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
-  `is_main` int(1) DEFAULT '1',
+  `priority` int(11) NOT NULL DEFAULT 100,
+  `is_main` int(1) DEFAULT 1,
   `component` varchar(255) NOT NULL,
-  `component_config` text,
+  `component_config` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `shop_cloudkassa__site_main_uniq` (`cms_site_id`,`is_main`),
   KEY `shop_cloudkassa__is_main` (`is_main`),
@@ -4297,7 +4298,7 @@ CREATE TABLE `shop_cloudkassa` (
   KEY `shop_cloudkassa__priority` (`priority`),
   KEY `shop_cloudkassa__name` (`name`),
   CONSTRAINT `shop_cloudkassa__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Облачная касса';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Облачная касса' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4327,7 +4328,7 @@ CREATE TABLE `shop_cms_content_property` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `cms_content_property_id` int(11) NOT NULL,
-  `is_offer_property` int(1) NOT NULL DEFAULT '0',
+  `is_offer_property` int(1) NOT NULL DEFAULT 0,
   `is_vendor` int(1) DEFAULT NULL COMMENT 'Производитель',
   `is_vendor_code` int(1) DEFAULT NULL COMMENT 'Код производителя',
   PRIMARY KEY (`id`),
@@ -4342,7 +4343,7 @@ CREATE TABLE `shop_cms_content_property` (
   CONSTRAINT `shop_cms_content_property__cms_content_property_id` FOREIGN KEY (`cms_content_property_id`) REFERENCES `cms_content_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_cms_content_property__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_cms_content_property__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4380,11 +4381,11 @@ CREATE TABLE `shop_content` (
   KEY `created_at` (`created_at`),
   KEY `updated_at` (`updated_at`),
   KEY `children_content_id` (`children_content_id`),
+  CONSTRAINT `shop_content__children_content_id` FOREIGN KEY (`children_content_id`) REFERENCES `cms_content` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_content_content_id` FOREIGN KEY (`content_id`) REFERENCES `cms_content` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_content_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_content_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_content__children_content_id` FOREIGN KEY (`children_content_id`) REFERENCES `cms_content` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Связь контента с магазином';
+  CONSTRAINT `shop_content_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь контента с магазином' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4424,13 +4425,13 @@ CREATE TABLE `shop_delivery` (
   `active` varchar(1) NOT NULL DEFAULT 'Y',
   `price` decimal(18,2) NOT NULL,
   `currency_code` varchar(3) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
-  `description` text,
+  `priority` int(11) NOT NULL DEFAULT 100,
+  `description` text DEFAULT NULL,
   `logo_id` int(11) DEFAULT NULL,
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_active` int(1) NOT NULL DEFAULT 1,
   `component` varchar(255) DEFAULT NULL,
-  `component_config` text,
-  `free_price_from` decimal(18,2) NOT NULL DEFAULT '0.00' COMMENT 'Бесплатная доставка от',
+  `component_config` text DEFAULT NULL,
+  `free_price_from` decimal(18,2) NOT NULL DEFAULT 0.00 COMMENT 'Бесплатная доставка от',
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -4449,13 +4450,13 @@ CREATE TABLE `shop_delivery` (
   KEY `priority` (`priority`),
   KEY `logo_id` (`logo_id`),
   KEY `shop_delivery__free_price_from` (`free_price_from`),
-  CONSTRAINT `shop_delivery_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_delivery_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_delivery__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_delivery__currency_code` FOREIGN KEY (`currency_code`) REFERENCES `money_currency` (`code`),
   CONSTRAINT `shop_delivery__logo_id` FOREIGN KEY (`logo_id`) REFERENCES `cms_storage_file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_delivery__order_currency_code` FOREIGN KEY (`order_currency_code`) REFERENCES `money_currency` (`code`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Службы доставки';
+  CONSTRAINT `shop_delivery__order_currency_code` FOREIGN KEY (`order_currency_code`) REFERENCES `money_currency` (`code`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `shop_delivery_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `shop_delivery_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Службы доставки' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4494,11 +4495,11 @@ CREATE TABLE `shop_delivery2pay_system` (
   KEY `created_at` (`created_at`),
   KEY `updated_at` (`updated_at`),
   KEY `shop_delivery2pay_system__shop_delivery` (`delivery_id`),
-  CONSTRAINT `shop_delivery2pay_system_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_delivery2pay_system_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_delivery2pay_system__shop_delivery` FOREIGN KEY (`delivery_id`) REFERENCES `shop_delivery` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `shop_delivery2pay_system__shop_pay_system` FOREIGN KEY (`pay_system_id`) REFERENCES `shop_pay_system` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Службы доставки с платежными системами';
+  CONSTRAINT `shop_delivery2pay_system__shop_pay_system` FOREIGN KEY (`pay_system_id`) REFERENCES `shop_pay_system` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `shop_delivery2pay_system_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `shop_delivery2pay_system_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Службы доставки с платежными системами' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4533,16 +4534,16 @@ CREATE TABLE `shop_discount` (
   `name` varchar(255) DEFAULT NULL,
   `max_discount` decimal(18,4) DEFAULT NULL,
   `value_type` varchar(1) NOT NULL DEFAULT 'P',
-  `value` decimal(18,4) NOT NULL DEFAULT '0.0000',
+  `value` decimal(18,4) NOT NULL DEFAULT 0.0000,
   `currency_code` varchar(3) NOT NULL,
-  `min_order_sum` decimal(18,4) NOT NULL DEFAULT '0.0000',
+  `min_order_sum` decimal(18,4) NOT NULL DEFAULT 0.0000,
   `notes` varchar(255) DEFAULT NULL,
-  `type` int(11) NOT NULL DEFAULT '0',
-  `priority` int(11) NOT NULL DEFAULT '1',
-  `conditions` text,
+  `type` int(11) NOT NULL DEFAULT 0,
+  `priority` int(11) NOT NULL DEFAULT 1,
+  `conditions` text DEFAULT NULL,
   `assignment_type` varchar(10) NOT NULL DEFAULT 'product',
-  `is_active` int(1) NOT NULL DEFAULT '1',
-  `is_last` int(1) NOT NULL DEFAULT '1',
+  `is_active` int(1) NOT NULL DEFAULT 1,
+  `is_last` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -4559,11 +4560,11 @@ CREATE TABLE `shop_discount` (
   KEY `min_order_sum` (`min_order_sum`),
   KEY `type` (`type`),
   KEY `cms_site_id` (`cms_site_id`),
-  CONSTRAINT `shop_discount_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_discount_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_discount__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `shop_discount__currency_code` FOREIGN KEY (`currency_code`) REFERENCES `money_currency` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Скидки на товары';
+  CONSTRAINT `shop_discount__currency_code` FOREIGN KEY (`currency_code`) REFERENCES `money_currency` (`code`),
+  CONSTRAINT `shop_discount_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `shop_discount_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Скидки на товары' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4596,7 +4597,7 @@ CREATE TABLE `shop_discount2auth_item` (
   KEY `shop_discount2auth_item__auth_item_name` (`auth_item_name`),
   CONSTRAINT `shop_discount2auth_item__auth_item_name` FOREIGN KEY (`auth_item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_discount2auth_item__shop_discount_id` FOREIGN KEY (`shop_discount_id`) REFERENCES `shop_discount` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Связь скидки с ролью пользователя';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь скидки с ролью пользователя' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4634,11 +4635,11 @@ CREATE TABLE `shop_discount2type_price` (
   KEY `created_at` (`created_at`),
   KEY `updated_at` (`updated_at`),
   KEY `shop_discount2type_price__type_price_id` (`type_price_id`),
-  CONSTRAINT `shop_discount2type_price_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_discount2type_price_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_discount2type_price__discount_id` FOREIGN KEY (`discount_id`) REFERENCES `shop_discount` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `shop_discount2type_price__type_price_id` FOREIGN KEY (`type_price_id`) REFERENCES `shop_type_price` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='Связь скидок с типами цен';
+  CONSTRAINT `shop_discount2type_price__type_price_id` FOREIGN KEY (`type_price_id`) REFERENCES `shop_type_price` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `shop_discount2type_price_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `shop_discount2type_price_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь скидок с типами цен' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4669,12 +4670,12 @@ CREATE TABLE `shop_discount_coupon` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `shop_discount_id` int(11) NOT NULL,
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_active` int(1) NOT NULL DEFAULT 1,
   `active_from` int(11) DEFAULT NULL,
   `active_to` int(11) DEFAULT NULL,
   `coupon` varchar(32) NOT NULL,
-  `max_use` int(11) NOT NULL DEFAULT '1',
-  `use_count` int(11) NOT NULL DEFAULT '0',
+  `max_use` int(11) NOT NULL DEFAULT 1,
+  `use_count` int(11) NOT NULL DEFAULT 0,
   `cms_user_id` int(11) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -4694,7 +4695,7 @@ CREATE TABLE `shop_discount_coupon` (
   CONSTRAINT `shop_discount_coupon__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_discount_coupon__shop_discount_id` FOREIGN KEY (`shop_discount_id`) REFERENCES `shop_discount` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_discount_coupon__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4727,7 +4728,7 @@ CREATE TABLE `shop_favorite_product` (
   KEY `shop_favorite_product__shop_product_id` (`shop_product_id`),
   CONSTRAINT `shop_favorite_product__shop_product_id` FOREIGN KEY (`shop_product_id`) REFERENCES `shop_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_favorite_product__shop_user_id` FOREIGN KEY (`shop_user_id`) REFERENCES `shop_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Избранные продукты';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Избранные продукты' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4759,10 +4760,10 @@ CREATE TABLE `shop_import_cms_site` (
   `cms_site_id` int(11) NOT NULL COMMENT 'Сайт получатель',
   `sender_cms_site_id` int(11) NOT NULL COMMENT 'Сайт отправитель',
   `sender_shop_type_price_id` int(11) NOT NULL COMMENT 'Цена на сайте отправителе',
-  `extra_charge` int(11) NOT NULL DEFAULT '100' COMMENT 'Наценка/Уценка',
-  `priority` int(11) NOT NULL DEFAULT '100' COMMENT 'Приоритет',
+  `extra_charge` int(11) NOT NULL DEFAULT 100 COMMENT 'Наценка/Уценка',
+  `priority` int(11) NOT NULL DEFAULT 100 COMMENT 'Приоритет',
   `sender_purchasing_shop_type_price_id` int(11) DEFAULT NULL,
-  `purchasing_extra_charge` int(11) NOT NULL DEFAULT '100',
+  `purchasing_extra_charge` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   UNIQUE KEY `shop_import_cms_site__uniq` (`cms_site_id`,`sender_cms_site_id`),
   KEY `shop_import_cms_site__updated_by` (`updated_by`),
@@ -4781,7 +4782,7 @@ CREATE TABLE `shop_import_cms_site` (
   CONSTRAINT `shop_import_cms_site__sender_purchasing_shop_type_price_id` FOREIGN KEY (`sender_purchasing_shop_type_price_id`) REFERENCES `shop_type_price` (`id`),
   CONSTRAINT `shop_import_cms_site__sender_shop_type_price_id` FOREIGN KEY (`sender_shop_type_price_id`) REFERENCES `shop_type_price` (`id`),
   CONSTRAINT `shop_import_cms_site__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Настройки импорта товаров с других сайтов';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Настройки импорта товаров с других сайтов' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4808,21 +4809,21 @@ CREATE TABLE `shop_marketplace` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cms_site_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL COMMENT 'Название',
-  `is_active` int(1) NOT NULL DEFAULT '1' COMMENT 'Активен?',
+  `is_active` int(1) NOT NULL DEFAULT 1 COMMENT 'Активен?',
   `marketplace` varchar(255) NOT NULL COMMENT 'Маркетплейс (oz, wb, ym)',
   `wb_key_stat` varchar(255) DEFAULT NULL COMMENT 'Ключ «Статистика»',
   `wb_key_standart` varchar(255) DEFAULT NULL COMMENT 'Ключ «Стандартный»',
   `oz_client_id` int(11) DEFAULT NULL COMMENT 'Client ID',
   `oz_api_key` varchar(255) DEFAULT NULL COMMENT 'API Key',
   `ym_company_id` int(11) DEFAULT NULL COMMENT 'Кампания №',
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   KEY `shop_marketplace__name` (`name`),
   KEY `shop_marketplace__is_active` (`is_active`),
   KEY `shop_marketplace__priority` (`priority`),
   KEY `shop_marketplace__cms_site_id` (`cms_site_id`),
   CONSTRAINT `shop_marketplace__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Маркетплейс';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Маркетплейс' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4856,18 +4857,18 @@ CREATE TABLE `shop_order` (
   `shop_buyer_id` int(11) DEFAULT NULL,
   `paid_at` int(11) DEFAULT NULL,
   `status_at` int(11) NOT NULL,
-  `delivery_amount` decimal(18,2) NOT NULL DEFAULT '0.00',
-  `amount` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `delivery_amount` decimal(18,2) NOT NULL DEFAULT 0.00,
+  `amount` decimal(18,2) NOT NULL DEFAULT 0.00,
   `currency_code` varchar(3) NOT NULL,
-  `discount_amount` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `discount_amount` decimal(18,2) NOT NULL DEFAULT 0.00,
   `shop_pay_system_id` int(11) DEFAULT NULL,
   `shop_delivery_id` int(11) DEFAULT NULL,
-  `tax_amount` decimal(18,2) NOT NULL DEFAULT '0.00',
-  `paid_amount` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `tax_amount` decimal(18,2) NOT NULL DEFAULT 0.00,
+  `paid_amount` decimal(18,2) NOT NULL DEFAULT 0.00,
   `code` varchar(32) DEFAULT NULL,
-  `is_created` int(1) NOT NULL DEFAULT '0' COMMENT 'Заказ создан?',
+  `is_created` int(1) NOT NULL DEFAULT 0 COMMENT 'Заказ создан?',
   `shop_order_status_id` int(11) DEFAULT NULL,
-  `delivery_handler_data_jsoned` text,
+  `delivery_handler_data_jsoned` text DEFAULT NULL,
   `external_id` varchar(255) DEFAULT NULL,
   `cms_user_id` int(11) DEFAULT NULL COMMENT 'Покупатель',
   `contact_phone` varchar(255) DEFAULT NULL COMMENT 'Телефон',
@@ -4875,7 +4876,7 @@ CREATE TABLE `shop_order` (
   `contact_first_name` varchar(255) DEFAULT NULL COMMENT 'Имя покупателя',
   `contact_last_name` varchar(255) DEFAULT NULL COMMENT 'Фамилия Покупателя',
   `shop_store_id` int(11) DEFAULT NULL COMMENT 'Магазин',
-  `comment` text COMMENT 'Комментарий к заказу',
+  `comment` text DEFAULT NULL COMMENT 'Комментарий к заказу',
   `receiver_cms_user_id` int(11) DEFAULT NULL COMMENT 'Получатель заказа',
   `receiver_first_name` varchar(255) DEFAULT NULL COMMENT 'Имя получателя',
   `receiver_last_name` varchar(255) DEFAULT NULL COMMENT 'Фамилия получателя',
@@ -4890,7 +4891,7 @@ CREATE TABLE `shop_order` (
   `delivery_apartment_number` varchar(255) NOT NULL COMMENT 'Номер квартиры',
   `delivery_comment` text NOT NULL COMMENT 'Коментарий к адресу',
   `order_type` varchar(50) NOT NULL DEFAULT 'sale' COMMENT 'Тип заказа (sale,return)',
-  `is_order` int(1) DEFAULT '1' COMMENT 'Заказ?',
+  `is_order` int(1) DEFAULT 1 COMMENT 'Заказ?',
   `shop_cashebox_shift_id` int(11) DEFAULT NULL COMMENT 'Смена',
   `shop_cashebox_id` int(11) DEFAULT NULL COMMENT 'Касса',
   PRIMARY KEY (`id`),
@@ -4921,8 +4922,6 @@ CREATE TABLE `shop_order` (
   KEY `shop_order__is_order` (`is_order`),
   KEY `shop_order__shop_cashebox_shift_id` (`shop_cashebox_shift_id`),
   KEY `shop_order__shop_cashebox_id` (`shop_cashebox_id`),
-  CONSTRAINT `shop_order_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_order_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_order__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_order__cms_user_address_id` FOREIGN KEY (`cms_user_address_id`) REFERENCES `cms_user_address` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_order__cms_user_id` FOREIGN KEY (`cms_user_id`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
@@ -4935,8 +4934,10 @@ CREATE TABLE `shop_order` (
   CONSTRAINT `shop_order__shop_order_status_id` FOREIGN KEY (`shop_order_status_id`) REFERENCES `shop_order_status` (`id`),
   CONSTRAINT `shop_order__shop_pay_system_id` FOREIGN KEY (`shop_pay_system_id`) REFERENCES `shop_pay_system` (`id`),
   CONSTRAINT `shop_order__shop_person_type_id` FOREIGN KEY (`shop_person_type_id`) REFERENCES `shop_person_type` (`id`),
-  CONSTRAINT `shop_order__shop_store_id` FOREIGN KEY (`shop_store_id`) REFERENCES `shop_store` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Заказы';
+  CONSTRAINT `shop_order__shop_store_id` FOREIGN KEY (`shop_store_id`) REFERENCES `shop_store` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `shop_order_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `shop_order_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Заказы' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4967,7 +4968,7 @@ CREATE TABLE `shop_order2discount_coupon` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `discount_coupon_id` int(11) NOT NULL,
-  `order_id` int(1) NOT NULL DEFAULT '1',
+  `order_id` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -4979,7 +4980,7 @@ CREATE TABLE `shop_order2discount_coupon` (
   CONSTRAINT `shop_order2discount_coupon__discount_coupon_id` FOREIGN KEY (`discount_coupon_id`) REFERENCES `shop_discount_coupon` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_order2discount_coupon__order_id` FOREIGN KEY (`order_id`) REFERENCES `shop_order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_order2discount_coupon__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Contact orders with discount coupons';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Contact orders with discount coupons' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5010,7 +5011,7 @@ CREATE TABLE `shop_order_change` (
   `updated_at` int(11) DEFAULT NULL,
   `shop_order_id` int(11) NOT NULL,
   `type` varchar(255) NOT NULL,
-  `data` text,
+  `data` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -5018,10 +5019,10 @@ CREATE TABLE `shop_order_change` (
   KEY `updated_at` (`updated_at`),
   KEY `shop_order_id` (`shop_order_id`),
   KEY `type` (`type`),
+  CONSTRAINT `shop_order_change__shop_order_id` FOREIGN KEY (`shop_order_id`) REFERENCES `shop_order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_order_change_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_order_change_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_order_change__shop_order_id` FOREIGN KEY (`shop_order_id`) REFERENCES `shop_order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='История по заказу';
+  CONSTRAINT `shop_order_change_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='История по заказу' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5056,13 +5057,13 @@ CREATE TABLE `shop_order_item` (
   `amount` decimal(18,2) NOT NULL,
   `currency_code` varchar(3) NOT NULL,
   `weight` decimal(18,2) DEFAULT NULL,
-  `quantity` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `quantity` decimal(18,2) NOT NULL DEFAULT 0.00,
   `name` varchar(255) NOT NULL,
   `notes` varchar(255) DEFAULT NULL,
-  `discount_amount` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `discount_amount` decimal(18,2) NOT NULL DEFAULT 0.00,
   `discount_name` varchar(255) DEFAULT NULL,
   `discount_value` varchar(32) DEFAULT NULL,
-  `vat_rate` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `vat_rate` decimal(18,2) NOT NULL DEFAULT 0.00,
   `reserve_quantity` double DEFAULT NULL,
   `dimensions` varchar(255) DEFAULT NULL,
   `measure_name` varchar(50) DEFAULT NULL,
@@ -5080,13 +5081,13 @@ CREATE TABLE `shop_order_item` (
   KEY `name` (`name`),
   KEY `measure_name` (`measure_name`),
   KEY `measure_code` (`measure_code`),
+  CONSTRAINT `shop_basket__currency_code` FOREIGN KEY (`currency_code`) REFERENCES `money_currency` (`code`),
   CONSTRAINT `shop_basket_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_basket_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_basket__currency_code` FOREIGN KEY (`currency_code`) REFERENCES `money_currency` (`code`),
   CONSTRAINT `shop_order_item__shop_order_id` FOREIGN KEY (`shop_order_id`) REFERENCES `shop_order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_order_item__shop_product_id` FOREIGN KEY (`shop_product_id`) REFERENCES `shop_product` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_order_item__shop_product_price_id` FOREIGN KEY (`shop_product_price_id`) REFERENCES `shop_product_price` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Позиции в корзине';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Позиции в корзине' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5120,7 +5121,7 @@ CREATE TABLE `shop_order_item_property` (
   `name` varchar(255) NOT NULL,
   `value` varchar(255) DEFAULT NULL,
   `code` varchar(255) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -5134,7 +5135,7 @@ CREATE TABLE `shop_order_item_property` (
   CONSTRAINT `shop_basket_props_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_basket_props_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_order_item_property__shop_order_item_id` FOREIGN KEY (`shop_order_item_id`) REFERENCES `shop_order_item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Своуйства заказов';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Своуйства заказов' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5165,8 +5166,8 @@ CREATE TABLE `shop_order_log` (
   `updated_at` int(11) DEFAULT NULL,
   `shop_order_id` int(11) NOT NULL,
   `action_type` varchar(255) NOT NULL,
-  `action_data` text,
-  `comment` text,
+  `action_data` text DEFAULT NULL,
+  `comment` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `shop_order_log__updated_by` (`updated_by`),
   KEY `shop_order_log__created_by` (`created_by`),
@@ -5176,7 +5177,7 @@ CREATE TABLE `shop_order_log` (
   CONSTRAINT `shop_order_log__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_order_log__shop_order_id` FOREIGN KEY (`shop_order_id`) REFERENCES `shop_order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_order_log__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Изменения по заказу';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Изменения по заказу' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5207,17 +5208,17 @@ CREATE TABLE `shop_order_status` (
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL COMMENT 'Короткая расшифровка статуса заказа',
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   `color` varchar(32) DEFAULT NULL COMMENT 'Цвет текста статуса',
   `bg_color` varchar(32) DEFAULT NULL COMMENT 'Цвет фона подложки статуса',
-  `order_page_description` text COMMENT 'Описание выводится на детальной странице заказа',
-  `email_notify_description` text COMMENT 'Текст добавляется в email уведомление о заказе',
-  `is_comment_required` int(1) NOT NULL DEFAULT '0' COMMENT 'При установке этого статуса комментарий обязателен?',
-  `client_available_statuses` text COMMENT 'Доступные статусы для клиента',
+  `order_page_description` text DEFAULT NULL COMMENT 'Описание выводится на детальной странице заказа',
+  `email_notify_description` text DEFAULT NULL COMMENT 'Текст добавляется в email уведомление о заказе',
+  `is_comment_required` int(1) NOT NULL DEFAULT 0 COMMENT 'При установке этого статуса комментарий обязателен?',
+  `client_available_statuses` text DEFAULT NULL COMMENT 'Доступные статусы для клиента',
   `btn_name` varchar(255) DEFAULT NULL COMMENT 'Название на кнопке смены статуса',
   `auto_next_shop_order_status_id` int(11) DEFAULT NULL COMMENT 'Следующий статус, который будет проставлен автоматически',
   `auto_next_status_time` int(11) DEFAULT NULL COMMENT 'Время через которое следующий статус будет проставлен',
-  `is_payment_allowed` int(1) NOT NULL DEFAULT '1' COMMENT 'Разрешить онлайн оплату?',
+  `is_payment_allowed` int(1) NOT NULL DEFAULT 1 COMMENT 'Разрешить онлайн оплату?',
   `is_install_after_pay` int(1) DEFAULT NULL COMMENT 'Установить этот статус после оплаты?',
   PRIMARY KEY (`id`),
   UNIQUE KEY `is_install_after_pay` (`is_install_after_pay`),
@@ -5230,10 +5231,10 @@ CREATE TABLE `shop_order_status` (
   KEY `color` (`color`),
   KEY `auto_next_shop_order_status_id` (`auto_next_shop_order_status_id`),
   KEY `auto_next_status_time` (`auto_next_status_time`),
+  CONSTRAINT `shop_order_status__auto_next_shop_order_status` FOREIGN KEY (`auto_next_shop_order_status_id`) REFERENCES `shop_order_status` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_order_status_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_order_status_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_order_status__auto_next_shop_order_status` FOREIGN KEY (`auto_next_shop_order_status_id`) REFERENCES `shop_order_status` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Статусы заказов';
+  CONSTRAINT `shop_order_status_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Статусы заказов' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5266,13 +5267,13 @@ CREATE TABLE `shop_payment` (
   `shop_buyer_id` int(11) DEFAULT NULL,
   `shop_order_id` int(11) DEFAULT NULL,
   `shop_pay_system_id` int(11) DEFAULT NULL COMMENT 'Платежная система',
-  `is_debit` int(1) NOT NULL DEFAULT '1' COMMENT 'Дебет? (иначе кредит)',
-  `amount` decimal(18,4) NOT NULL DEFAULT '0.0000',
+  `is_debit` int(1) NOT NULL DEFAULT 1 COMMENT 'Дебет? (иначе кредит)',
+  `amount` decimal(18,4) NOT NULL DEFAULT 0.0000,
   `currency_code` varchar(3) NOT NULL DEFAULT 'RUB',
-  `comment` text,
+  `comment` text DEFAULT NULL,
   `external_name` varchar(255) DEFAULT NULL,
   `external_id` varchar(255) DEFAULT NULL,
-  `external_data` text,
+  `external_data` text DEFAULT NULL,
   `cms_user_id` int(11) DEFAULT NULL COMMENT 'Клиент (пользователь)',
   `shop_store_id` int(11) DEFAULT NULL COMMENT 'Оплата в магазине',
   `shop_store_payment_type` varchar(255) DEFAULT NULL COMMENT 'Тип оплаты в магизне',
@@ -5307,7 +5308,7 @@ CREATE TABLE `shop_payment` (
   CONSTRAINT `shop_payment__shop_pay_system_id` FOREIGN KEY (`shop_pay_system_id`) REFERENCES `shop_pay_system` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_payment__shop_store_id` FOREIGN KEY (`shop_store_id`) REFERENCES `shop_store` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_payment__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Платежи покупателей';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Платежи покупателей' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5337,12 +5338,12 @@ CREATE TABLE `shop_pay_system` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
-  `description` text,
+  `priority` int(11) NOT NULL DEFAULT 100,
+  `description` text DEFAULT NULL,
   `component` varchar(255) DEFAULT NULL,
-  `component_config` text,
+  `component_config` text DEFAULT NULL,
   `cms_site_id` int(11) NOT NULL,
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_active` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -5350,10 +5351,10 @@ CREATE TABLE `shop_pay_system` (
   KEY `updated_at` (`updated_at`),
   KEY `priority` (`priority`),
   KEY `shop_pay_system__cms_site_id` (`cms_site_id`),
+  CONSTRAINT `shop_pay_system__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_pay_system_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_pay_system_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_pay_system__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='Платежные системы';
+  CONSTRAINT `shop_pay_system_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Платежные системы' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5384,7 +5385,7 @@ CREATE TABLE `shop_pay_system_person_type` (
   KEY `shop_pay_system_person_type_person_type_id` (`person_type_id`),
   CONSTRAINT `shop_pay_system_person_type_person_type_id` FOREIGN KEY (`person_type_id`) REFERENCES `shop_person_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_pay_system_person_type_shop_pay_system` FOREIGN KEY (`pay_system_id`) REFERENCES `shop_pay_system` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Связь платежных систем с плательщиками';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь платежных систем с плательщиками' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5394,7 +5395,7 @@ CREATE TABLE `shop_pay_system_person_type` (
 LOCK TABLES `shop_pay_system_person_type` WRITE;
 /*!40000 ALTER TABLE `shop_pay_system_person_type` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `shop_pay_system_person_type` VALUES (1,1),(7,1),(8,1),(9,1),(8,2),(9,2);
+INSERT INTO `shop_pay_system_person_type` VALUES (1,1),(7,1),(8,1),(8,2),(9,1),(9,2);
 /*!40000 ALTER TABLE `shop_pay_system_person_type` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -5415,9 +5416,9 @@ CREATE TABLE `shop_person_type` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `priority` int(11) NOT NULL DEFAULT 100,
   `active` varchar(1) NOT NULL DEFAULT 'Y',
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_active` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `updated_by` (`updated_by`),
@@ -5428,7 +5429,7 @@ CREATE TABLE `shop_person_type` (
   KEY `active` (`active`),
   CONSTRAINT `shop_person_type_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_person_type_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Типы плательщиков';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Типы плательщиков' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5460,11 +5461,11 @@ CREATE TABLE `shop_person_type_property` (
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `code` varchar(64) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   `property_type` char(1) NOT NULL DEFAULT 'S',
-  `is_required` int(1) NOT NULL DEFAULT '0',
+  `is_required` int(1) NOT NULL DEFAULT 0,
   `component` varchar(255) DEFAULT NULL,
-  `component_settings` text,
+  `component_settings` text DEFAULT NULL,
   `hint` varchar(255) DEFAULT NULL,
   `shop_person_type_id` int(11) NOT NULL,
   `is_order_location_delivery` varchar(255) NOT NULL DEFAULT 'N',
@@ -5475,8 +5476,8 @@ CREATE TABLE `shop_person_type_property` (
   `is_user_username` varchar(255) NOT NULL DEFAULT 'N',
   `is_user_name` varchar(255) NOT NULL DEFAULT 'N',
   `is_buyer_name` varchar(255) NOT NULL DEFAULT 'N',
-  `is_multiple` int(1) NOT NULL DEFAULT '0',
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_multiple` int(1) NOT NULL DEFAULT 0,
+  `is_active` int(1) NOT NULL DEFAULT 1,
   `cms_measure_code` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `shop_person_type_id_2` (`shop_person_type_id`,`code`),
@@ -5502,11 +5503,11 @@ CREATE TABLE `shop_person_type_property` (
   KEY `is_multiple` (`is_multiple`),
   KEY `is_active` (`is_active`),
   KEY `shop_person_type_property__measure_code` (`cms_measure_code`),
-  CONSTRAINT `shop_person_type_property_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_person_type_property_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_person_type_property__measure_code` FOREIGN KEY (`cms_measure_code`) REFERENCES `cms_measure` (`code`) ON UPDATE CASCADE,
-  CONSTRAINT `shop_person_type_property__shop_person_type_id` FOREIGN KEY (`shop_person_type_id`) REFERENCES `shop_person_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Свойства типов пользователей';
+  CONSTRAINT `shop_person_type_property__shop_person_type_id` FOREIGN KEY (`shop_person_type_id`) REFERENCES `shop_person_type` (`id`),
+  CONSTRAINT `shop_person_type_property_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `shop_person_type_property_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Свойства типов пользователей' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5540,7 +5541,7 @@ CREATE TABLE `shop_person_type_property_enum` (
   `value` varchar(255) NOT NULL,
   `def` char(1) NOT NULL DEFAULT 'N',
   `code` varchar(32) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -5554,7 +5555,7 @@ CREATE TABLE `shop_person_type_property_enum` (
   CONSTRAINT `shop_person_type_property_enum_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_person_type_property_enum_property_id` FOREIGN KEY (`property_id`) REFERENCES `shop_person_type_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_person_type_property_enum_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Справочник значений свойств типа список';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Справочник значений свойств типа список' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5582,9 +5583,9 @@ CREATE TABLE `shop_person_type_site` (
   `cms_site_id` int(11) NOT NULL,
   UNIQUE KEY `site_code__person_type_id` (`person_type_id`),
   UNIQUE KEY `shop_person_type_site__uniq` (`cms_site_id`,`person_type_id`),
-  CONSTRAINT `shop_person_type_site_person_type_id` FOREIGN KEY (`person_type_id`) REFERENCES `shop_person_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `shop_person_type_site__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Связь плательщиков с сайтами';
+  CONSTRAINT `shop_person_type_site__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `shop_person_type_site_person_type_id` FOREIGN KEY (`person_type_id`) REFERENCES `shop_person_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь плательщиков с сайтами' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5611,27 +5612,27 @@ COMMIT;
 CREATE TABLE `shop_product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `quantity` double DEFAULT NULL,
-  `weight` double NOT NULL DEFAULT '0',
+  `weight` double NOT NULL DEFAULT 0,
   `vat_id` int(11) DEFAULT NULL,
   `vat_included` varchar(1) NOT NULL DEFAULT 'Y',
   `measure_code` varchar(20) DEFAULT NULL,
-  `measure_ratio` double NOT NULL DEFAULT '1',
+  `measure_ratio` double NOT NULL DEFAULT 1,
   `width` double DEFAULT NULL,
   `length` double DEFAULT NULL,
   `height` double DEFAULT NULL,
   `product_type` varchar(10) NOT NULL DEFAULT 'simple',
-  `supplier_external_jsondata` text COMMENT 'Данные по товару от поставщика',
-  `measure_matches_jsondata` text COMMENT 'Соответствие единиц измерения',
+  `supplier_external_jsondata` text DEFAULT NULL COMMENT 'Данные по товару от поставщика',
+  `measure_matches_jsondata` text DEFAULT NULL COMMENT 'Соответствие единиц измерения',
   `offers_pid` int(11) DEFAULT NULL COMMENT 'Товар с предложениями',
-  `measure_ratio_min` double NOT NULL DEFAULT '1',
-  `rating_value` decimal(18,4) DEFAULT '0.0000' COMMENT 'Рейтинг товара',
-  `rating_count` int(11) DEFAULT '0' COMMENT 'Количество голосов',
-  `expiration_time` int(11) DEFAULT '0' COMMENT 'Срок годности',
-  `expiration_time_comment` text COMMENT 'Комментарий к сроку годности',
-  `service_life_time` int(11) DEFAULT '0' COMMENT 'Срок службы',
-  `service_life_time_comment` text COMMENT 'Комментарий к сроку службы',
-  `warranty_time` int(11) DEFAULT '0' COMMENT 'Срок гарантии',
-  `warranty_time_comment` text COMMENT 'Комментарий к сроку гарантии',
+  `measure_ratio_min` double NOT NULL DEFAULT 1,
+  `rating_value` decimal(18,4) DEFAULT 0.0000 COMMENT 'Рейтинг товара',
+  `rating_count` int(11) DEFAULT 0 COMMENT 'Количество голосов',
+  `expiration_time` int(11) DEFAULT 0 COMMENT 'Срок годности',
+  `expiration_time_comment` text DEFAULT NULL COMMENT 'Комментарий к сроку годности',
+  `service_life_time` int(11) DEFAULT 0 COMMENT 'Срок службы',
+  `service_life_time_comment` text DEFAULT NULL COMMENT 'Комментарий к сроку службы',
+  `warranty_time` int(11) DEFAULT 0 COMMENT 'Срок гарантии',
+  `warranty_time_comment` text DEFAULT NULL COMMENT 'Комментарий к сроку гарантии',
   PRIMARY KEY (`id`),
   KEY `quantity` (`quantity`),
   KEY `weight` (`weight`),
@@ -5650,11 +5651,11 @@ CREATE TABLE `shop_product` (
   KEY `shop_product__expiration_time` (`expiration_time`),
   KEY `shop_product__service_life_time` (`service_life_time`),
   KEY `shop_product__warranty_time` (`warranty_time`),
-  CONSTRAINT `shop_product_cms_content_element` FOREIGN KEY (`id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `shop_product_shop_vat` FOREIGN KEY (`vat_id`) REFERENCES `shop_vat` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_product__measure_code` FOREIGN KEY (`measure_code`) REFERENCES `cms_measure` (`code`) ON UPDATE CASCADE,
-  CONSTRAINT `shop_product__offers_pid` FOREIGN KEY (`offers_pid`) REFERENCES `shop_product` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12761 DEFAULT CHARSET=utf8 COMMENT='Товары';
+  CONSTRAINT `shop_product__offers_pid` FOREIGN KEY (`offers_pid`) REFERENCES `shop_product` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `shop_product_cms_content_element` FOREIGN KEY (`id`) REFERENCES `cms_content_element` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `shop_product_shop_vat` FOREIGN KEY (`vat_id`) REFERENCES `shop_vat` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=12761 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Товары' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5688,7 +5689,7 @@ CREATE TABLE `shop_product_barcode` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `shop_product_barcode__unique` (`shop_product_id`,`value`),
   CONSTRAINT `shop_product_barcode__shop_product_id` FOREIGN KEY (`shop_product_id`) REFERENCES `shop_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Штрихкод товара';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Штрихкод товара' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5717,7 +5718,7 @@ CREATE TABLE `shop_product_price` (
   `type_price_id` int(11) NOT NULL,
   `price` decimal(18,2) NOT NULL,
   `currency_code` varchar(3) NOT NULL,
-  `is_fixed` int(1) NOT NULL DEFAULT '0' COMMENT 'Цена зафиксирована?',
+  `is_fixed` int(1) NOT NULL DEFAULT 0 COMMENT 'Цена зафиксирована?',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_product_priceType` (`product_id`,`type_price_id`),
   KEY `price` (`price`),
@@ -5728,7 +5729,7 @@ CREATE TABLE `shop_product_price` (
   CONSTRAINT `shop_product_currency_code` FOREIGN KEY (`currency_code`) REFERENCES `money_currency` (`code`),
   CONSTRAINT `shop_product_price_product_id` FOREIGN KEY (`product_id`) REFERENCES `shop_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_product_price_shop_type_price` FOREIGN KEY (`type_price_id`) REFERENCES `shop_type_price` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14393 DEFAULT CHARSET=utf8 COMMENT='Цены товаров';
+) ENGINE=InnoDB AUTO_INCREMENT=14393 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Цены товаров' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5769,11 +5770,11 @@ CREATE TABLE `shop_product_price_change` (
   KEY `price` (`price`),
   KEY `currency_code` (`currency_code`),
   KEY `shop_product_price_id` (`shop_product_price_id`),
-  CONSTRAINT `shop_product_price_change_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_product_price_change_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `shop_product__currency_code` FOREIGN KEY (`currency_code`) REFERENCES `money_currency` (`code`),
   CONSTRAINT `shop_product_price_change__shop_product_price_id` FOREIGN KEY (`shop_product_price_id`) REFERENCES `shop_product_price` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `shop_product__currency_code` FOREIGN KEY (`currency_code`) REFERENCES `money_currency` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Изменение цены товара';
+  CONSTRAINT `shop_product_price_change_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `shop_product_price_change_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Изменение цены товара' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5816,7 +5817,7 @@ CREATE TABLE `shop_product_relation` (
   CONSTRAINT `shop_product_relation__shop_product1_id` FOREIGN KEY (`shop_product1_id`) REFERENCES `shop_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_product_relation__shop_product2_id` FOREIGN KEY (`shop_product2_id`) REFERENCES `shop_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_product_relation__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Настройки импорта товаров с других сайтов';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Настройки импорта товаров с других сайтов' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5848,7 +5849,7 @@ CREATE TABLE `shop_quantity_notice_email` (
   `shop_product_id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `is_notified` int(11) NOT NULL DEFAULT '0',
+  `is_notified` int(11) NOT NULL DEFAULT 0,
   `notified_at` int(11) DEFAULT NULL,
   `shop_user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -5866,7 +5867,7 @@ CREATE TABLE `shop_quantity_notice_email` (
   CONSTRAINT `shop_quantity_notice_email__shop_product_id` FOREIGN KEY (`shop_product_id`) REFERENCES `shop_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_quantity_notice_email__shop_user_id` FOREIGN KEY (`shop_user_id`) REFERENCES `shop_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_quantity_notice_email__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Subscribers to the notice of receipt product';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Subscribers to the notice of receipt product' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5891,28 +5892,28 @@ COMMIT;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `shop_site` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `description` text,
-  `description_internal` text,
-  `is_receiver` int(1) unsigned NOT NULL DEFAULT '0' COMMENT 'Сайт получает товары от поставщиков?',
+  `description` text DEFAULT NULL,
+  `description_internal` text DEFAULT NULL,
+  `is_receiver` int(1) unsigned NOT NULL DEFAULT 0 COMMENT 'Сайт получает товары от поставщиков?',
   `catalog_cms_tree_id` int(11) DEFAULT NULL COMMENT 'Главный раздел для товаров',
-  `notify_emails` text COMMENT 'Email адреса для уведомлений о заказах',
-  `is_show_product_no_price` int(1) NOT NULL DEFAULT '1' COMMENT 'Показывать товары с нулевыми ценами?',
-  `is_show_button_no_price` int(1) NOT NULL DEFAULT '1' COMMENT 'Показывать кнопку «добавить в корзину» для товаров с нулевыми ценами?',
-  `is_show_product_only_quantity` int(1) NOT NULL DEFAULT '1' COMMENT 'Показывать товары только в наличии на сайте?',
-  `is_show_quantity_product` int(1) NOT NULL DEFAULT '1' COMMENT 'Показывать оставшееся количество товаров на складе?',
-  `show_filter_property_ids` text COMMENT 'Какие фильтры разрешено показывать на сайте?',
-  `open_filter_property_ids` text COMMENT 'Какие фильтры по умолчанию открыты на сайте?',
-  `is_show_cart` int(1) NOT NULL DEFAULT '1' COMMENT 'Показывать корзину на сайте?',
-  `is_show_prices` int(1) NOT NULL DEFAULT '1' COMMENT 'Показывать цены на сайте?',
-  `order_free_shipping_from_price` decimal(18,2) NOT NULL DEFAULT '0.00' COMMENT 'Бесплатная доставка от',
+  `notify_emails` text DEFAULT NULL COMMENT 'Email адреса для уведомлений о заказах',
+  `is_show_product_no_price` int(1) NOT NULL DEFAULT 1 COMMENT 'Показывать товары с нулевыми ценами?',
+  `is_show_button_no_price` int(1) NOT NULL DEFAULT 1 COMMENT 'Показывать кнопку «добавить в корзину» для товаров с нулевыми ценами?',
+  `is_show_product_only_quantity` int(1) NOT NULL DEFAULT 1 COMMENT 'Показывать товары только в наличии на сайте?',
+  `is_show_quantity_product` int(1) NOT NULL DEFAULT 1 COMMENT 'Показывать оставшееся количество товаров на складе?',
+  `show_filter_property_ids` text DEFAULT NULL COMMENT 'Какие фильтры разрешено показывать на сайте?',
+  `open_filter_property_ids` text DEFAULT NULL COMMENT 'Какие фильтры по умолчанию открыты на сайте?',
+  `is_show_cart` int(1) NOT NULL DEFAULT 1 COMMENT 'Показывать корзину на сайте?',
+  `is_show_prices` int(1) NOT NULL DEFAULT 1 COMMENT 'Показывать цены на сайте?',
+  `order_free_shipping_from_price` decimal(18,2) NOT NULL DEFAULT 0.00 COMMENT 'Бесплатная доставка от',
   `order_required_fields` varchar(500) DEFAULT 'phone' COMMENT 'Обязательные поля при оформлении заказа',
-  `max_product_rating_value` int(11) DEFAULT '5' COMMENT 'Максимальное значение рейтинга товаров',
-  `is_generate_product_rating` int(1) DEFAULT '1' COMMENT 'Генерировать рейтинг товара?',
-  `generate_min_product_rating_value` decimal(18,4) DEFAULT '4.0000' COMMENT 'Минимальное значение рейтинга',
-  `generate_max_product_rating_value` decimal(18,4) DEFAULT '5.0000' COMMENT 'Максимальное значение рейтинга',
-  `generate_min_product_rating_count` int(11) DEFAULT '30' COMMENT 'Минимальное количество отзывов',
-  `generate_max_product_rating_count` int(11) DEFAULT '100' COMMENT 'Максимальное количество отзывов',
-  `is_show_product_no_quantity` int(1) NOT NULL DEFAULT '1' COMMENT 'Показывать кнопку «добавить в корзину» для товаров не в наличии?',
+  `max_product_rating_value` int(11) DEFAULT 5 COMMENT 'Максимальное значение рейтинга товаров',
+  `is_generate_product_rating` int(1) DEFAULT 1 COMMENT 'Генерировать рейтинг товара?',
+  `generate_min_product_rating_value` decimal(18,4) DEFAULT 4.0000 COMMENT 'Минимальное значение рейтинга',
+  `generate_max_product_rating_value` decimal(18,4) DEFAULT 5.0000 COMMENT 'Максимальное значение рейтинга',
+  `generate_min_product_rating_count` int(11) DEFAULT 30 COMMENT 'Минимальное количество отзывов',
+  `generate_max_product_rating_count` int(11) DEFAULT 100 COMMENT 'Максимальное количество отзывов',
+  `is_show_product_no_quantity` int(1) NOT NULL DEFAULT 1 COMMENT 'Показывать кнопку «добавить в корзину» для товаров не в наличии?',
   PRIMARY KEY (`id`),
   KEY `shop_site__catalog_cms_tree_id` (`catalog_cms_tree_id`),
   KEY `shop_site__order_free_shipping_from_price` (`order_free_shipping_from_price`),
@@ -5924,7 +5925,7 @@ CREATE TABLE `shop_site` (
   KEY `shop_site__generate_max_product_rating_count` (`generate_max_product_rating_count`),
   CONSTRAINT `shop_site__catalog_cms_tree_id` FOREIGN KEY (`catalog_cms_tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_site__id` FOREIGN KEY (`id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Настройки магазина для сайта';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Настройки магазина для сайта' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5955,28 +5956,28 @@ CREATE TABLE `shop_store` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text,
+  `description` text DEFAULT NULL,
   `cms_image_id` int(11) DEFAULT NULL,
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `is_active` int(1) NOT NULL DEFAULT 1,
   `external_id` varchar(255) DEFAULT NULL,
   `cms_site_id` int(11) DEFAULT NULL,
   `latitude` double DEFAULT NULL COMMENT 'Широта',
   `longitude` double DEFAULT NULL COMMENT 'Долгота',
   `address` varchar(255) DEFAULT NULL COMMENT 'Полный адрес',
-  `work_time` text COMMENT 'Рабочее время',
-  `priority` int(11) NOT NULL DEFAULT '100',
-  `is_supplier` int(1) NOT NULL DEFAULT '0',
+  `work_time` text DEFAULT NULL COMMENT 'Рабочее время',
+  `priority` int(11) NOT NULL DEFAULT 100,
+  `is_supplier` int(1) NOT NULL DEFAULT 0,
   `source_selling_price` varchar(255) NOT NULL DEFAULT 'selling_price',
-  `selling_extra_charge` decimal(18,4) NOT NULL DEFAULT '100.0000',
+  `selling_extra_charge` decimal(18,4) NOT NULL DEFAULT 100.0000,
   `source_purchase_price` varchar(255) NOT NULL DEFAULT 'purchase_price',
-  `purchase_extra_charge` decimal(18,4) NOT NULL DEFAULT '100.0000',
-  `cashier_is_allow_sell_out_of_stock` int(1) DEFAULT '0' COMMENT 'Разрешить продажу товаров не в наличии?',
-  `cashier_is_show_out_of_stock` int(1) DEFAULT '1' COMMENT 'Показывать товары не в наличии?',
+  `purchase_extra_charge` decimal(18,4) NOT NULL DEFAULT 100.0000,
+  `cashier_is_allow_sell_out_of_stock` int(1) DEFAULT 0 COMMENT 'Разрешить продажу товаров не в наличии?',
+  `cashier_is_show_out_of_stock` int(1) DEFAULT 1 COMMENT 'Показывать товары не в наличии?',
   `cashier_default_cms_user_id` int(11) DEFAULT NULL COMMENT 'Клиент по умолчанию',
-  `is_sync_external` int(1) DEFAULT '1' COMMENT 'Синхронизирован с внешней системой?',
-  `is_allow_no_check` int(1) DEFAULT '0' COMMENT 'Разрешить продажу без чека?',
-  `cashier_is_show_only_inner_products` int(1) DEFAULT '0' COMMENT 'Показывать только товары магазина?',
-  `is_personal_price` int(1) DEFAULT '0' COMMENT 'В магазине может быть своя цена?',
+  `is_sync_external` int(1) DEFAULT 1 COMMENT 'Синхронизирован с внешней системой?',
+  `is_allow_no_check` int(1) DEFAULT 0 COMMENT 'Разрешить продажу без чека?',
+  `cashier_is_show_only_inner_products` int(1) DEFAULT 0 COMMENT 'Показывать только товары магазина?',
+  `is_personal_price` int(1) DEFAULT 0 COMMENT 'В магазине может быть своя цена?',
   PRIMARY KEY (`id`),
   UNIQUE KEY `shop_store_external_id_unique` (`cms_site_id`,`external_id`),
   UNIQUE KEY `shop_store__name_supplier` (`cms_site_id`,`name`),
@@ -6008,7 +6009,7 @@ CREATE TABLE `shop_store` (
   CONSTRAINT `shop_store__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `shop_store__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_store__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Склады';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Склады' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6037,12 +6038,12 @@ CREATE TABLE `shop_store_doc_move` (
   `updated_at` int(11) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
-  `is_active` int(1) NOT NULL DEFAULT '1' COMMENT 'Документ проведен?',
+  `is_active` int(1) NOT NULL DEFAULT 1 COMMENT 'Документ проведен?',
   `doc_type` varchar(255) NOT NULL DEFAULT 'correction' COMMENT 'Тип операции',
   `shop_store_id` int(11) NOT NULL COMMENT 'Магазин',
   `shop_order_id` int(11) DEFAULT NULL COMMENT 'Заказ',
   `client_cms_user_id` int(11) DEFAULT NULL COMMENT 'Клиент',
-  `comment` text COMMENT 'Комментарий',
+  `comment` text DEFAULT NULL COMMENT 'Комментарий',
   PRIMARY KEY (`id`),
   KEY `shop_store_doc_move__updated_by` (`updated_by`),
   KEY `shop_store_doc_move__created_by` (`created_by`),
@@ -6058,7 +6059,7 @@ CREATE TABLE `shop_store_doc_move` (
   CONSTRAINT `shop_store_doc_move__shop_order_id` FOREIGN KEY (`shop_order_id`) REFERENCES `shop_order` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_store_doc_move__shop_store_id` FOREIGN KEY (`shop_store_id`) REFERENCES `shop_store` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_store_doc_move__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Движение товара';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Движение товара' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6087,13 +6088,13 @@ CREATE TABLE `shop_store_product` (
   `updated_at` int(11) DEFAULT NULL,
   `shop_store_id` int(11) NOT NULL COMMENT 'Склад',
   `shop_product_id` int(11) DEFAULT NULL,
-  `quantity` decimal(18,4) NOT NULL DEFAULT '0.0000',
+  `quantity` decimal(18,4) NOT NULL DEFAULT 0.0000,
   `name` varchar(255) DEFAULT NULL,
   `external_id` varchar(255) DEFAULT NULL,
-  `external_data` text,
-  `purchase_price` decimal(18,2) NOT NULL DEFAULT '0.00',
-  `selling_price` decimal(18,2) NOT NULL DEFAULT '0.00',
-  `is_active` int(1) DEFAULT '1' COMMENT 'Активность',
+  `external_data` text DEFAULT NULL,
+  `purchase_price` decimal(18,2) NOT NULL DEFAULT 0.00,
+  `selling_price` decimal(18,2) NOT NULL DEFAULT 0.00,
+  `is_active` int(1) DEFAULT 1 COMMENT 'Активность',
   PRIMARY KEY (`id`),
   UNIQUE KEY `shop_store_product__shop_store2product` (`shop_store_id`,`shop_product_id`),
   KEY `shop_store_product__created_at` (`created_at`),
@@ -6106,7 +6107,7 @@ CREATE TABLE `shop_store_product` (
   KEY `shop_store_product__is_active` (`is_active`),
   CONSTRAINT `shop_store_product__shop_product_id` FOREIGN KEY (`shop_product_id`) REFERENCES `shop_product` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_store_product__shop_store_id` FOREIGN KEY (`shop_store_id`) REFERENCES `shop_store` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Складской учет';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Складской учет' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6135,12 +6136,12 @@ CREATE TABLE `shop_store_product_move` (
   `updated_at` int(11) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
-  `is_active` int(1) NOT NULL DEFAULT '1' COMMENT 'Документ проведен?',
+  `is_active` int(1) NOT NULL DEFAULT 1 COMMENT 'Документ проведен?',
   `shop_store_doc_move_id` int(11) NOT NULL COMMENT 'Документ',
   `product_name` varchar(255) NOT NULL COMMENT 'Название товара',
   `shop_store_product_id` int(11) DEFAULT NULL COMMENT 'Товар',
-  `quantity` decimal(18,4) NOT NULL DEFAULT '0.0000' COMMENT 'Количество',
-  `price` decimal(18,2) NOT NULL DEFAULT '0.00' COMMENT 'Цена',
+  `quantity` decimal(18,4) NOT NULL DEFAULT 0.0000 COMMENT 'Количество',
+  `price` decimal(18,2) NOT NULL DEFAULT 0.00 COMMENT 'Цена',
   PRIMARY KEY (`id`),
   KEY `shop_store_product_move__updated_by` (`updated_by`),
   KEY `shop_store_product_move__created_by` (`created_by`),
@@ -6155,7 +6156,7 @@ CREATE TABLE `shop_store_product_move` (
   CONSTRAINT `shop_store_product_move__shop_store_doc_move_id` FOREIGN KEY (`shop_store_doc_move_id`) REFERENCES `shop_store_doc_move` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_store_product_move__shop_store_product_id` FOREIGN KEY (`shop_store_product_id`) REFERENCES `shop_store_product` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `shop_store_product_move__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Движение товара';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Движение товара' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6183,14 +6184,14 @@ CREATE TABLE `shop_store_property` (
   `shop_store_id` int(11) NOT NULL,
   `external_code` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `is_visible` int(1) NOT NULL DEFAULT '1',
+  `is_visible` int(1) NOT NULL DEFAULT 1,
   `cms_content_property_id` int(11) DEFAULT NULL,
-  `priority` int(11) DEFAULT '500',
+  `priority` int(11) DEFAULT 500,
   `property_type` varchar(255) DEFAULT NULL,
   `import_delimetr` varchar(255) DEFAULT NULL,
   `property_nature` varchar(255) DEFAULT NULL,
   `import_multiply` float DEFAULT NULL,
-  `is_options` int(1) NOT NULL DEFAULT '0',
+  `is_options` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `shop_store_property__shop_store2external_code` (`shop_store_id`,`external_code`),
   KEY `shop_store_property__is_visible` (`is_visible`),
@@ -6201,7 +6202,7 @@ CREATE TABLE `shop_store_property` (
   KEY `shop_store_propertyis_options` (`is_options`),
   CONSTRAINT `shop_store_property__cms_content_property_id` FOREIGN KEY (`cms_content_property_id`) REFERENCES `cms_content_property` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_store_property__shop_store_id` FOREIGN KEY (`shop_store_id`) REFERENCES `shop_store` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6240,7 +6241,7 @@ CREATE TABLE `shop_store_property_option` (
   CONSTRAINT `shop_store_property_option__cms_content_property_enum_id` FOREIGN KEY (`cms_content_property_enum_id`) REFERENCES `cms_content_property_enum` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_store_property_option__cms_tree_id` FOREIGN KEY (`cms_tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_store_property_option__shop_store_property_id` FOREIGN KEY (`shop_store_property_id`) REFERENCES `shop_store_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6270,10 +6271,10 @@ CREATE TABLE `shop_supplier` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text,
+  `description` text DEFAULT NULL,
   `cms_image_id` int(11) DEFAULT NULL,
-  `is_active` int(1) NOT NULL DEFAULT '1',
-  `description_internal` text,
+  `is_active` int(1) NOT NULL DEFAULT 1,
+  `description_internal` text DEFAULT NULL,
   `external_id` varchar(255) DEFAULT NULL,
   `cms_site_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -6291,7 +6292,7 @@ CREATE TABLE `shop_supplier` (
   CONSTRAINT `shop_supplier__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_supplier__created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_supplier__updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Поставщики товаров';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Поставщики товаров' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6318,12 +6319,12 @@ CREATE TABLE `shop_supplier_property` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `external_code` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `is_visible` int(1) NOT NULL DEFAULT '1',
+  `is_visible` int(1) NOT NULL DEFAULT 1,
   `cms_content_property_id` int(11) DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '500',
+  `priority` int(11) NOT NULL DEFAULT 500,
   `property_type` varchar(255) DEFAULT NULL,
-  `import_delimetr` text,
-  `import_replace` text,
+  `import_delimetr` text DEFAULT NULL,
+  `import_replace` text DEFAULT NULL,
   `import_miltiple` decimal(18,8) DEFAULT NULL,
   `cms_site_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -6334,7 +6335,7 @@ CREATE TABLE `shop_supplier_property` (
   KEY `shop_supplier_property__property_type` (`property_type`),
   CONSTRAINT `shop_supplier_property__cms_content_property_id` FOREIGN KEY (`cms_content_property_id`) REFERENCES `cms_content_property` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_supplier_property__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Свойства поставщика';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Свойства поставщика' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6373,7 +6374,7 @@ CREATE TABLE `shop_supplier_property_option` (
   CONSTRAINT `shop_supplier_property_option__cms_content_property_enum_id` FOREIGN KEY (`cms_content_property_enum_id`) REFERENCES `cms_content_property_enum` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_supplier_property_option__cms_tree_id` FOREIGN KEY (`cms_tree_id`) REFERENCES `cms_tree` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_supplier_property_option__shop_supplier_property_id` FOREIGN KEY (`shop_supplier_property_id`) REFERENCES `shop_supplier_property` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Опции свойств поставщика';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Опции свойств поставщика' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6403,14 +6404,14 @@ CREATE TABLE `shop_type_price` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text,
-  `priority` int(11) NOT NULL DEFAULT '100',
+  `description` text DEFAULT NULL,
+  `priority` int(11) NOT NULL DEFAULT 100,
   `external_id` varchar(255) DEFAULT NULL,
   `cms_site_id` int(11) DEFAULT NULL,
   `is_default` int(1) unsigned DEFAULT NULL,
-  `is_auto` int(1) NOT NULL DEFAULT '0' COMMENT 'Цена обновляется автоматически?',
+  `is_auto` int(1) NOT NULL DEFAULT 0 COMMENT 'Цена обновляется автоматически?',
   `base_auto_shop_type_price_id` int(11) DEFAULT NULL COMMENT 'Базовая цена для автообновления.',
-  `auto_extra_charge` int(11) DEFAULT '100' COMMENT 'Наценка на базовую цену автообновления.',
+  `auto_extra_charge` int(11) DEFAULT 100 COMMENT 'Наценка на базовую цену автообновления.',
   `is_purchase` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `external_id_unique` (`cms_site_id`,`external_id`),
@@ -6426,11 +6427,11 @@ CREATE TABLE `shop_type_price` (
   KEY `shop_type_price__extra_charge` (`auto_extra_charge`),
   KEY `shop_type_price__is_auto` (`is_auto`),
   KEY `shop_type_price__base_auto_shop_type_price_id` (`base_auto_shop_type_price_id`),
-  CONSTRAINT `shop_type_price_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_type_price_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_type_price__base_auto_shop_type_price_id` FOREIGN KEY (`base_auto_shop_type_price_id`) REFERENCES `shop_type_price` (`id`),
-  CONSTRAINT `shop_type_price__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Типы цен';
+  CONSTRAINT `shop_type_price__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `shop_type_price_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `shop_type_price_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Типы цен' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6463,7 +6464,7 @@ CREATE TABLE `shop_type_price2auth_item` (
   KEY `shop_type_price2auth_item__auth_item_name` (`auth_item_name`),
   CONSTRAINT `shop_type_price2auth_item__auth_item_name` FOREIGN KEY (`auth_item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_type_price2auth_item__shop_type_price_id` FOREIGN KEY (`shop_type_price_id`) REFERENCES `shop_type_price` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Связь цены с ролью пользователя';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Связь цены с ролью пользователя' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6495,7 +6496,7 @@ CREATE TABLE `shop_type_price2view_auth_item` (
   KEY `shop_type_price2view_auth_item__auth_item_name` (`auth_item_name`),
   CONSTRAINT `shop_type_price2view_auth_item__auth_item_name` FOREIGN KEY (`auth_item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `shop_type_price2view_auth_item__shop_type_price_id` FOREIGN KEY (`shop_type_price_id`) REFERENCES `shop_type_price` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Кто может видеть эту цену?';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Кто может видеть эту цену?' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6541,7 +6542,7 @@ CREATE TABLE `shop_user` (
   CONSTRAINT `shop_fuser_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_fuser_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_user__cms_site_id` FOREIGN KEY (`cms_site_id`) REFERENCES `cms_site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=38940 DEFAULT CHARSET=utf8 COMMENT='Пользователи для корзины';
+) ENGINE=InnoDB AUTO_INCREMENT=38940 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Пользователи для корзины' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6572,9 +6573,9 @@ CREATE TABLE `shop_vat` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '100',
-  `rate` decimal(18,2) NOT NULL DEFAULT '0.00',
-  `is_active` int(1) NOT NULL DEFAULT '1',
+  `priority` int(11) NOT NULL DEFAULT 100,
+  `rate` decimal(18,2) NOT NULL DEFAULT 0.00,
+  `is_active` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `updated_by` (`updated_by`),
   KEY `created_by` (`created_by`),
@@ -6585,7 +6586,7 @@ CREATE TABLE `shop_vat` (
   KEY `rate` (`rate`),
   CONSTRAINT `shop_vat_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_vat_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Ставки НДС';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Ставки НДС' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6624,11 +6625,11 @@ CREATE TABLE `shop_viewed_product` (
   KEY `updated_at` (`updated_at`),
   KEY `shop_fuser_id` (`shop_user_id`),
   KEY `shop_product_id` (`shop_product_id`),
-  CONSTRAINT `shop_viewed_product_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `shop_viewed_product_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `shop_viewed_product__shop_product_id` FOREIGN KEY (`shop_product_id`) REFERENCES `shop_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `shop_viewed_product__shop_user_id` FOREIGN KEY (`shop_user_id`) REFERENCES `shop_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8 COMMENT='Ранее просмотренные товары';
+  CONSTRAINT `shop_viewed_product__shop_user_id` FOREIGN KEY (`shop_user_id`) REFERENCES `shop_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `shop_viewed_product_created_by` FOREIGN KEY (`created_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `shop_viewed_product_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `cms_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Ранее просмотренные товары' `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6655,9 +6656,9 @@ COMMIT;
 CREATE TABLE `source_message` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category` varchar(255) DEFAULT NULL,
-  `message` text,
+  `message` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=346 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=346 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci `PAGE_COMPRESSED`='ON';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6685,4 +6686,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 13 Jun 2023 07:54:39 +0000
+-- Dump completed on: Mon, 31 Jul 2023 13:53:00 +0000
