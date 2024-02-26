@@ -6,6 +6,7 @@ return [
 
     'config-plugin-options' => [
         'source-directory' => 'config',
+        "package-types" => ["library", "yii2-extension"],
     ],
 
     'config-plugin' => [
